@@ -19,8 +19,8 @@ class minConflicts {
         
         columns = [Int(arc4random_uniform(UInt32(n)))]
         for var index = 1; index < n; ++index {
-            let random = UInt(arc4random_uniform(UInt32(n)))
-            columns.append(Int(random))
+            let random = Int(arc4random_uniform(UInt32(n)))
+            columns.append(random)
         }
     }
     
@@ -29,6 +29,10 @@ class minConflicts {
         
         
      for var index = 0; index < self.maxSteps; ++index {
+    let column =  Int(arc4random_uniform(UInt32(n)))
+        
+        columns[column] = conflicts(column)
+        
     
     }
         
@@ -39,7 +43,7 @@ class minConflicts {
     func conflicts(variable:Int)-> Int{
         
         
-        return 1
+        return 4
         
     }
     
