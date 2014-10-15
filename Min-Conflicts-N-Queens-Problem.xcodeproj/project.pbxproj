@@ -13,6 +13,7 @@
 		A26B5C7419EF1E7D00B0A19B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A26B5C7319EF1E7D00B0A19B /* Images.xcassets */; };
 		A26B5C7719EF1E7D00B0A19B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26B5C7519EF1E7D00B0A19B /* LaunchScreen.xib */; };
 		A26B5C8319EF1E7D00B0A19B /* Min_Conflicts_N_Queens_ProblemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B5C8219EF1E7D00B0A19B /* Min_Conflicts_N_Queens_ProblemTests.swift */; };
+		A26B5C8D19EF1FC400B0A19B /* algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B5C8C19EF1FC300B0A19B /* algorithms.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		A26B5C7C19EF1E7D00B0A19B /* Min-Conflicts-N-Queens-ProblemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Min-Conflicts-N-Queens-ProblemTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26B5C8119EF1E7D00B0A19B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A26B5C8219EF1E7D00B0A19B /* Min_Conflicts_N_Queens_ProblemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Min_Conflicts_N_Queens_ProblemTests.swift; sourceTree = "<group>"; };
+		A26B5C8C19EF1FC300B0A19B /* algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = algorithms.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				A26B5C6C19EF1E7D00B0A19B /* AppDelegate.swift */,
 				A26B5C6E19EF1E7D00B0A19B /* ViewController.swift */,
+				A26B5C8C19EF1FC300B0A19B /* algorithms.swift */,
 				A26B5C7019EF1E7D00B0A19B /* Main.storyboard */,
 				A26B5C7319EF1E7D00B0A19B /* Images.xcassets */,
 				A26B5C7519EF1E7D00B0A19B /* LaunchScreen.xib */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A26B5C8D19EF1FC400B0A19B /* algorithms.swift in Sources */,
 				A26B5C6F19EF1E7D00B0A19B /* ViewController.swift in Sources */,
 				A26B5C6D19EF1E7D00B0A19B /* AppDelegate.swift in Sources */,
 			);
