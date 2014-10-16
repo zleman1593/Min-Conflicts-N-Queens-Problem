@@ -9,30 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var solver:minConflicts!
+    var solver : minConflicts!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         solver = minConflicts(n: 9, maxSteps:5000)
         start()
     }
-
- 
     
-     func start(){
-        if self.solver.minConflicts(){
+    func start() {
+        if self.solver.minConflicts() {
             println("Solved!")
-             println("Final Solution" + self.solver.columns.description)
-        } else{
-            println(" Could no be solved in time!")
-             println("Final Unsolved State " + self.solver.columns.description)
-            
+            println("Final Solution" + self.solver.columns.description)
+        } else {
+            println("Could no be solved in time!")
+            println("Final Unsolved State " + self.solver.columns.description)
         }
     }
-    
-        
-        
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
