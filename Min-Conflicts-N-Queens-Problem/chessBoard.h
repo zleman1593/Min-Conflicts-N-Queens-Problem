@@ -16,7 +16,7 @@
 #define NO_POSSIBLE_SOLUTION_FROM_POINT 90
 #define NO_MORE_SPOTS 60
 #define INPUT_SIZE 50
-#define  DUMMY 0
+#define DUMMY 0
 #define FONT_SIZE 48.0
 
 @class chessBoard;

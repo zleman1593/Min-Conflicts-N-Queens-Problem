@@ -44,6 +44,7 @@
         }
     }
 }
+
 /*This registers that the user has tapped in a specific location and allows a queen to be placed there*/
 - (void)tap:(UITapGestureRecognizer *)gesture
 {

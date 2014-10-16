@@ -49,7 +49,7 @@ class ViewController: UIViewController , chessBoardDelegate {
     }
     
     
-    //Takes a Col and Row and returns the number at that position
+    //Takes a Col and Row and returns whether there is a queen at that position or not
     func getContentAtRow(row : Int32, col: Int32 ) -> String! {
  
         if self.solver.columns[Int(col)] == Int(row){
