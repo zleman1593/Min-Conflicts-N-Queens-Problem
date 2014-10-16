@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController, BoardDelegate {
     var solver : minConflicts!
     @IBOutlet var board : Board!
-    
+    let DIMENSION: Int = 20
+    let SCALE_FACTOR: Int = 720
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets self as the view's delegate
@@ -23,7 +24,11 @@ class ViewController: UIViewController, BoardDelegate {
         
         //Assigns detector to the view
         //self.board.addGestureRecognizer(tap)
-        solver = minConflicts(n: 9, maxSteps:5000)
+        
+          self.board.boardHeight = DIMENSION
+        self.board.boardWidth = DIMENSION
+        self.board.cellSize = SCALE_FACTOR/DIMENSION
+        solver = minConflicts(n: DIMENSION, maxSteps:5000)
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
     
