@@ -25,17 +25,19 @@ class ViewController: UIViewController , chessBoardDelegate {
         solver = minConflicts(n: 9, maxSteps:5000)
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
+    
         start()
     }
     
     func start() {
-        //Shows final board positions
-        self.board.setNeedsDisplay()
         if self.solver.minConflicts() {
-            
+            //Shows final board positions
+            self.board.setNeedsDisplay()
             println("Solved!")
             println("Final Solution" + self.solver.columns.description)
         } else {
+            //Shows final board positions
+            self.board.setNeedsDisplay()
             println("Could no be solved in time!")
             println("Final Unsolved State " + self.solver.columns.description)
         }
@@ -48,9 +50,9 @@ class ViewController: UIViewController , chessBoardDelegate {
     
     
     //Takes a Col and Row and returns the number at that position
-    func getContentAtRow(row : Int,col: Int ) -> NSString {
+    func getContentAtRow(row : Int32,col: Int32 ) -> String! {
  
-        if self.solver.columns[col] == row{
+        if self.solver.columns[Int(col)] == Int(row){
             return "Q"
         }
         return "0"
