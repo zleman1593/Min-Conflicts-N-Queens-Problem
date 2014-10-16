@@ -29,8 +29,10 @@
             CGContextStrokePath(context);
             CGContextStrokeRect(context, rectangle);
             //Asks for queen or a blank to place in each square
-        NSString *queen = [NSString stringWithFormat:@"%d", [[self.delegate getContentAtRow:j Col:i ]intValue]];
-
+            
+//----------------------------THIS IS CAUSING CRASH
+            NSString *queen = [NSString stringWithFormat:@"%d", [[self.delegate getContentAtRow:j Col:i ]intValue]];
+            
             UIFont *textFont = [UIFont systemFontOfSize:FONT_SIZE];
             //Determines if a queen is at a give location and colors the location appropriately
             [self colorPickerWithContext:context];
@@ -43,12 +45,6 @@
         }
     }
 }
-
-
-
-
-
-
 /*This registers that the user has tapped in a specific location and allows a queen to be placed there*/
 - (void)tap:(UITapGestureRecognizer *)gesture
 {
