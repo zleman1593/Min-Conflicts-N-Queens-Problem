@@ -13,7 +13,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-
+        
     }
     return self;
 }
@@ -28,18 +28,18 @@
             CGContextBeginPath(context);
             CGContextStrokePath(context);
             CGContextStrokeRect(context, rectangle);
-            //Asks for number to place in each square
-            NSString *number = [NSString stringWithFormat:@"%d", [[self.delegate getContentAtRow:j Col:i ]intValue]];
+            //Asks for queen or a blank to place in each square
+            NSString *queen = [NSString stringWithFormat:@"%d", [[self.delegate getContentAtRow:j Col:i ]intValue]];
             UIFont *textFont = [UIFont systemFontOfSize:FONT_SIZE];
-            //Determines what number is at a give location and colors the location appropriately
+            //Determines if a queen is at a give location and colors the location appropriately
             [self colorPickerWithContext:context andNumber:[[self.delegate getContentAtRow:j Col:i ]intValue]];
             if ([[self.delegate getContentAtRow:j Col:i ]intValue]!=0) {
                 CGContextFillRect(context, rectangle);
-                [number drawInRect:rectangle withAttributes:@{NSFontAttributeName:textFont}];
+                [queen drawInRect:rectangle withAttributes:@{NSFontAttributeName:textFont}];
             }
         }
     }
-   }
+}
 /*this registers that the user has tapped in a specific location and */
 - (void)tap:(UITapGestureRecognizer *)gesture
 {
@@ -53,7 +53,7 @@
                 int y = FIELDINSET + j * CELLSIZE;
                 CGRect rectangle = CGRectMake(x,y,CELLSIZE,CELLSIZE);
                 //If a square contains the point the user tapped it will
-                //place the last number selected at that location
+                //place a queen there
                 if (CGRectContainsPoint(rectangle,tapPoint)) {
                     NSLog(@"Point(%f, %f) is contained in rectangle %d,%d ", tapPoint.x, tapPoint.y,x,y);
                     done=YES;
@@ -75,7 +75,7 @@
                 [self.delegate numberSelected:numbers];
             }
         }
-    
+        
     }
 }
 /*Is given the current context and the number at a*

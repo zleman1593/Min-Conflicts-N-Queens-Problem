@@ -22,7 +22,6 @@
 @class chessBoard;
 
 @protocol chessBoardDelegate
-//Decribed in viewController.h
 -(NSString*)getContentAtRow:(int)row Col:(int)col;
 - (void)numberSelected:(int)number;
 - (void)squareSelectedAtRow:(int)row Col:(int)col;

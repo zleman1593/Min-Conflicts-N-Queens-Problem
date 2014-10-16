@@ -21,13 +21,14 @@ class ViewController: UIViewController , chessBoardDelegate {
         //Assigns detector to the view
         self.board.addGestureRecognizer(tap)
         solver = minConflicts(n: 9, maxSteps:5000)
- self.board.setNeedsDisplay()
+        //Update Board with starting Positions
+        self.board.setNeedsDisplay()
         start()
     }
     
     func start() {
         //Shows final board positions
-         self.board.setNeedsDisplay()
+        self.board.setNeedsDisplay()
         if self.solver.minConflicts() {
             
             println("Solved!")
@@ -37,7 +38,7 @@ class ViewController: UIViewController , chessBoardDelegate {
             println("Final Unsolved State " + self.solver.columns.description)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,17 +50,17 @@ class ViewController: UIViewController , chessBoardDelegate {
         if self.solver.columns[col] == row{
             return "1"
         }
-    return "0"
+        return "0"
     }
     
     func numberSelected(number: Int){
-//does nothing
+        //does nothing
     }
     
-
+    
     func squareSelectedAtRow(row : Int,col: Int ){
-    //does nothing
+        //does nothing
     }
-
+    
 }
 
