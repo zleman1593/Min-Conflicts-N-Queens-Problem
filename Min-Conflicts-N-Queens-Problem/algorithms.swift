@@ -43,7 +43,11 @@ class minConflicts {
         for index in 1...self.maxSteps {
             //check if current assignment is solution
             if self.isSolution() {
+<<<<<<< HEAD
                 self.stepsUsed = index
+=======
+                println("Solution found at step \(index)")
+>>>>>>> FETCH_HEAD
                 return true
             }
             
