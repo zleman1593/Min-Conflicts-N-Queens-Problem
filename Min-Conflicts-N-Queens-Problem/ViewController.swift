@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , chessBoardDelegate {
     var solver : minConflicts!
     @IBOutlet var board: chessBoard!
     override func viewDidLoad() {
@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         //sets self as the view's delegate
         self.board.delegate = self;
         //Creates a tap location detector
-       /* let tap:UITapGestureRecognizer =  UITapGestureRecognizer(self.board,
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
             action "tap")*/
         //Assigns detector to the view
         self.board.addGestureRecognizer(tap)
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     
     
     //Takes a Col and Row and returns the number at that position
-    func getContentAtRow( row : Int, col: Int ) -> NSString {
+    func getContentAtRow(row : Int,col: Int ) -> NSString {
         if self.solver.columns[col] == row{
             return "1"
         }
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     
     /*Takes a Col and Row and returns and sets the value at that
     * location to the last user selected number*/
-    func squareSelectedAtRow( row : Int, col: Int ){
+    func squareSelectedAtRow(row : Int,col: Int ){
     //makes the hint disappear
     //does nothing
     }
