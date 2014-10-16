@@ -48,7 +48,7 @@ class ViewController: UIViewController, BoardDelegate {
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
             var alert = UIAlertController()
             
-            if self.solver.minConflicts() {
+            if self.solver.minConflicts() { //game solved!
                 println("Solved!")
                 println("Final Solution: \(self.solver.columns.description)")
                 println("Found at Step \(self.solver.stepsUsed)")
@@ -63,7 +63,7 @@ class ViewController: UIViewController, BoardDelegate {
                     alert.title = "Solved!"
                     alert.message = "A solution was found at Step \(self.solver.stepsUsed)! Would you like to play again?"
                 }
-            } else {
+            } else { //game now solved
                 println("Could no be solved in less than \(self.MAX_STEPS) steps :(")
                 println("Final Unsolved State " + self.solver.columns.description)
                 
@@ -79,6 +79,7 @@ class ViewController: UIViewController, BoardDelegate {
                 }
             }
             
+            //options to play a new game or exit
             var restartAction = UIAlertAction(title: "Play Again", style: UIAlertActionStyle.Default, handler: { (alert) -> Void in
                 self.reset()
             })
