@@ -26,27 +26,39 @@ class ViewController: UIViewController, BoardDelegate {
         //Assigns detector to the view
         //self.board.addGestureRecognizer(tap)
         solver = minConflicts(n: DIMENSION, maxSteps:5000)
+        
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
-    
-        //start()
     }
     
     func start() {
-        //solver = minConflicts(n: DIMENSION, maxSteps:5000)
-        if self.solver.minConflicts() {
-            //Shows final board positions
-            self.board.setNeedsDisplay()
-            println("Solved!")
-            println("Final Solution" + self.solver.columns.description)
-        } else {
-            //Shows final board positions
-            self.board.setNeedsDisplay()
-            println("Could no be solved in time!")
-            println("Final Unsolved State " + self.solver.columns.description)
+        self.board.startSolving()
+        //in background thread
+        dispatch_async(dispatch_queue_create("Solving queue", nil)) {
+            if self.solver.minConflicts() {
+                println("Solved!")
+                println("Final Solution" + self.solver.columns.description)
+                
+                //in main thread, update view
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.board.doneSolving(true)
+                    //Shows final board positions
+                    self.board.setNeedsDisplay()
+                }
+            } else {
+                println("Could no be solved in time!")
+                println("Final Unsolved State " + self.solver.columns.description)
+                
+                //in main thread, update view
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.board.doneSolving(false)
+                    //Shows final board positions
+                    self.board.setNeedsDisplay()
+                }
+            }
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

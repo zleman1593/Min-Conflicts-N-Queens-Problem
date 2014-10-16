@@ -40,15 +40,15 @@ class minConflicts {
         
         for index in 1...self.maxSteps {
             //check if current assignment is solution
-            if isSolution() {
+            if self.isSolution() {
                 return true
             }
             
             //choose a random column
-            let column = Int.random(n)
+            let column = Int.random(self.n)
             
             //set queen in the random column to row that minimizes conflicts
-            self.columns[column] = conflicts(column)
+            self.columns[column] = self.conflicts(column)
         }
         
         //return that it had to give up

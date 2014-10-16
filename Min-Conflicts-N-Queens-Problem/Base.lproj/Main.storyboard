@@ -16,9 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="IMf-kL-1ab">
+                                <rect key="frame" x="290" y="555" width="20" height="20"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNk-8j-iQA">
-                                <rect key="frame" x="281" y="550" width="38" height="30"/>
+                                <rect key="frame" x="225" y="550" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1uL-jY-XVQ"/>
+                                </constraints>
                                 <state key="normal" title="Solve">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -30,8 +38,14 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="wNk-8j-iQA" secondAttribute="bottom" constant="20" symbolic="YES" id="FQe-EP-pEL"/>
+                            <constraint firstItem="IMf-kL-1ab" firstAttribute="centerY" secondItem="wNk-8j-iQA" secondAttribute="centerY" id="W6Z-CV-dOS"/>
+                            <constraint firstItem="IMf-kL-1ab" firstAttribute="centerX" secondItem="wNk-8j-iQA" secondAttribute="centerX" id="dJu-cD-hBg"/>
                             <constraint firstItem="wNk-8j-iQA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o5O-av-6oV"/>
                         </constraints>
+                        <connections>
+                            <outlet property="activity" destination="IMf-kL-1ab" id="4Ne-uZ-Qsx"/>
+                            <outlet property="solveButton" destination="wNk-8j-iQA" id="49a-NA-Bmd"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="board" destination="8bC-Xf-vdC" id="Fp8-vt-PQE"/>

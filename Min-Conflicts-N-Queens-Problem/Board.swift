@@ -11,17 +11,19 @@ import UIKit
 
 class Board : UIView {
     let FIELDINSET_Y = 30
-    let FIELDINSET = 8
-    let FONT_SIZE  = 24.0 as CGFloat
+    let FIELDINSET_X = 8
     var delegate : BoardDelegate?
     var boardHeight : Int?
     var boardWidth  : Int?
     var cellSize : Int?
-
+    var fontSize : CGFloat?
+    @IBOutlet var activity: UIActivityIndicatorView!
+    @IBOutlet var solveButton: UIButton!
+    
     override func drawRect(rect: CGRect) {
         for i in 0..<boardWidth! {
             for j in 0..<boardHeight! {
-                var x = CGFloat(FIELDINSET + i * cellSize!)
+                var x = CGFloat(FIELDINSET_X + i * cellSize!)
                 var y = CGFloat(FIELDINSET_Y + j * cellSize!)
                 
                 var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
@@ -33,7 +35,7 @@ class Board : UIView {
 
                 //Asks for queen or a blank to place in each square
                 var queen = self.delegate!.getContentAtRow(j, col: i)
-                var textFont = UIFont.systemFontOfSize(CGFloat(cellSize!-5))
+                var textFont = UIFont.systemFontOfSize(fontSize!)
                 
                 //Determines if a queen is at a give location and colors the location appropriately
                 self.colorPickerWithContext(context)
@@ -49,10 +51,29 @@ class Board : UIView {
         self.delegate!.start()
     }
     
+    func startSolving() {
+        self.activity.startAnimating()
+        self.solveButton.enabled = false
+        self.solveButton.backgroundColor = UIColor.lightGrayColor()
+        self.solveButton.setTitle("Solving...", forState: UIControlState.Normal)
+    }
+    
+    func doneSolving(solved: Bool) {
+        self.activity.stopAnimating()
+        if solved {
+            self.solveButton.backgroundColor = UIColor(red: 0, green: 0.8, blue: 0.2, alpha: 1)
+            self.solveButton.setTitle("Solved!", forState: UIControlState.Normal)
+        } else {
+            self.solveButton.backgroundColor = UIColor.redColor()
+            self.solveButton.setTitle("Unsolved", forState: UIControlState.Normal)
+        }
+    }
+    
     func setBoardSize(rows: Int, cols: Int) {
         self.boardHeight = rows
         self.boardWidth  = cols
-        cellSize = Int(self.frame.width/CGFloat(self.boardWidth!))
+        self.cellSize = Int(self.frame.width/CGFloat(self.boardWidth!))
+        self.fontSize = CGFloat(self.cellSize!-5)
     }
     
     /*This registers that the user has tapped in a specific location and allows a queen to be placed there*/
@@ -64,7 +85,7 @@ class Board : UIView {
             var done = false
             for var i = 0; i < boardWidth && done == false; i++ {
                 for var j = 0; j < boardHeight && done == false; j++ {
-                    var x = CGFloat(FIELDINSET + i * cellSize!)
+                    var x = CGFloat(FIELDINSET_X + i * cellSize!)
                     var y = CGFloat(FIELDINSET_Y + (j-1) * cellSize!)
                     
                     var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
