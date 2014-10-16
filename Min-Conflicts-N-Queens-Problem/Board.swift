@@ -35,8 +35,8 @@ class Board : UIView {
                 CGContextBeginPath(context)
                 CGContextStrokePath(context)
                 CGContextStrokeRect(context, rectangle)
-                //Asks for queen or a blank to place in each square
 
+                //Asks for queen or a blank to place in each square
                 var queen = self.delegate!.getContentAtRow(j, col: i)
                 var textFont = UIFont.systemFontOfSize(FONT_SIZE)
                 
@@ -80,7 +80,7 @@ class Board : UIView {
     /*Randomly asisgns a queen a color*/
     func colorPickerWithContext(context : CGContextRef) {
         var random = Int.random(BOARD_HEIGHT+1)
-        switch (random) {
+        switch random {
             case 1:
                 CGContextSetRGBFillColor(context,0.6,0.6, 0.0, 1.0)
             case 2:
