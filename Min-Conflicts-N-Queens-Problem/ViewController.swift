@@ -21,9 +21,12 @@ class ViewController: UIViewController {
     
      func start(){
         if self.solver.minConflicts(){
-            print("Solved!")
+            println("Solved!")
+             println("Final Solution" + self.solver.columns.description)
         } else{
-            print(" Could no be solved in time!")
+            println(" Could no be solved in time!")
+             println("Final Unsolved State" + self.solver.columns.description)
+            
         }
     }
     
