@@ -23,15 +23,7 @@ class Board : UIView {
     let DUMMY = 0
     let FONT_SIZE = 48.0 as CGFloat
     var delegate : BoardDelegate?
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
 
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func drawRect(rect: CGRect) {
         for (var i = 0; i < BOARD_WIDTH; i++) {
             for (var j = 1; j <= BOARD_HEIGHT; j++) {

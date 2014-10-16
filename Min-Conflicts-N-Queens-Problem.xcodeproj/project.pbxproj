@@ -85,15 +85,15 @@
 		A26B5C6919EF1E7D00B0A19B /* Min-Conflicts-N-Queens-Problem */ = {
 			isa = PBXGroup;
 			children = (
+				A26B5C7519EF1E7D00B0A19B /* LaunchScreen.xib */,
+				A26B5C7019EF1E7D00B0A19B /* Main.storyboard */,
 				A26B5C6C19EF1E7D00B0A19B /* AppDelegate.swift */,
 				A26B5C6E19EF1E7D00B0A19B /* ViewController.swift */,
 				A26B5C8C19EF1FC300B0A19B /* algorithms.swift */,
-				A26B5C7019EF1E7D00B0A19B /* Main.storyboard */,
-				A26B5C7319EF1E7D00B0A19B /* Images.xcassets */,
-				A26B5C7519EF1E7D00B0A19B /* LaunchScreen.xib */,
-				A26B5C8F19EFEE2700B0A19B /* chessBoard.h */,
 				457DE01C19F017440030F9F6 /* Board.swift */,
+				A26B5C8F19EFEE2700B0A19B /* chessBoard.h */,
 				A26B5C9019EFEE2700B0A19B /* chessBoard.m */,
+				A26B5C7319EF1E7D00B0A19B /* Images.xcassets */,
 				A26B5C6A19EF1E7D00B0A19B /* Supporting Files */,
 				A26B5C8E19EFEE2600B0A19B /* Min-Conflicts-N-Queens-Problem-Bridging-Header.h */,
 			);
