@@ -17,7 +17,7 @@
     }
     return self;
 }
-//Darws the   board and the choices of numbers to insert
+//Darws the board and where there are Queens
 - (void)drawRect:(CGRect)rect{
     for (int i = 0; i < BOARD_WIDTH; i++) {
         for (int j = 1; j <= BOARD_HEIGHT; j++) {
