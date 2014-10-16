@@ -9,11 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
-    let DIMENSION : Int = 13
+    let DIMENSION : Int = 12
      let MAX_STEPS : Int = 5000
     var solver : minConflicts!
     @IBOutlet var board : Board!
     
+    @IBOutlet weak var stepCount: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets self as the view's delegate
@@ -43,6 +44,7 @@ class ViewController: UIViewController, BoardDelegate {
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
                     self.board.doneSolving(true)
+                    self.stepCount.text = "Took \(self.solver.stepsUsed) steps!"
                     //Shows final board positions
                     self.board.setNeedsDisplay()
                 }
@@ -53,6 +55,7 @@ class ViewController: UIViewController, BoardDelegate {
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
                     self.board.doneSolving(false)
+                     self.stepCount.text = "Used \(self.MAX_STEPS) steps."
                     //Shows final board positions
                     self.board.setNeedsDisplay()
                 }
