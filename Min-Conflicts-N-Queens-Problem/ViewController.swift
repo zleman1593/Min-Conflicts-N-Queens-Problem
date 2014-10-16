@@ -18,11 +18,11 @@ class ViewController: UIViewController, BoardDelegate {
         self.board.delegate = self
         
         //Creates a tap location detector
-        /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
+    /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
             action "tap")*/
         
         //Assigns detector to the view
-       // self.board.addGestureRecognizer(tap)
+        //self.board.addGestureRecognizer(tap)
         solver = minConflicts(n: 9, maxSteps:5000)
         //Update Board with starting Positions
         self.board.setNeedsDisplay()

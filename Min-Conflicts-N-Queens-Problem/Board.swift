@@ -36,15 +36,12 @@ class Board : UIView {
                 CGContextStrokePath(context)
                 CGContextStrokeRect(context, rectangle)
                 //Asks for queen or a blank to place in each square
-                
-                //----------------------------THIS IS CAUSING CRASH
+
                 var queen = self.delegate!.getContentAtRow(j, col: i)
-                
                 var textFont = UIFont.systemFontOfSize(FONT_SIZE)
                 
                 //Determines if a queen is at a give location and colors the location appropriately
                 self.colorPickerWithContext(context)
-                // NSLog(@"i: %i j: %i", i, j);
                 if queen == "Q" {
                     CGContextFillRect(context, rectangle)
                     queen.drawInRect(rectangle, withAttributes: [NSFontAttributeName:textFont])
@@ -71,23 +68,12 @@ class Board : UIView {
                     if CGRectContainsPoint(rectangle,tapPoint) {
                         NSLog("Point(%f, %f) is contained in rectangle %d,%d ", tapPoint.x, tapPoint.y,x,y)
                         done = true
+                        //INSERT CALL TO DELEGATE METHOD THAT ADDS A QUEEN AT THIS i and j
                         break
                     }
                 }
             }
-            //If a square contains the point the user tapped it will
-            //update the most recently slected number to that value
-            var numbers = 0
-            for var i = 0; i < NUMBERS_WIDTH && done == false; i++ {
-                numbers++
-                var x = CGFloat(FIELDINSET + i * CELLSIZE)
-                var rectangle = CGRectMake(x,CGFloat(FIELDINSET_Y),CGFloat(CELLSIZE),CGFloat(CELLSIZE))
-                
-                if CGRectContainsPoint(rectangle,tapPoint) {
-                    done = true
-                    NSLog("Point(%f, %f) is contained in rectangle %d,0 ", tapPoint.x, tapPoint.y,x)
-                }
-            }
+            
         }
     }
     
