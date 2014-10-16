@@ -11,16 +11,15 @@ import UIKit
 
 class Board : UIView {
     var boardHeight = 9
-    var boardWidth = 9
+    var boardWidth  = 9
     let FIELDINSET_Y = 780
     let FIELDINSET = 2
-    let FONT_SIZE = 24.0 as CGFloat
-    let SCALE_FACTOR: Int = 720
+    let FONT_SIZE  = 24.0 as CGFloat
     var delegate : BoardDelegate?
     var cellSize : Int?
 
     override func drawRect(rect: CGRect) {
-        cellSize = Int(self.frame.width/CGFloat(boardWidth)) //takes up board width
+        cellSize = Int(self.frame.width/CGFloat(boardWidth))
         
         for i in 0..<boardWidth {
             for j in 1...boardHeight {
@@ -36,7 +35,7 @@ class Board : UIView {
 
                 //Asks for queen or a blank to place in each square
                 var queen = self.delegate!.getContentAtRow(j, col: i)
-                var textFont = UIFont.systemFontOfSize(FONT_SIZE)
+                var textFont = UIFont.systemFontOfSize(CGFloat(cellSize!))
                 
                 //Determines if a queen is at a give location and colors the location appropriately
                 self.colorPickerWithContext(context)
@@ -46,7 +45,6 @@ class Board : UIView {
                 }
             }
         }
-        
     }
     
     /*This registers that the user has tapped in a specific location and allows a queen to be placed there*/
@@ -77,13 +75,6 @@ class Board : UIView {
         }
     }
     
-    func setBoardSize(dimension: Int) {
-        self.boardHeight = dimension
-        self.boardWidth = dimension
-        self.cellSize = SCALE_FACTOR/dimension
-    }
-    
-    
     /*Randomly asisgns a queen a color*/
     func colorPickerWithContext(context : CGContextRef) {
         var random = Int.random(boardHeight+1)
@@ -111,8 +102,6 @@ class Board : UIView {
         }
     }
 }
-
-
 
 protocol BoardDelegate {
     func getContentAtRow(row : Int, col : Int) -> String

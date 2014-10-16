@@ -23,7 +23,6 @@ class ViewController: UIViewController, BoardDelegate {
         
         //Assigns detector to the view
         //self.board.addGestureRecognizer(tap)
-        self.board.setBoardSize(DIMENSION)
         solver = minConflicts(n: DIMENSION, maxSteps:5000)
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
