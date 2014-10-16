@@ -57,9 +57,11 @@ class minConflicts {
     
     
     //TODO MultiThread this?
+
     //The Bug is in this method.
     //Input: Column; Output: Least-conflicted row for queen in column
     func conflicts(variable : Int) -> Int {
+
         var bestMove = 0
         var currentPositionConflicts = 0
         var minConflicts = Int.max
@@ -145,6 +147,7 @@ class minConflicts {
     
     
 }
+
 
 //extensions for the Int class
 extension Int {

@@ -14,6 +14,7 @@
 		A26B5C7719EF1E7D00B0A19B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26B5C7519EF1E7D00B0A19B /* LaunchScreen.xib */; };
 		A26B5C8319EF1E7D00B0A19B /* Min_Conflicts_N_Queens_ProblemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B5C8219EF1E7D00B0A19B /* Min_Conflicts_N_Queens_ProblemTests.swift */; };
 		A26B5C8D19EF1FC400B0A19B /* algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B5C8C19EF1FC300B0A19B /* algorithms.swift */; };
+		A26B5C9119EFEE2700B0A19B /* chessBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = A26B5C9019EFEE2700B0A19B /* chessBoard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,9 @@
 		A26B5C8119EF1E7D00B0A19B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A26B5C8219EF1E7D00B0A19B /* Min_Conflicts_N_Queens_ProblemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Min_Conflicts_N_Queens_ProblemTests.swift; sourceTree = "<group>"; };
 		A26B5C8C19EF1FC300B0A19B /* algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = algorithms.swift; sourceTree = "<group>"; };
+		A26B5C8E19EFEE2600B0A19B /* Min-Conflicts-N-Queens-Problem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Min-Conflicts-N-Queens-Problem-Bridging-Header.h"; sourceTree = "<group>"; };
+		A26B5C8F19EFEE2700B0A19B /* chessBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chessBoard.h; sourceTree = "<group>"; };
+		A26B5C9019EFEE2700B0A19B /* chessBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = chessBoard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +89,10 @@
 				A26B5C7019EF1E7D00B0A19B /* Main.storyboard */,
 				A26B5C7319EF1E7D00B0A19B /* Images.xcassets */,
 				A26B5C7519EF1E7D00B0A19B /* LaunchScreen.xib */,
+				A26B5C8F19EFEE2700B0A19B /* chessBoard.h */,
+				A26B5C9019EFEE2700B0A19B /* chessBoard.m */,
 				A26B5C6A19EF1E7D00B0A19B /* Supporting Files */,
+				A26B5C8E19EFEE2600B0A19B /* Min-Conflicts-N-Queens-Problem-Bridging-Header.h */,
 			);
 			path = "Min-Conflicts-N-Queens-Problem";
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 			files = (
 				A26B5C8D19EF1FC400B0A19B /* algorithms.swift in Sources */,
 				A26B5C6F19EF1E7D00B0A19B /* ViewController.swift in Sources */,
+				A26B5C9119EFEE2700B0A19B /* chessBoard.m in Sources */,
 				A26B5C6D19EF1E7D00B0A19B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,9 +350,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Min-Conflicts-N-Queens-Problem/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -352,9 +363,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Min-Conflicts-N-Queens-Problem/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem-Bridging-Header.h";
 			};
 			name = Release;
 		};
