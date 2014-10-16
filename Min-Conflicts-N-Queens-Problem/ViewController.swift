@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
-    let NUMBER_OF_QUEENS : Int = 12
+    let NUMBER_OF_QUEENS : Int = 16
     let MAX_STEPS : Int = 5000
     var solver : minConflicts!
     @IBOutlet var board : Board!

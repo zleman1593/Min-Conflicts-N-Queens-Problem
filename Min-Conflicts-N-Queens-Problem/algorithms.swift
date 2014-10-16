@@ -50,9 +50,17 @@ class minConflicts {
             
             //choose a random column
             let column = Int.random(self.n)
+            //choose a random column
+       
+            if Int.random(3) != 0{
             
             //set queen in the random column to row that minimizes conflicts
             self.columns[column] = self.conflicts(column)
+            } else {
+            
+            //set queen in the random column to row that minimizes conflicts
+            self.columns[column] = self.randomPlacement(column)
+        }
         }
         
         //return that it had to give up
@@ -60,9 +68,8 @@ class minConflicts {
     }
     
     
-    //TODO MultiThread this?
 
-    //The Bug is in this method.
+
     //Input: Column; Output: Least-conflicted row for queen in column
     func conflicts(variable : Int) -> Int {
 
@@ -116,6 +123,64 @@ class minConflicts {
         //Returns new row for queen to occupy that creates the fewest number of conflicts
         return bestMove
     }
+    
+    
+    
+    //Input: Column; Output: A random row for queen in column
+    func randomPlacement(variable : Int) -> Int {
+        
+        let nextRow = Int.random(self.n)//or +1 ?
+        var currentPositionConflicts = 0
+        var nextMoveConflicts = 0
+        
+        
+        //loop through columns
+
+            for column in 0..<self.columns.count {
+                //skip conflict with self
+                if column != variable{
+                    //Looks across row
+                    if self.columns[column] == nextRow {
+                        nextMoveConflicts++
+                    }
+                    //Looks at up and down diagnals
+                    if self.columns[column] ==  (nextRow + (variable-column)) {
+                        nextMoveConflicts++
+                    }
+                    if self.columns[column] ==  (nextRow - (variable-column)) {
+                        nextMoveConflicts++
+                    }
+                }
+            }
+
+        for column in 0..<self.columns.count {
+            //skip conflict with self
+            if column != variable{
+                //Looks across row
+                if self.columns[column] == self.columns[variable] {
+                    currentPositionConflicts++
+                }
+                //Looks at up and down diagnals
+                if self.columns[column] ==  (self.columns[variable] + (variable-column)) {
+                    currentPositionConflicts++
+                }
+                if self.columns[column] ==  (self.columns[variable] - (variable-column)) {
+                    currentPositionConflicts++
+                }
+            }
+        }
+        
+        //Keeps the number of conflicts updated after a move is made
+        if nextRow != self.columns[variable] {
+            self.conflicts = self.conflicts + (nextMoveConflicts - currentPositionConflicts)
+        }
+        
+        //Returns new row for queen to occupy         
+         return nextRow
+          }
+
+    
+    
     
     //Are we at a solution?
     //Output: true if no more conflicts, else false
