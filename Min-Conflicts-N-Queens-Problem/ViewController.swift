@@ -17,7 +17,7 @@ class ViewController: UIViewController , chessBoardDelegate {
         self.board.delegate = self;
         //Creates a tap location detector
         let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
-            action "tap")*/
+            action "tap")
         //Assigns detector to the view
         self.board.addGestureRecognizer(tap)
         solver = minConflicts(n: 9, maxSteps:5000)
@@ -52,15 +52,12 @@ class ViewController: UIViewController , chessBoardDelegate {
     return "0"
     }
     
-    // the number the user selected to place at a location
     func numberSelected(number: Int){
-
+//does nothing
     }
     
-    /*Takes a Col and Row and returns and sets the value at that
-    * location to the last user selected number*/
+
     func squareSelectedAtRow(row : Int,col: Int ){
-    //makes the hint disappear
     //does nothing
     }
 
