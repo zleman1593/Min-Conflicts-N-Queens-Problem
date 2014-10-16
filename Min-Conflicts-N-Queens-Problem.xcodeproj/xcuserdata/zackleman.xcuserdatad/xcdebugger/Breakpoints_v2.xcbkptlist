@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
-            timestampString = "435119630.248643"
+            timestampString = "435121327.559455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "solution()"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
-            timestampString = "435119630.248643"
+            timestampString = "435121327.559455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "conflicts(_:)"
             landmarkType = "5">
          </BreakpointContent>

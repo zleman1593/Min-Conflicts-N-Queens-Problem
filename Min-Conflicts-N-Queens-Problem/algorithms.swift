@@ -32,8 +32,8 @@ class minConflicts {
     
     
     func minConflicts()-> Bool{
-        println("Current Random Assignment" + columns.description)
-        println("Current Conflicts" + self.conflicts.description)
+        println("Current Random Assignment " + columns.description)
+        println("Current Conflicts " + self.conflicts.description)
         
         for var index = 0; index < self.maxSteps; ++index {
             //First check if current assignment is solution
@@ -67,19 +67,18 @@ class minConflicts {
                 
                 //skip conflict with self
                 if column != variable{
-                    
-                  
+                   //Looks across row
                         if  self.columns[column] == self.columns[variable] {
                             currentMoveConflicts++
                         }
+                     //Looks at up and down diagnals
                         if self.columns[column] ==  (self.columns[variable] + (variable-column)){
                             currentMoveConflicts++
                         }
                         if self.columns[column] ==  (self.columns[variable] - (variable-column)){
                             currentMoveConflicts++
                         }
-                    
-                    
+                
                 }
                 
             }

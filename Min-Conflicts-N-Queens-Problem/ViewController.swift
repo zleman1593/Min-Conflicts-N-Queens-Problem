@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        solver = minConflicts(n: 9, maxSteps:500)
+        solver = minConflicts(n: 9, maxSteps:5000)
         start()
     }
 
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
              println("Final Solution" + self.solver.columns.description)
         } else{
             println(" Could no be solved in time!")
-             println("Final Unsolved State" + self.solver.columns.description)
+             println("Final Unsolved State " + self.solver.columns.description)
             
         }
     }
