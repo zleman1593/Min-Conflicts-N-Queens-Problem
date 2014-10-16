@@ -38,7 +38,7 @@
             [self colorPickerWithContext:context];
            // NSLog(@"i: %i j: %i", i, j);
             //----------------------------THIS IS CAUSING CRASH
-            if ([[self.delegate getContentAtRow:j Col:i ] isEqual:@"Q"]) {
+            if ([queen isEqual:@"Q"]) {
                 CGContextFillRect(context, rectangle);
                 [queen drawInRect:rectangle withAttributes:@{NSFontAttributeName:textFont}];
             }

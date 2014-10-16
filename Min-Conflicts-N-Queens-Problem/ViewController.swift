@@ -50,7 +50,7 @@ class ViewController: UIViewController , chessBoardDelegate {
     
     
     //Takes a Col and Row and returns the number at that position
-    func getContentAtRow(row : Int32,col: Int32 ) -> String! {
+    func getContentAtRow(row : Int32, col: Int32 ) -> String! {
  
         if self.solver.columns[Int(col)] == Int(row){
             return "Q"
