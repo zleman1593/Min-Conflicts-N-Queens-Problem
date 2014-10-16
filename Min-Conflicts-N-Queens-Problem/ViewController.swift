@@ -9,8 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
-    let DIMENSION : Int = 12
-     let MAX_STEPS : Int = 5000
+    let NUMBER_OF_QUEENS : Int = 12
+    let MAX_STEPS : Int = 5000
     var solver : minConflicts!
     @IBOutlet var board : Board!
     
@@ -19,15 +19,15 @@ class ViewController: UIViewController, BoardDelegate {
         super.viewDidLoad()
         //sets self as the view's delegate
         self.board.delegate = self
-        self.board.setBoardSize(DIMENSION, cols: DIMENSION)
+        self.board.setBoardSize(NUMBER_OF_QUEENS)
         
         //Creates a tap location detector
         /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
-            action "tap")*/
+        action "tap")*/
         
         //Assigns detector to the view
         //self.board.addGestureRecognizer(tap)
-        solver = minConflicts(n: DIMENSION, maxSteps:MAX_STEPS)
+        solver = minConflicts(n: NUMBER_OF_QUEENS , maxSteps:MAX_STEPS)
         
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
@@ -55,14 +55,14 @@ class ViewController: UIViewController, BoardDelegate {
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
                     self.board.doneSolving(false)
-                     self.stepCount.text = "Used \(self.MAX_STEPS) steps."
+                    self.stepCount.text = "Used \(self.MAX_STEPS) steps."
                     //Shows final board positions
                     self.board.setNeedsDisplay()
                 }
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
