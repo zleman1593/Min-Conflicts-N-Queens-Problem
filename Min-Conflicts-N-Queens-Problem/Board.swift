@@ -69,6 +69,13 @@ class Board : UIView {
         }
     }
     
+    func reset() {
+        self.activity.stopAnimating()
+        self.solveButton.enabled = true
+        self.solveButton.backgroundColor = UIColor(red: 0, green: 128/255, blue: 255, alpha: 1)
+        self.solveButton.setTitle("Solve", forState: UIControlState.Normal)
+    }
+    
     func setBoardSize(rows: Int, cols: Int) {
         self.boardHeight = rows
         self.boardWidth  = cols

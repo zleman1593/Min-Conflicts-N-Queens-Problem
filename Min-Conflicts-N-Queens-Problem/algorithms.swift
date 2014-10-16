@@ -17,6 +17,8 @@ class minConflicts {
     var conflicts : Int!
     //Array of columns, where an element holds the row the queen in that column occupies
     var columns   : [Int] = []
+    //Step where solution was found
+    var solutionStep : Int?
     
     init(n : Int, maxSteps : Int) {
         self.n = n
@@ -41,7 +43,7 @@ class minConflicts {
         for index in 1...self.maxSteps {
             //check if current assignment is solution
             if self.isSolution() {
-                println("Solution found at step \(index)")
+                self.solutionStep = index
                 return true
             }
             
