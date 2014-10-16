@@ -44,7 +44,6 @@ class minConflicts {
             //check if current assignment is solution
             if self.isSolution() {
                 self.stepsUsed = index
-                println("Solution found at step \(index)")
                 return true
             }
             
