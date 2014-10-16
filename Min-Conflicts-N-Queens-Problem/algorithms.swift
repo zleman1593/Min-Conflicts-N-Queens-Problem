@@ -68,14 +68,14 @@ class minConflicts {
                 //skip conflict with self
                 if column != variable{
                    //Looks across row
-                        if  self.columns[column] == self.columns[variable] {
+                        if  self.columns[column] == row {
                             currentMoveConflicts++
                         }
                      //Looks at up and down diagnals
-                        if self.columns[column] ==  (self.columns[variable] + (variable-column)){
+                        if self.columns[column] ==  (row + (variable-column)){
                             currentMoveConflicts++
                         }
-                        if self.columns[column] ==  (self.columns[variable] - (variable-column)){
+                        if self.columns[column] ==  (row - (variable-column)){
                             currentMoveConflicts++
                         }
                 
