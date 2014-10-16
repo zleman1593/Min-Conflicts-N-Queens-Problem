@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, chessBoardDelegate, BoardDelegate {
+class ViewController: UIViewController, BoardDelegate {
     var solver : minConflicts!
-    @IBOutlet var board: chessBoard!
+    @IBOutlet var board : Board!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets self as the view's delegate
@@ -46,16 +47,6 @@ class ViewController: UIViewController, chessBoardDelegate, BoardDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    
-    //Takes a Col and Row and returns whether there is a queen at that position or not
-    func getContentAtRow(row : Int32, col: Int32 ) -> String! {
- 
-        if self.solver.columns[Int(col)] == Int(row){
-            return "Q"
-        }
-        return "0"
     }
     
     //Takes a Col and Row and returns the number at that position
