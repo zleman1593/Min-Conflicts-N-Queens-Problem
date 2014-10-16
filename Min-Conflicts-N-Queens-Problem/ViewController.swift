@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController , chessBoardDelegate {
+class ViewController: UIViewController, chessBoardDelegate, BoardDelegate {
     var solver : minConflicts!
     @IBOutlet var board: chessBoard!
     override func viewDidLoad() {
@@ -58,7 +58,13 @@ class ViewController: UIViewController , chessBoardDelegate {
         return "0"
     }
     
-
+    //Takes a Col and Row and returns the number at that position
+    func getContentAtRow(row : Int, col: Int) -> String {
+        if self.solver.columns[col] == row {
+            return "Q"
+        }
+        return "0"
+    }
     
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		457DE01D19F017440030F9F6 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457DE01C19F017440030F9F6 /* Board.swift */; };
 		A26B5C6D19EF1E7D00B0A19B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B5C6C19EF1E7D00B0A19B /* AppDelegate.swift */; };
 		A26B5C6F19EF1E7D00B0A19B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B5C6E19EF1E7D00B0A19B /* ViewController.swift */; };
 		A26B5C7219EF1E7D00B0A19B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A26B5C7019EF1E7D00B0A19B /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		457DE01C19F017440030F9F6 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		A26B5C6719EF1E7D00B0A19B /* Min-Conflicts-N-Queens-Problem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Min-Conflicts-N-Queens-Problem.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26B5C6B19EF1E7D00B0A19B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A26B5C6C19EF1E7D00B0A19B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				A26B5C7319EF1E7D00B0A19B /* Images.xcassets */,
 				A26B5C7519EF1E7D00B0A19B /* LaunchScreen.xib */,
 				A26B5C8F19EFEE2700B0A19B /* chessBoard.h */,
+				457DE01C19F017440030F9F6 /* Board.swift */,
 				A26B5C9019EFEE2700B0A19B /* chessBoard.m */,
 				A26B5C6A19EF1E7D00B0A19B /* Supporting Files */,
 				A26B5C8E19EFEE2600B0A19B /* Min-Conflicts-N-Queens-Problem-Bridging-Header.h */,
@@ -224,6 +227,7 @@
 			files = (
 				A26B5C8D19EF1FC400B0A19B /* algorithms.swift in Sources */,
 				A26B5C6F19EF1E7D00B0A19B /* ViewController.swift in Sources */,
+				457DE01D19F017440030F9F6 /* Board.swift in Sources */,
 				A26B5C9119EFEE2700B0A19B /* chessBoard.m in Sources */,
 				A26B5C6D19EF1E7D00B0A19B /* AppDelegate.swift in Sources */,
 			);
@@ -424,6 +428,7 @@
 				A26B5C8819EF1E7D00B0A19B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A26B5C8919EF1E7D00B0A19B /* Build configuration list for PBXNativeTarget "Min-Conflicts-N-Queens-ProblemTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +437,7 @@
 				A26B5C8B19EF1E7D00B0A19B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
