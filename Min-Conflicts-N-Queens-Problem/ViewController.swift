@@ -15,11 +15,13 @@ class ViewController: UIViewController , chessBoardDelegate {
         super.viewDidLoad()
         //sets self as the view's delegate
         self.board.delegate = self;
+        
         //Creates a tap location detector
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
-            action "tap")
+        /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
+            action "tap")*/
+        
         //Assigns detector to the view
-        self.board.addGestureRecognizer(tap)
+       // self.board.addGestureRecognizer(tap)
         solver = minConflicts(n: 9, maxSteps:5000)
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
@@ -48,7 +50,7 @@ class ViewController: UIViewController , chessBoardDelegate {
     //Takes a Col and Row and returns the number at that position
     func getContentAtRow(row : Int,col: Int ) -> NSString {
         if self.solver.columns[col] == row{
-            return "1"
+            return "Q"
         }
         return "0"
     }
