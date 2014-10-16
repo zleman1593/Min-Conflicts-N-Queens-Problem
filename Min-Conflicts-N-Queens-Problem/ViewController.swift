@@ -9,14 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
+    let DIMENSION : Int = 20
     var solver : minConflicts!
     @IBOutlet var board : Board!
-    let DIMENSION: Int = 20
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets self as the view's delegate
         self.board.delegate = self
-        
+        self.board.setBoardSize(DIMENSION, cols: DIMENSION)
         //Creates a tap location detector
         /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
             action "tap")*/

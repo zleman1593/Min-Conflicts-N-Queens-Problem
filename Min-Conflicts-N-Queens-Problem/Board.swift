@@ -10,19 +10,17 @@ import Foundation
 import UIKit
 
 class Board : UIView {
-    var boardHeight = 9
-    var boardWidth  = 9
     let FIELDINSET_Y = 780
     let FIELDINSET = 2
     let FONT_SIZE  = 24.0 as CGFloat
     var delegate : BoardDelegate?
+    var boardHeight : Int?
+    var boardWidth  : Int?
     var cellSize : Int?
 
     override func drawRect(rect: CGRect) {
-        cellSize = Int(self.frame.width/CGFloat(boardWidth))
-        
-        for i in 0..<boardWidth {
-            for j in 1...boardHeight {
+        for i in 0..<boardWidth! {
+            for j in 1...boardHeight! {
                 var x = CGFloat(FIELDINSET + i * cellSize!)
                 var y = CGFloat(FIELDINSET + (j-1) * cellSize!)
                 
@@ -45,6 +43,12 @@ class Board : UIView {
                 }
             }
         }
+    }
+    
+    func setBoardSize(rows: Int, cols: Int) {
+        self.boardHeight = rows
+        self.boardWidth  = cols
+        cellSize = Int(self.frame.width/CGFloat(self.boardWidth!))
     }
     
     /*This registers that the user has tapped in a specific location and allows a queen to be placed there*/
@@ -77,7 +81,7 @@ class Board : UIView {
     
     /*Randomly asisgns a queen a color*/
     func colorPickerWithContext(context : CGContextRef) {
-        var random = Int.random(boardHeight+1)
+        var random = Int.random(boardHeight!+1)
         switch random {
             case 1:
                 CGContextSetRGBFillColor(context,0.6,0.6, 0.0, 1.0)
