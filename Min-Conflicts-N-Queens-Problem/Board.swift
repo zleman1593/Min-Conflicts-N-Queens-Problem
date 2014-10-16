@@ -106,29 +106,10 @@ class Board : UIView {
     
     /*Randomly asisgns a queen a color*/
     func colorPickerWithContext(context : CGContextRef) {
-        var random = Int.random(boardHeight!+1)
-        switch random {
-            case 1:
-                CGContextSetRGBFillColor(context,0.6,0.6, 0.0, 1.0)
-            case 2:
-                CGContextSetRGBFillColor(context,1.0,0.0, 0.0, 1.0)
-            case 3:
-                CGContextSetRGBFillColor(context,0.0,1.0, 0.0, 1.0)
-            case 4:
-                CGContextSetRGBFillColor(context,0.0,0.0, 1.0, 1.0)
-            case 5:
-                CGContextSetRGBFillColor(context,0.8,0.4, 1.0, 1.0)
-            case 6:
-                CGContextSetRGBFillColor(context,1.0,0.8, 0.0, 1.0)
-            case 7:
-                CGContextSetRGBFillColor(context,0.2,0.0, 0.8, 1.0)
-            case 8:
-                CGContextSetRGBFillColor(context,0.3,0.3, 0.3, 1.0)
-            case 9:
-                CGContextSetRGBFillColor(context,0.4,0.0, 0.8, 1.0)
-            default:
-                break
-        }
+        var r = CGFloat(Int.random(255))/255
+        var g = CGFloat(Int.random(255))/255
+        var b = CGFloat(Int.random(255))/255
+        CGContextSetRGBFillColor(context, r, g, b, 1)
     }
 }
 
