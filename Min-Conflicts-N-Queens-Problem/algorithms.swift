@@ -61,7 +61,7 @@ class minConflicts {
         var minConflicts = Int.max
         
         
-        for var row = 0; row < self.columns.count; ++columnAndRows {
+        for var row = 0; row < self.columns.count; ++row {
             var  currentMoveConflicts = 0
             for var index = 0; index < self.columns.count; ++index {
                 

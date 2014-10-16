@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "minConflicts()"
+            landmarkName = "init(n:maxSteps:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
-            landmarkName = "initialConflictCounter()"
+            landmarkName = "solution()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
