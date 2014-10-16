@@ -27,9 +27,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="vBK-UX-rFT" appends="YES" id="06s-cv-qWl"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="board" destination="8bC-Xf-vdC" id="Fp8-vt-PQE"/>

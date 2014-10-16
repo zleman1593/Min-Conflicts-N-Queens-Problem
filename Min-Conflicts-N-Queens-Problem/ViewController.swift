@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController /*, chessBoardDelegate*/ {
+class ViewController: UIViewController , chessBoardDelegate {
     var solver : minConflicts!
     @IBOutlet var board: chessBoard!
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets self as the view's delegate
-       // self.board.delegate = self;
+        self.board.delegate = self;
         
         //Creates a tap location detector
         /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
@@ -49,6 +49,7 @@ class ViewController: UIViewController /*, chessBoardDelegate*/ {
     
     //Takes a Col and Row and returns the number at that position
     func getContentAtRow(row : Int,col: Int ) -> NSString {
+ 
         if self.solver.columns[col] == row{
             return "Q"
         }

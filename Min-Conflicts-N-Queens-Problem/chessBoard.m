@@ -5,7 +5,7 @@
 
 @interface chessBoard ()
 //Assigns a color to a given square containg a number
--(void)colorPickerWithContext:(CGContextRef)context andNumber:(int)number;
+-(void)colorPickerWithContext:(CGContextRef)context;
 @end
 @implementation chessBoard
 
@@ -33,7 +33,8 @@
             UIFont *textFont = [UIFont systemFontOfSize:FONT_SIZE];
             //Determines if a queen is at a give location and colors the location appropriately
             [self colorPickerWithContext:context];
-            if ([[self.delegate getContentAtRow:j Col:i ]intValue]!=0) {
+            NSLog(@"i: %i j: %i", i, j);
+            if ([[self.delegate getContentAtRow:j Col:i ] isEqual:@"Q"]) {
                 CGContextFillRect(context, rectangle);
                 [queen drawInRect:rectangle withAttributes:@{NSFontAttributeName:textFont}];
             }
