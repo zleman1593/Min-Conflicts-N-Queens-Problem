@@ -42,12 +42,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
-            timestampString = "435116115.61464"
+            timestampString = "435118349.411757"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "initialConflictCounter()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
+            timestampString = "435117971.600196"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "conflicts(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

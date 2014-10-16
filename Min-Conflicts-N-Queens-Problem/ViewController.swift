@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        solver = minConflicts(n: 9, maxSteps:500)
+        solver = minConflicts(n: 9, maxSteps:5000)
         start()
     }
 

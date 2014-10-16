@@ -45,35 +45,51 @@ class minConflicts {
         return false
     }
     
-
-//TODO MultiThread this?
+    
+    //TODO MultiThread this?
     func conflicts(variable:Int)-> Int{
+        
         var bestMove = 0
         var  bestMoveConflicts = 0
         var currentPositionConflicts = 0
+        var  minConflicts = Int.max
+        
+        
         for var columnAndRows = 0; columnAndRows < self.columns.count; ++columnAndRows {
-        for var index = 0; index < self.columns.count; ++index {
-            //skip conflict with self
-            if index != variable{
+              var  currentMoveConflicts = 0
+            for var index = 0; index < self.columns.count; ++index {
                 
-                
-                
-                if columnAndRows == self.columns[variable]{
+                //skip conflict with self
+                if index != variable{
                     
-                    
-                    
-                } else{
-                    
-                    
+                    for var index = 0; index < self.columns.count; ++index {
+                        if  self.columns[index] == self.columns[variable] {
+                            currentMoveConflicts++
+                        }
+                        if self.columns[variable] ==  (self.columns[variable] + (variable-index)){
+                            currentMoveConflicts++
+                        }
+                        if self.columns[variable] ==  (self.columns[variable] - (variable-index)){
+                            currentMoveConflicts++
+                        }
+
+                        
+                      
+                        
+                    }
                     
                 }
                 
-                
-                
-                
+            }
+            if columnAndRows == self.columns[variable]{
+                currentPositionConflicts = currentMoveConflicts
+                currentMoveConflicts = 0
             }
             
-        }
+            if minConflicts >= currentMoveConflicts{
+                minConflicts = currentMoveConflicts
+                bestMove = columnAndRows
+            }
             
         }
         
