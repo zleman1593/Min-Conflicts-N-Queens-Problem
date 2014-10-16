@@ -41,6 +41,7 @@ class minConflicts {
         for index in 1...self.maxSteps {
             //check if current assignment is solution
             if self.isSolution() {
+                println("Solution found at step \(index)")
                 return true
             }
             
