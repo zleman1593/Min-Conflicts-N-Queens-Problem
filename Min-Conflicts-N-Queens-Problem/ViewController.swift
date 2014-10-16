@@ -9,7 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
-    let DIMENSION : Int = 20
+    let DIMENSION : Int = 13
+     let MAX_STEPS : Int = 5000
     var solver : minConflicts!
     @IBOutlet var board : Board!
     
@@ -25,7 +26,7 @@ class ViewController: UIViewController, BoardDelegate {
         
         //Assigns detector to the view
         //self.board.addGestureRecognizer(tap)
-        solver = minConflicts(n: DIMENSION, maxSteps:5000)
+        solver = minConflicts(n: DIMENSION, maxSteps:MAX_STEPS)
         
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
@@ -36,7 +37,7 @@ class ViewController: UIViewController, BoardDelegate {
         //in background thread
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
             if self.solver.minConflicts() {
-                println("Solved!")
+                println("Solved in \(self.solver.stepsUsed) steps !")
                 println("Final Solution" + self.solver.columns.description)
                 
                 //in main thread, update view
@@ -46,7 +47,7 @@ class ViewController: UIViewController, BoardDelegate {
                     self.board.setNeedsDisplay()
                 }
             } else {
-                println("Could no be solved in time!")
+                println("Could no be solved in less than \(self.MAX_STEPS) steps :(")
                 println("Final Unsolved State " + self.solver.columns.description)
                 
                 //in main thread, update view
