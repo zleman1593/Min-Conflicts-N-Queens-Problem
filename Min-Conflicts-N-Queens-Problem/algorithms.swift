@@ -63,22 +63,22 @@ class minConflicts {
         
         for var row = 0; row < self.columns.count; ++row {
             var  currentMoveConflicts = 0
-            for var index = 0; index < self.columns.count; ++index {
+            for var column = 0; column < self.columns.count; ++column {
                 
                 //skip conflict with self
-                if index != variable{
+                if column != variable{
                     
-                    for var index = 0; index < self.columns.count; ++index {
-                        if  self.columns[index] == self.columns[variable] {
+                  
+                        if  self.columns[column] == self.columns[variable] {
                             currentMoveConflicts++
                         }
-                        if self.columns[index] ==  (self.columns[variable] + (variable-index)){
+                        if self.columns[column] ==  (self.columns[variable] + (variable-column)){
                             currentMoveConflicts++
                         }
-                        if self.columns[index] ==  (self.columns[variable] - (variable-index)){
+                        if self.columns[column] ==  (self.columns[variable] - (variable-column)){
                             currentMoveConflicts++
                         }
-                    }
+                    
                     
                 }
                 
@@ -93,7 +93,7 @@ class minConflicts {
             *update the best move if the move would result in fewer conflicts*/
             else if minConflicts >= currentMoveConflicts{
                 minConflicts = currentMoveConflicts
-                bestMove = columnAndRows
+                bestMove = row
             }
             
         }
