@@ -17,12 +17,17 @@ class Board : UIView {
     var boardHeight : Int?
     var boardWidth  : Int?
     var cellSize : Int?
+    @IBOutlet var startButton : UIButton!
+    
+    @IBAction func startGame(sender : AnyObject) {
+        self.delegate!.start()
+    }
 
     override func drawRect(rect: CGRect) {
         for i in 0..<boardWidth! {
-            for j in 1...boardHeight! {
+            for j in 0..<boardHeight! {
                 var x = CGFloat(FIELDINSET + i * cellSize!)
-                var y = CGFloat(FIELDINSET + (j-1) * cellSize!)
+                var y = CGFloat(FIELDINSET + j * cellSize!)
                 
                 var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
 
@@ -109,4 +114,5 @@ class Board : UIView {
 
 protocol BoardDelegate {
     func getContentAtRow(row : Int, col : Int) -> String
+    func start()
 }

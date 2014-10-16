@@ -18,6 +18,7 @@ class ViewController: UIViewController, BoardDelegate {
         //sets self as the view's delegate
         self.board.delegate = self
         self.board.setBoardSize(DIMENSION, cols: DIMENSION)
+        
         //Creates a tap location detector
         /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
             action "tap")*/
@@ -32,6 +33,7 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     func start() {
+        solver = minConflicts(n: DIMENSION, maxSteps:5000)
         if self.solver.minConflicts() {
             //Shows final board positions
             self.board.setNeedsDisplay()
@@ -52,6 +54,9 @@ class ViewController: UIViewController, BoardDelegate {
     
     //Takes a Col and Row and returns whether there is a queen at that position or not
     func getContentAtRow(row : Int, col: Int) -> String {
+        if self.solver == nil {
+            return "0"
+        }
         if self.solver.columns[col] == row {
             return "Q"
         }
