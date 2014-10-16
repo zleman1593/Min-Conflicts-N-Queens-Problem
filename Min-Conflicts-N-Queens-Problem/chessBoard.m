@@ -37,7 +37,6 @@
             //Determines if a queen is at a give location and colors the location appropriately
             [self colorPickerWithContext:context];
            // NSLog(@"i: %i j: %i", i, j);
-            //----------------------------THIS IS CAUSING CRASH
             if ([queen isEqual:@"Q"]) {
                 CGContextFillRect(context, rectangle);
                 [queen drawInRect:rectangle withAttributes:@{NSFontAttributeName:textFont}];
@@ -81,8 +80,7 @@
         
     }
 }
-/*Is given the current context and the number at a*
- location and sets that location to the correct color*/
+/*Randomly selects a color for a queen*/
 -(void)colorPickerWithContext:(CGContextRef)context{
     int random = arc4random_uniform(BOARD_HEIGHT+1);
     switch (random) {
