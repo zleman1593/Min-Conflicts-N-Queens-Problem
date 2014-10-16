@@ -57,7 +57,6 @@
                 if (CGRectContainsPoint(rectangle,tapPoint)) {
                     NSLog(@"Point(%f, %f) is contained in rectangle %d,%d ", tapPoint.x, tapPoint.y,x,y);
                     done=YES;
-                    [self.delegate squareSelectedAtRow:j Col:i];
                     break;
                 }
             }
@@ -72,7 +71,6 @@
             if (CGRectContainsPoint(rectangle,tapPoint)) {
                 done=YES;
                 NSLog(@"Point(%f, %f) is contained in rectangle %d,0 ", tapPoint.x, tapPoint.y,x);
-                [self.delegate numberSelected:numbers];
             }
         }
         

@@ -23,8 +23,6 @@
 
 @protocol chessBoardDelegate
 -(NSString*)getContentAtRow:(int)row Col:(int)col;
-- (void)numberSelected:(int)number;
-- (void)squareSelectedAtRow:(int)row Col:(int)col;
 @end
 
 @interface chessBoard : UIView

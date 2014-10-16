@@ -55,14 +55,7 @@ class ViewController: UIViewController , chessBoardDelegate {
         return "0"
     }
     
-    func numberSelected(number: Int){
-        //does nothing
-    }
-    
-    
-    func squareSelectedAtRow(row : Int,col: Int ){
-        //does nothing
-    }
+
     
 }
 
