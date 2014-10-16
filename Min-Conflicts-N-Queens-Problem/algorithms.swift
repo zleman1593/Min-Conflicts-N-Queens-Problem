@@ -47,16 +47,16 @@ class minConflicts {
     
     
     //TODO MultiThread this?
+    // The Bug is in this method.
     func conflicts(variable:Int)-> Int{
         
         var bestMove = 0
-        var  bestMoveConflicts = 0
         var currentPositionConflicts = 0
-        var  minConflicts = Int.max
+        var minConflicts = Int.max
         
         
         for var columnAndRows = 0; columnAndRows < self.columns.count; ++columnAndRows {
-              var  currentMoveConflicts = 0
+            var  currentMoveConflicts = 0
             for var index = 0; index < self.columns.count; ++index {
                 
                 //skip conflict with self
@@ -66,16 +66,12 @@ class minConflicts {
                         if  self.columns[index] == self.columns[variable] {
                             currentMoveConflicts++
                         }
-                        if self.columns[variable] ==  (self.columns[variable] + (variable-index)){
+                        if self.columns[index] ==  (self.columns[variable] + (variable-index)){
                             currentMoveConflicts++
                         }
-                        if self.columns[variable] ==  (self.columns[variable] - (variable-index)){
+                        if self.columns[index] ==  (self.columns[variable] - (variable-index)){
                             currentMoveConflicts++
                         }
-
-                        
-                      
-                        
                     }
                     
                 }
@@ -83,10 +79,8 @@ class minConflicts {
             }
             if columnAndRows == self.columns[variable]{
                 currentPositionConflicts = currentMoveConflicts
-                currentMoveConflicts = 0
-            }
-            
-            if minConflicts >= currentMoveConflicts{
+                
+            }else if minConflicts >= currentMoveConflicts{
                 minConflicts = currentMoveConflicts
                 bestMove = columnAndRows
             }
@@ -95,7 +89,7 @@ class minConflicts {
         
         //Keeps the number of conflicts updated
         if bestMove != self.columns[variable]{
-            self.conflicts = self.conflicts + (bestMoveConflicts - currentPositionConflicts)
+            self.conflicts = self.conflicts + (minConflicts - currentPositionConflicts)
         }
         
         return bestMove
