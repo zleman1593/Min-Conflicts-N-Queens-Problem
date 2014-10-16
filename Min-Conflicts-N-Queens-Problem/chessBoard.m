@@ -30,14 +30,14 @@
             CGContextStrokeRect(context, rectangle);
             //Asks for queen or a blank to place in each square
             
-
+//----------------------------THIS IS CAUSING CRASH
             NSString *queen = [NSString stringWithFormat:@"%d", [[self.delegate getContentAtRow:j Col:i ]intValue]];
-            
             
             UIFont *textFont = [UIFont systemFontOfSize:FONT_SIZE];
             //Determines if a queen is at a give location and colors the location appropriately
             [self colorPickerWithContext:context];
-            NSLog(@"i: %i j: %i", i, j);
+           // NSLog(@"i: %i j: %i", i, j);
+            //----------------------------THIS IS CAUSING CRASH
             if ([[self.delegate getContentAtRow:j Col:i ] isEqual:@"Q"]) {
                 CGContextFillRect(context, rectangle);
                 [queen drawInRect:rectangle withAttributes:@{NSFontAttributeName:textFont}];
