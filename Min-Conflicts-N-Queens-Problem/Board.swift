@@ -16,6 +16,7 @@ class Board : UIView {
     let FIELDINSET_Y = 780
     let FIELDINSET = 2
     let FONT_SIZE = 48.0 as CGFloat
+    let SCALE_FACTOR: Int = 720
     var delegate : BoardDelegate?
 
     override func drawRect(rect: CGRect) {
@@ -71,6 +72,13 @@ class Board : UIView {
         }
     }
     
+    func setBoardSize(dimension: Int) {
+        self.boardHeight = dimension
+        self.boardWidth = dimension
+        self.cellSize = SCALE_FACTOR/dimension
+    }
+    
+    
     /*Randomly asisgns a queen a color*/
     func colorPickerWithContext(context : CGContextRef) {
         var random = Int.random(boardHeight+1)
@@ -98,6 +106,8 @@ class Board : UIView {
         }
     }
 }
+
+
 
 protocol BoardDelegate {
     func getContentAtRow(row : Int, col : Int) -> String
