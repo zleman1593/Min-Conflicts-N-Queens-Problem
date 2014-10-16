@@ -28,4 +28,5 @@
 @interface chessBoard : UIView
 @property (nonatomic) id <chessBoardDelegate> delegate;
 - (void)tap:(UITapGestureRecognizer *)gesture;
+@property (nonatomic,strong) NSArray *columns;
 @end

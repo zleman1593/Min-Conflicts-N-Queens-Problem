@@ -32,6 +32,9 @@ class ViewController: UIViewController , chessBoardDelegate {
     func start() {
         if self.solver.minConflicts() {
             //Shows final board positions
+             self.board.columns = self.solver.columns
+            
+            
             self.board.setNeedsDisplay()
             println("Solved!")
             println("Final Solution" + self.solver.columns.description)
