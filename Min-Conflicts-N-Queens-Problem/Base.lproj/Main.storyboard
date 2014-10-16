@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,41 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FL2-Lm-H95">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2G-br-r69">
-                                        <rect key="frame" x="256" y="562" width="88" height="30"/>
-                                        <state key="normal" title="Start Solving">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startGame:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="os0-6M-973"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="b2G-br-r69" firstAttribute="bottom" secondItem="FL2-Lm-H95" secondAttribute="bottomMargin" id="206-e9-7fG"/>
-                                    <constraint firstAttribute="centerX" secondItem="b2G-br-r69" secondAttribute="centerX" id="vgq-UO-lRP"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNk-8j-iQA">
+                                <rect key="frame" x="281" y="550" width="38" height="30"/>
+                                <state key="normal" title="Solve">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="vBK-UX-rFT" appends="YES" id="mxx-Sc-Y08"/>
+                                    <action selector="solveConstraints:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="LE4-U7-aZh"/>
                                 </connections>
-                            </view>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="FL2-Lm-H95" firstAttribute="leading" secondItem="wfy-db-euE" secondAttribute="leading" id="fkp-54-SMQ"/>
-                            <constraint firstItem="FL2-Lm-H95" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="hyY-XO-1Lz"/>
-                            <constraint firstItem="FL2-Lm-H95" firstAttribute="trailing" secondItem="y3c-jy-aDJ" secondAttribute="trailing" id="pdX-9a-oOm"/>
-                            <constraint firstItem="FL2-Lm-H95" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="z29-Yf-3tM"/>
+                            <constraint firstAttribute="bottom" secondItem="wNk-8j-iQA" secondAttribute="bottom" constant="20" symbolic="YES" id="FQe-EP-pEL"/>
+                            <constraint firstItem="wNk-8j-iQA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o5O-av-6oV"/>
                         </constraints>
-                        <connections>
-                            <outlet property="startButton" destination="b2G-br-r69" id="uQ4-Lc-6yB"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="board" destination="8bC-Xf-vdC" id="Fp8-vt-PQE"/>

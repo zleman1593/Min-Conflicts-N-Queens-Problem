@@ -29,11 +29,11 @@ class ViewController: UIViewController, BoardDelegate {
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
     
-        start()
+        //start()
     }
     
     func start() {
-        solver = minConflicts(n: DIMENSION, maxSteps:5000)
+        //solver = minConflicts(n: DIMENSION, maxSteps:5000)
         if self.solver.minConflicts() {
             //Shows final board positions
             self.board.setNeedsDisplay()

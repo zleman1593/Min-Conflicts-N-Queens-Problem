@@ -10,24 +10,19 @@ import Foundation
 import UIKit
 
 class Board : UIView {
-    let FIELDINSET_Y = 780
-    let FIELDINSET = 2
+    let FIELDINSET_Y = 30
+    let FIELDINSET = 8
     let FONT_SIZE  = 24.0 as CGFloat
     var delegate : BoardDelegate?
     var boardHeight : Int?
     var boardWidth  : Int?
     var cellSize : Int?
-    @IBOutlet var startButton : UIButton!
-    
-    @IBAction func startGame(sender : AnyObject) {
-        self.delegate!.start()
-    }
 
     override func drawRect(rect: CGRect) {
         for i in 0..<boardWidth! {
             for j in 0..<boardHeight! {
                 var x = CGFloat(FIELDINSET + i * cellSize!)
-                var y = CGFloat(FIELDINSET + j * cellSize!)
+                var y = CGFloat(FIELDINSET_Y + j * cellSize!)
                 
                 var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
 
@@ -38,7 +33,7 @@ class Board : UIView {
 
                 //Asks for queen or a blank to place in each square
                 var queen = self.delegate!.getContentAtRow(j, col: i)
-                var textFont = UIFont.systemFontOfSize(CGFloat(cellSize!))
+                var textFont = UIFont.systemFontOfSize(CGFloat(cellSize!-5))
                 
                 //Determines if a queen is at a give location and colors the location appropriately
                 self.colorPickerWithContext(context)
@@ -48,6 +43,10 @@ class Board : UIView {
                 }
             }
         }
+    }
+    
+    @IBAction func solveConstraints(sender: AnyObject) {
+        self.delegate!.start()
     }
     
     func setBoardSize(rows: Int, cols: Int) {
@@ -66,7 +65,7 @@ class Board : UIView {
             for var i = 0; i < boardWidth && done == false; i++ {
                 for var j = 0; j < boardHeight && done == false; j++ {
                     var x = CGFloat(FIELDINSET + i * cellSize!)
-                    var y = CGFloat(FIELDINSET + (j-1) * cellSize!)
+                    var y = CGFloat(FIELDINSET_Y + (j-1) * cellSize!)
                     
                     var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
 
