@@ -76,9 +76,9 @@ class Board : UIView {
         self.solveButton.setTitle("Solve", forState: UIControlState.Normal)
     }
     
-    func setBoardSize(rows: Int, cols: Int) {
-        self.boardHeight = rows
-        self.boardWidth  = cols
+    func setBoardSize(rowsAndColumns: Int) {
+        self.boardHeight = rowsAndColumns
+        self.boardWidth  = rowsAndColumns
         self.cellSize = Int(self.frame.width/CGFloat(self.boardWidth!))
         self.fontSize = CGFloat(self.cellSize!-5)
     }

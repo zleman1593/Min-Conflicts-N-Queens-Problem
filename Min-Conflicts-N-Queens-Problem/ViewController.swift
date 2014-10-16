@@ -9,23 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
-    let DIMENSION : Int = 20
+    let NUMBER_OF_QUEENS : Int = 12
+    let MAX_STEPS : Int = 5000
     var solver : minConflicts!
     @IBOutlet var board : Board!
     
+    @IBOutlet weak var stepCount: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets self as the view's delegate
         self.board.delegate = self
-        self.board.setBoardSize(DIMENSION, cols: DIMENSION)
+        self.board.setBoardSize(NUMBER_OF_QUEENS)
         
         //Creates a tap location detector
         /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
-            action "tap")*/
+        action "tap")*/
         
         //Assigns detector to the view
         //self.board.addGestureRecognizer(tap)
-        solver = minConflicts(n: DIMENSION, maxSteps:5000)
+        solver = minConflicts(n: NUMBER_OF_QUEENS , maxSteps:MAX_STEPS)
         
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
@@ -33,7 +35,7 @@ class ViewController: UIViewController, BoardDelegate {
     
     func reset() {
         //generate new board
-        solver = minConflicts(n: DIMENSION, maxSteps:5000)
+        solver = minConflicts(n: NUMBER_OF_QUEENS, maxSteps:5000)
         //reset button on board
         self.board.reset()
         //Update Board with starting Positions
@@ -49,24 +51,26 @@ class ViewController: UIViewController, BoardDelegate {
             if self.solver.minConflicts() {
                 println("Solved!")
                 println("Final Solution: \(self.solver.columns.description)")
-                println("Found at Step \(self.solver.solutionStep)")
+                println("Found at Step \(self.solver.stepsUsed)")
                 
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
                     self.board.doneSolving(true)
+                    self.stepCount.text = "Took \(self.solver.stepsUsed) steps!"
                     //Shows final board positions
                     self.board.setNeedsDisplay()
                     
                     alert.title = "Solved!"
-                    alert.message = "A solution was found at Step \(self.solver.solutionStep)! Would you like to play again?"
+                    alert.message = "A solution was found at Step \(self.solver.stepsUsed)! Would you like to play again?"
                 }
             } else {
-                println("Could no be solved in time!")
+                println("Could no be solved in less than \(self.MAX_STEPS) steps :(")
                 println("Final Unsolved State " + self.solver.columns.description)
                 
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
                     self.board.doneSolving(false)
+                    self.stepCount.text = "Used \(self.MAX_STEPS) steps."
                     //Shows final board positions
                     self.board.setNeedsDisplay()
                     
@@ -86,7 +90,7 @@ class ViewController: UIViewController, BoardDelegate {
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
