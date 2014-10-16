@@ -12,15 +12,9 @@ import UIKit
 class Board : UIView {
     let BOARD_HEIGHT = 9
     let BOARD_WIDTH  = 9
-    let NUMBERS_WIDTH = 9
     let CELLSIZE = 80
-    let NUMBER_CELLSIZE = 80
     let FIELDINSET_Y = 780
     let FIELDINSET = 2
-    let NO_POSSIBLE_SOLUTION_FROM_POINT = 90
-    let NO_MORE_SPOTS = 60
-    let INPUT_SIZE = 50
-    let DUMMY = 0
     let FONT_SIZE = 48.0 as CGFloat
     var delegate : BoardDelegate?
 
