@@ -38,7 +38,7 @@ class Board : UIView {
                 //Asks for queen or a blank to place in each square
                 
                 //----------------------------THIS IS CAUSING CRASH
-                var queen = NSString(format: "%d", self.delegate!.getContentAtRow(j, col: i).toInt()!)
+                var queen = self.delegate!.getContentAtRow(j, col: i)
                 
                 var textFont = UIFont.systemFontOfSize(FONT_SIZE)
                 

@@ -51,6 +51,7 @@ class ViewController: UIViewController, BoardDelegate {
     
     //Takes a Col and Row and returns whether there is a queen at that position or not
     func getContentAtRow(row : Int, col: Int) -> String {
+        NSLog("COL: \(col)")
         if self.solver.columns[col] == row {
             return "Q"
         }
