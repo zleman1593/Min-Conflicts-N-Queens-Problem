@@ -25,8 +25,8 @@ class Board : UIView {
     var delegate : BoardDelegate?
 
     override func drawRect(rect: CGRect) {
-        for (var i = 0; i < BOARD_WIDTH; i++) {
-            for (var j = 1; j <= BOARD_HEIGHT; j++) {
+        for var i = 0; i < BOARD_WIDTH; i++ {
+            for var j = 1; j <= BOARD_HEIGHT; j++ {
                 var x = CGFloat(FIELDINSET + i * CELLSIZE)
                 var y = CGFloat(FIELDINSET + (j-1) * CELLSIZE)
                 

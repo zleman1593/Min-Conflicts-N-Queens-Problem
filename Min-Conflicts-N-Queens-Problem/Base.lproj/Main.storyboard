@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FL2-Lm-H95">
-                                <rect key="frame" x="-16" y="-13" width="600" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FL2-Lm-H95">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -27,6 +27,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="FL2-Lm-H95" firstAttribute="leading" secondItem="wfy-db-euE" secondAttribute="leading" id="fkp-54-SMQ"/>
+                            <constraint firstItem="FL2-Lm-H95" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="hyY-XO-1Lz"/>
+                            <constraint firstItem="FL2-Lm-H95" firstAttribute="trailing" secondItem="y3c-jy-aDJ" secondAttribute="trailing" id="pdX-9a-oOm"/>
+                            <constraint firstItem="FL2-Lm-H95" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="z29-Yf-3tM"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="board" destination="8bC-Xf-vdC" id="Fp8-vt-PQE"/>

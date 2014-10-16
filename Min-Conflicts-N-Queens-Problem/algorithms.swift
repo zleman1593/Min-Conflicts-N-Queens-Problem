@@ -144,10 +144,7 @@ class minConflicts {
         
         return totalConflicts
     }
-    
-    
 }
-
 
 //extensions for the Int class
 extension Int {

@@ -18,7 +18,7 @@ class ViewController: UIViewController, BoardDelegate {
         self.board.delegate = self
         
         //Creates a tap location detector
-    /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
+        /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
             action "tap")*/
         
         //Assigns detector to the view
