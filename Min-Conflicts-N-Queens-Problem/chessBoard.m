@@ -32,7 +32,7 @@
             NSString *queen = [NSString stringWithFormat:@"%d", [[self.delegate getContentAtRow:j Col:i ]intValue]];
             UIFont *textFont = [UIFont systemFontOfSize:FONT_SIZE];
             //Determines if a queen is at a give location and colors the location appropriately
-            [self colorPickerWithContext:context andNumber:[[self.delegate getContentAtRow:j Col:i ]intValue]];
+            [self colorPickerWithContext:context];
             if ([[self.delegate getContentAtRow:j Col:i ]intValue]!=0) {
                 CGContextFillRect(context, rectangle);
                 [queen drawInRect:rectangle withAttributes:@{NSFontAttributeName:textFont}];
@@ -40,7 +40,7 @@
         }
     }
 }
-/*this registers that the user has tapped in a specific location and */
+/*This registers that the user has tapped in a specific location and allows a queen to be placed there*/
 - (void)tap:(UITapGestureRecognizer *)gesture
 {
     if (gesture.state == UIGestureRecognizerStateEnded) {
@@ -80,8 +80,9 @@
 }
 /*Is given the current context and the number at a*
  location and sets that location to the correct color*/
--(void)colorPickerWithContext:(CGContextRef)context andNumber:(int)number{
-    switch (number) {
+-(void)colorPickerWithContext:(CGContextRef)context{
+    int random = arc4random_uniform(BOARD_HEIGHT+1);
+    switch (random) {
         case 1:
             CGContextSetRGBFillColor(context,0.6,0.6, 0.0, 1.0);
             break;
