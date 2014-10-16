@@ -49,7 +49,7 @@ class ViewController: UIViewController, BoardDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //Takes a Col and Row and returns the number at that position
+    //Takes a Col and Row and returns whether there is a queen at that position or not
     func getContentAtRow(row : Int, col: Int) -> String {
         if self.solver.columns[col] == row {
             return "Q"
