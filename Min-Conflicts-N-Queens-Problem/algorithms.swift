@@ -9,9 +9,13 @@
 import Foundation
 
 class minConflicts {
+    //Array of columns, where an element holds the row the queen in that column occupies
     var columns:Array<Int>!
+    //Number of rows and Columns
     let n:Int!
+    //Number of steps to find solution
     let maxSteps:Int!
+    //Number of current conflicts
     var conflicts:Int!
     
     init(n:Int, maxSteps:Int) {
