@@ -10,21 +10,21 @@ import Foundation
 import UIKit
 
 class Board : UIView {
-    let BOARD_HEIGHT = 9
-    let BOARD_WIDTH  = 9
-    let CELLSIZE = 80
+    var boardHeight = 9
+    var boardWidth = 9
+    var cellSize = 80
     let FIELDINSET_Y = 780
     let FIELDINSET = 2
     let FONT_SIZE = 48.0 as CGFloat
     var delegate : BoardDelegate?
 
     override func drawRect(rect: CGRect) {
-        for var i = 0; i < BOARD_WIDTH; i++ {
-            for var j = 1; j <= BOARD_HEIGHT; j++ {
-                var x = CGFloat(FIELDINSET + i * CELLSIZE)
-                var y = CGFloat(FIELDINSET + (j-1) * CELLSIZE)
+        for var i = 0; i < boardWidth; i++ {
+            for var j = 1; j <= boardHeight; j++ {
+                var x = CGFloat(FIELDINSET + i * cellSize)
+                var y = CGFloat(FIELDINSET + (j-1) * cellSize)
                 
-                var rectangle = CGRectMake(x,y,CGFloat(CELLSIZE),CGFloat(CELLSIZE))
+                var rectangle = CGRectMake(x,y,CGFloat(cellSize),CGFloat(cellSize))
                 var context = UIGraphicsGetCurrentContext()
                 CGContextBeginPath(context)
                 CGContextStrokePath(context)
@@ -51,12 +51,12 @@ class Board : UIView {
             NSLog("digit pressed is X:%f and Y: %f", tapPoint.x, tapPoint.y)
             
             var done = false
-            for var i = 0; i < BOARD_WIDTH && done == false; i++ {
-                for var j = 0; j < BOARD_HEIGHT && done == false; j++ {
-                    var x = CGFloat(FIELDINSET + i * CELLSIZE)
-                    var y = CGFloat(FIELDINSET + (j-1) * CELLSIZE)
+            for var i = 0; i < boardWidth && done == false; i++ {
+                for var j = 0; j < boardHeight && done == false; j++ {
+                    var x = CGFloat(FIELDINSET + i * cellSize)
+                    var y = CGFloat(FIELDINSET + (j-1) * cellSize)
                     
-                    var rectangle = CGRectMake(x,y,CGFloat(CELLSIZE),CGFloat(CELLSIZE))
+                    var rectangle = CGRectMake(x,y,CGFloat(cellSize),CGFloat(cellSize))
                     //If a square contains the point the user tapped it will
                     //place a queen there
                     if CGRectContainsPoint(rectangle,tapPoint) {
@@ -73,7 +73,7 @@ class Board : UIView {
     
     /*Randomly asisgns a queen a color*/
     func colorPickerWithContext(context : CGContextRef) {
-        var random = Int.random(BOARD_HEIGHT+1)
+        var random = Int.random(boardHeight+1)
         switch random {
             case 1:
                 CGContextSetRGBFillColor(context,0.6,0.6, 0.0, 1.0)
