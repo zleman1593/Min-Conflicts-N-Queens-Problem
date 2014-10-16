@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class Board : UIView {
-    let BOARD_HEIGHT = 9
-    let BOARD_WIDTH  = 18
+    let BOARD_HEIGHT = 8
+    let BOARD_WIDTH  = 8
     let NUMBERS_WIDTH = 9
     let CELLSIZE = 80
     let NUMBER_CELLSIZE = 80
