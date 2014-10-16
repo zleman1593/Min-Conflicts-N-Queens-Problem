@@ -13,7 +13,6 @@ class Board : UIView {
     let BOARD_HEIGHT = 9
     let BOARD_WIDTH  = 9
     let NUMBERS_WIDTH = 9
-    let CELLSIZE = 80
     let NUMBER_CELLSIZE = 80
     let FIELDINSET_Y = 780
     let FIELDINSET = 2
@@ -23,14 +22,17 @@ class Board : UIView {
     let DUMMY = 0
     let FONT_SIZE = 48.0 as CGFloat
     var delegate : BoardDelegate?
+    var cellSize : Int?
 
     override func drawRect(rect: CGRect) {
-        for var i = 0; i < BOARD_WIDTH; i++ {
-            for var j = 1; j <= BOARD_HEIGHT; j++ {
-                var x = CGFloat(FIELDINSET + i * CELLSIZE)
-                var y = CGFloat(FIELDINSET + (j-1) * CELLSIZE)
+        cellSize = Int(self.frame.width/CGFloat(BOARD_WIDTH)) //takes up board width
+        
+        for i in 0..<BOARD_WIDTH {
+            for j in 1...BOARD_HEIGHT {
+                var x = CGFloat(FIELDINSET + i * cellSize!)
+                var y = CGFloat(FIELDINSET + (j-1) * cellSize!)
                 
-                var rectangle = CGRectMake(x,y,CGFloat(CELLSIZE),CGFloat(CELLSIZE))
+                var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
                 var context = UIGraphicsGetCurrentContext()
                 CGContextBeginPath(context)
                 CGContextStrokePath(context)
@@ -48,6 +50,7 @@ class Board : UIView {
                 }
             }
         }
+        
     }
     
     /*This registers that the user has tapped in a specific location and allows a queen to be placed there*/
@@ -59,10 +62,10 @@ class Board : UIView {
             var done = false
             for var i = 0; i < BOARD_WIDTH && done == false; i++ {
                 for var j = 0; j < BOARD_HEIGHT && done == false; j++ {
-                    var x = CGFloat(FIELDINSET + i * CELLSIZE)
-                    var y = CGFloat(FIELDINSET + (j-1) * CELLSIZE)
+                    var x = CGFloat(FIELDINSET + i * cellSize!)
+                    var y = CGFloat(FIELDINSET + (j-1) * cellSize!)
                     
-                    var rectangle = CGRectMake(x,y,CGFloat(CELLSIZE),CGFloat(CELLSIZE))
+                    var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
                     //If a square contains the point the user tapped it will
                     //place a queen there
                     if CGRectContainsPoint(rectangle,tapPoint) {
