@@ -80,10 +80,10 @@ class minConflicts {
                         currentMoveConflicts++
                     }
                     //Looks at up and down diagnals
-                    if self.columns[column] ==  (row + (variable-column)) {
+                    else if self.columns[column] ==  (row + (variable-column)) {
                         currentMoveConflicts++
                     }
-                    if self.columns[column] ==  (row - (variable-column)) {
+                    else if self.columns[column] ==  (row - (variable-column)) {
                         currentMoveConflicts++
                     }
                 
@@ -100,10 +100,19 @@ class minConflicts {
             /* Else if the row being looked at does not have the queen from the current column,
              * update the best move if the move would result in fewer conflicts
              */
-            else if minConflicts >= currentMoveConflicts {
+       
+            else if minConflicts > currentMoveConflicts {
                 minConflicts = currentMoveConflicts
                 bestMove = row
+            }//Breaks Ties randomly
+            else if minConflicts == currentMoveConflicts {
+                let randomNumber = Int.random(2)
+                if randomNumber == 1{
+                minConflicts = currentMoveConflicts
+                bestMove = row
+                }
             }
+
             
         }
         
@@ -136,10 +145,10 @@ class minConflicts {
                     totalConflicts++
                 }
                 //Looks at up and down diagnals
-                if self.columns[nextIndex] ==  (self.columns[index] + (nextIndex-index)) {
+                else if self.columns[nextIndex] ==  (self.columns[index] + (nextIndex-index)) {
                     totalConflicts++
                 }
-                if self.columns[nextIndex] ==  (self.columns[index] - (nextIndex-index)) {
+                else if self.columns[nextIndex] ==  (self.columns[index] - (nextIndex-index)) {
                     totalConflicts++
                 }
             }
