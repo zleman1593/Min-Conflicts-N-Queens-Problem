@@ -20,7 +20,12 @@ class ViewController: UIViewController, BoardDelegate {
         super.viewDidLoad()
         //sets self as the view's delegate
         self.board.delegate = self
+        //Initial default board to display on load
         self.board.setBoardSize(NUMBER_OF_QUEENS)
+        solver = minConflicts(n: NUMBER_OF_QUEENS , maxSteps:MAX_STEPS)
+        //Update Board with starting Positions
+        self.board.setNeedsDisplay()
+        
         
         //Creates a tap location detector
         /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
@@ -28,16 +33,14 @@ class ViewController: UIViewController, BoardDelegate {
         
         //Assigns detector to the view
         //self.board.addGestureRecognizer(tap)
-        
-        solver = minConflicts(n: NUMBER_OF_QUEENS , maxSteps:MAX_STEPS)
-        
-        //Update Board with starting Positions
-        self.board.setNeedsDisplay()
+        //
     }
     
     func reset() {
+    //See if user typed in parameters
       checkInput()
-        //generate new board
+        
+        //generate new board based on input parameters or the default values
         solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
         self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
         //reset button on board
@@ -47,6 +50,7 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     func start() {
+         //See if user typed in parameters
         checkInput()
          solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
                 self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
