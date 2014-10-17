@@ -103,6 +103,8 @@ class Board : UIView {
                         NSLog("Point(%f, %f) is contained in rectangle %d,%d ", tapPoint.x, tapPoint.y,x,y)
                         done = true
                         //INSERT CALL TO DELEGATE METHOD THAT ADDS A QUEEN AT THIS i and j
+                      self.delegate!.updateColumn(i,row: j-1)
+                        println("i: \(i)  j: \(j-1)")
                         break
                     }
                 }
@@ -123,4 +125,5 @@ class Board : UIView {
 protocol BoardDelegate {
     func getContentAtRow(row : Int, col : Int) -> String
     func start()
+    func updateColumn(column : Int, row : Int )
 }

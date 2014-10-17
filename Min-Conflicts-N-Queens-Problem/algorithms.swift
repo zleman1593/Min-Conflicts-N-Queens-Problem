@@ -30,13 +30,20 @@ class minConflicts {
             columns.append(rand)
         }
         
-        //count initial number of conflicts
-        self.conflicts = initialConflictCounter()
+        
     }
+    
+    
+    func updateColumn(column : Int, row : Int ){
+      self.columns[column] = row
+    }
+    
     
     //minConflicts board configuration.
     //Output: true if solution found within maxSteps, else false
     func minConflicts()-> Bool {
+        //count initial number of conflicts
+        self.conflicts = initialConflictCounter()
         println("Current Random Assignment " + columns.description)
         println("Current Conflicts " + self.conflicts.description)
         

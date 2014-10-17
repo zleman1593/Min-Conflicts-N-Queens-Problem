@@ -28,11 +28,10 @@ class ViewController: UIViewController, BoardDelegate {
         
         
         //Creates a tap location detector
-        /*let tap:UITapGestureRecognizer = UITapGestureRecognizer(self.board,
-        action "tap")*/
+        let tap = UITapGestureRecognizer(target: self.board, action: "tap:")
         
         //Assigns detector to the view
-        //self.board.addGestureRecognizer(tap)
+        self.board.addGestureRecognizer(tap)
         //
     }
     
@@ -134,5 +133,10 @@ class ViewController: UIViewController, BoardDelegate {
         }
     }
     
+    
+    func updateColumn(column : Int, row : Int ){
+    self.solver.updateColumn(column,row: row)
+         self.board.setNeedsDisplay()
+    }
 }
 
