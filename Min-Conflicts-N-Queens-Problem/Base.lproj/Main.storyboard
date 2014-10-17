@@ -33,25 +33,12 @@
                                     <action selector="solveConstraints:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="LE4-U7-aZh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q3-2m-IxL">
-                                <rect key="frame" x="198" y="511" width="205" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="205" id="deq-a8-aRh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wNk-8j-iQA" firstAttribute="centerX" secondItem="IMf-kL-1ab" secondAttribute="centerX" id="1AS-uF-k8s"/>
-                            <constraint firstItem="8Q3-2m-IxL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="491" id="GD3-GP-145"/>
-                            <constraint firstItem="wNk-8j-iQA" firstAttribute="top" secondItem="8Q3-2m-IxL" secondAttribute="bottom" constant="18" id="IpD-s1-J9f"/>
                             <constraint firstAttribute="bottom" secondItem="wNk-8j-iQA" secondAttribute="bottom" constant="20" symbolic="YES" id="Pf9-XI-fyg"/>
-                            <constraint firstItem="IMf-kL-1ab" firstAttribute="centerX" secondItem="8Q3-2m-IxL" secondAttribute="centerX" id="U70-RK-8Jc"/>
-                            <constraint firstItem="IMf-kL-1ab" firstAttribute="top" secondItem="8Q3-2m-IxL" secondAttribute="bottom" constant="23" id="Uh7-Yr-e6o"/>
                             <constraint firstItem="IMf-kL-1ab" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k1z-tl-EWi"/>
                             <constraint firstItem="wNk-8j-iQA" firstAttribute="centerY" secondItem="IMf-kL-1ab" secondAttribute="centerY" id="mBH-68-xyN"/>
                         </constraints>
@@ -62,7 +49,6 @@
                     </view>
                     <connections>
                         <outlet property="board" destination="8bC-Xf-vdC" id="Fp8-vt-PQE"/>
-                        <outlet property="stepCount" destination="8Q3-2m-IxL" id="vDQ-r3-5tK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
