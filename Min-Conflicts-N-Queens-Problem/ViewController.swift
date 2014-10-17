@@ -37,9 +37,10 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     func reset() {
-    //See if user typed in parameters
-      checkInput()
-        
+        self.numberOfQueens.enabled = true
+        self.maxSteps.enabled = true
+        //See if user typed in parameters
+        checkInput()
         //generate new board based on input parameters or the default values
         solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
         self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
@@ -50,6 +51,8 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     func start() {
+        self.numberOfQueens.enabled = false
+         self.maxSteps.enabled = false
          //See if user typed in parameters
         checkInput()
          solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
