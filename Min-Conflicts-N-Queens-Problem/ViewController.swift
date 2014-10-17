@@ -13,6 +13,8 @@ class ViewController: UIViewController, BoardDelegate {
     let MAX_STEPS : Int = 5000
     var solver : minConflicts!
     @IBOutlet var board : Board!
+    @IBOutlet weak var maxSteps: UITextField!
+    @IBOutlet weak var numberOfQueens: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,7 @@ class ViewController: UIViewController, BoardDelegate {
         
         //Assigns detector to the view
         //self.board.addGestureRecognizer(tap)
+        
         solver = minConflicts(n: NUMBER_OF_QUEENS , maxSteps:MAX_STEPS)
         
         //Update Board with starting Positions
@@ -33,8 +36,10 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     func reset() {
+      checkInput()
         //generate new board
-        solver = minConflicts(n: NUMBER_OF_QUEENS, maxSteps:5000)
+        solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
+        self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
         //reset button on board
         self.board.reset()
         //Update Board with starting Positions
@@ -42,6 +47,11 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     func start() {
+        checkInput()
+         solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
+                self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
+        //Update Board with starting Positions
+        self.board.setNeedsDisplay()
         self.board.startSolving()
         //in background thread
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
@@ -104,6 +114,17 @@ class ViewController: UIViewController, BoardDelegate {
             return "Q"
         }
         return "0"
+    }
+    
+    
+    func checkInput(){
+        
+        if self.maxSteps.text == ""{
+            self.maxSteps.text = "\(MAX_STEPS)"
+        }
+        if self.numberOfQueens.text == ""{
+            self.numberOfQueens.text = "\(NUMBER_OF_QUEENS)"
+        }
     }
     
 }

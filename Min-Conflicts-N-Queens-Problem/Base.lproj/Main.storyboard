@@ -23,7 +23,7 @@
                                 <rect key="frame" x="225" y="550" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="sHs-a5-eOt"/>
+                                    <constraint firstAttribute="width" constant="150" id="6zO-yC-568"/>
                                 </constraints>
                                 <state key="normal" title="Solve">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -33,14 +33,34 @@
                                     <action selector="solveConstraints:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="LE4-U7-aZh"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="# of Queens" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ML6-cT-hIA">
+                                <rect key="frame" x="196" y="512" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="zO6-J2-CjR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max Steps" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcg-lC-DXz">
+                                <rect key="frame" x="307" y="512" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="Bfl-cD-NS7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="wNk-8j-iQA" firstAttribute="centerX" secondItem="IMf-kL-1ab" secondAttribute="centerX" id="1AS-uF-k8s"/>
-                            <constraint firstAttribute="bottom" secondItem="wNk-8j-iQA" secondAttribute="bottom" constant="20" symbolic="YES" id="Pf9-XI-fyg"/>
-                            <constraint firstItem="IMf-kL-1ab" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k1z-tl-EWi"/>
-                            <constraint firstItem="wNk-8j-iQA" firstAttribute="centerY" secondItem="IMf-kL-1ab" secondAttribute="centerY" id="mBH-68-xyN"/>
+                            <constraint firstItem="wNk-8j-iQA" firstAttribute="centerY" secondItem="IMf-kL-1ab" secondAttribute="centerY" id="IE7-oG-msI"/>
+                            <constraint firstItem="bcg-lC-DXz" firstAttribute="baseline" secondItem="ML6-cT-hIA" secondAttribute="baseline" id="kye-s9-MfJ"/>
+                            <constraint firstItem="wNk-8j-iQA" firstAttribute="top" secondItem="ML6-cT-hIA" secondAttribute="bottom" constant="8" symbolic="YES" id="lkk-4V-gay"/>
+                            <constraint firstAttribute="bottom" secondItem="wNk-8j-iQA" secondAttribute="bottom" constant="20" symbolic="YES" id="qPB-RR-lMS"/>
+                            <constraint firstItem="bcg-lC-DXz" firstAttribute="leading" secondItem="ML6-cT-hIA" secondAttribute="trailing" constant="14" id="sy8-y4-6ko"/>
+                            <constraint firstItem="wNk-8j-iQA" firstAttribute="centerX" secondItem="IMf-kL-1ab" secondAttribute="centerX" id="v80-hj-4ph"/>
+                            <constraint firstItem="wNk-8j-iQA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wAg-sZ-bIE"/>
+                            <constraint firstItem="ML6-cT-hIA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="196" id="xAj-S1-HAd"/>
                         </constraints>
                         <connections>
                             <outlet property="activity" destination="IMf-kL-1ab" id="4Ne-uZ-Qsx"/>
@@ -49,6 +69,8 @@
                     </view>
                     <connections>
                         <outlet property="board" destination="8bC-Xf-vdC" id="Fp8-vt-PQE"/>
+                        <outlet property="maxSteps" destination="bcg-lC-DXz" id="Sod-u2-Wwz"/>
+                        <outlet property="numberOfQueens" destination="ML6-cT-hIA" id="lu2-Bv-YrI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
