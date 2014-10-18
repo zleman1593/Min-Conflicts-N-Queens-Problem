@@ -35,7 +35,7 @@ class minConflicts {
     
     /*So user can select where queens should start*/
     func updateColumn(column : Int, row : Int ){
-      self.columns[column] = row
+        self.columns[column] = row
     }
     
     
@@ -61,16 +61,16 @@ class minConflicts {
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
             } else if algorithm == 2 {
-            
-            //choose a random column
-            let column = Int.random(self.n)
-            if Int.random(3) != 0{
-                //set queen in the random column to row that minimizes conflicts
-                self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
-            } else {
-                //set queen in the random column to row that minimizes conflicts
-                self.columns[column] = self.randomPlacement(column)
-            }
+                
+                //choose a random column
+                let column = Int.random(self.n)
+                if Int.random(3) != 0{
+                    //set queen in the random column to row that minimizes conflicts
+                    self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
+                } else {
+                    //set queen in the random column to row that minimizes conflicts
+                    self.columns[column] = self.randomPlacement(column)
+                }
                 
             } else if algorithm == 3 {
                 
@@ -80,10 +80,10 @@ class minConflicts {
                 for index in self.columns{
                     
                     let result = self.conflicts(index, updateRunnningConflicts: false)
-
+                    
                     if result.conflicts < bestConflicts {
                         bestConflicts = result.conflicts
-                         bestQueen = index
+                        bestQueen = index
                         moveQueenTo = result.bestRow
                     } else if result.conflicts == bestConflicts {
                         let randomNumber = Int.random(2)
@@ -94,15 +94,15 @@ class minConflicts {
                         }
                         
                     }
-       
-                
+                    
+                    
                 }
-            
+                
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[bestQueen] = moveQueenTo
                 self.conflicts = self.conflicts + bestConflicts
             }
-
+            
         }
         
         //return that it had to give up
@@ -110,11 +110,11 @@ class minConflicts {
     }
     
     
-
-
+    
+    
     //Input: Column; Output: Least-conflicted row for queen in column
     func conflicts(variable : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int) {
-
+        
         var bestMove = 0
         var currentPositionConflicts = 0
         var minConflicts = Int.max
@@ -129,28 +129,28 @@ class minConflicts {
                     if self.columns[column] == row {
                         currentMoveConflicts++
                     }
-                    //Looks at up and down diagnals
+                        //Looks at up and down diagnals
                     else if self.columns[column] ==  (row + (variable-column)) {
                         currentMoveConflicts++
                     }
                     else if self.columns[column] ==  (row - (variable-column)) {
                         currentMoveConflicts++
                     }
-                
+                    
                 }
                 
             }
             /* If row being looked at is the row that the queen in the current column currently occupies,
-             * set currentPositionConflicts to the number of conflicts this queen is curently involved in.
-             */
+            * set currentPositionConflicts to the number of conflicts this queen is curently involved in.
+            */
             if row == self.columns[variable] {
                 currentPositionConflicts = currentMoveConflicts
                 
             }
-            /* Else if the row being looked at does not have the queen from the current column,
-             * update the best move if the move would result in fewer conflicts
-             */
-       
+                /* Else if the row being looked at does not have the queen from the current column,
+                * update the best move if the move would result in fewer conflicts
+                */
+                
             else if minConflicts > currentMoveConflicts {
                 minConflicts = currentMoveConflicts
                 bestMove = row
@@ -158,11 +158,11 @@ class minConflicts {
             else if minConflicts == currentMoveConflicts {
                 let randomNumber = Int.random(2)
                 if randomNumber == 1{
-                minConflicts = currentMoveConflicts
-                bestMove = row
+                    minConflicts = currentMoveConflicts
+                    bestMove = row
                 }
             }
-
+            
             
         }
         
@@ -242,9 +242,9 @@ class minConflicts {
     
     //TODO MultiThread this?
     /* Counts the number of conflicts created from the initial random assigmnet
-     * so that the number of conflicts can quickly updated during runtime
-     * Output: num conflicts in current board
-     */
+    * so that the number of conflicts can quickly updated during runtime
+    * Output: num conflicts in current board
+    */
     func initialConflictCounter() -> Int {
         var totalConflicts = 0
         for index in 0..<self.columns.count {
@@ -253,7 +253,7 @@ class minConflicts {
                 if self.columns[index] == self.columns[nextIndex] {
                     totalConflicts++
                 }
-                //Looks at up and down diagnals
+                    //Looks at up and down diagnals
                 else if self.columns[nextIndex] ==  (self.columns[index] + (nextIndex-index)) {
                     totalConflicts++
                 }
