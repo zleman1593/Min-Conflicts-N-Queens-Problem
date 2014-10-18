@@ -33,7 +33,7 @@ class minConflicts {
         
     }
     
-    
+    /*So user can select where queens should start*/
     func updateColumn(column : Int, row : Int ){
       self.columns[column] = row
     }
@@ -41,7 +41,7 @@ class minConflicts {
     
     //minConflicts board configuration.
     //Output: true if solution found within maxSteps, else false
-    func minConflicts()-> Bool {
+    func minConflicts(algorithm: Int)-> Bool {
         //count initial number of conflicts
         self.conflicts = initialConflictCounter()
         println("Current Random Assignment " + columns.description)
@@ -54,17 +54,44 @@ class minConflicts {
                 return true
             }
             
+            
+            if algorithm == 1{
+                //choose a random column
+                let column = Int.random(self.n)
+                //set queen in the random column to row that minimizes conflicts
+                self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
+            } else if algorithm == 2 {
+            
             //choose a random column
             let column = Int.random(self.n)
-            
             if Int.random(3) != 0{
-                
                 //set queen in the random column to row that minimizes conflicts
-                self.columns[column] = self.conflicts(column)
+                self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
             } else {
-                
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.randomPlacement(column)
+            }
+                
+            } else if algorithm == 3 {
+                
+                var bestQueen = 0
+                var bestConflicts = Int.max
+                var moveQueenTo = 0
+                for index in self.columns{
+                    
+                    let result = self.conflicts(index, updateRunnningConflicts: false)
+
+                    if result.conflicts < bestConflicts {
+                        bestConflicts = result.conflicts
+                         bestQueen = index
+                        moveQueenTo = result.bestRow
+                    }
+                    //test for == condition?
+                
+                }
+            
+                //set queen in the random column to row that minimizes conflicts
+                self.columns[bestQueen] = moveQueenTo
             }
 
         }
@@ -74,11 +101,10 @@ class minConflicts {
     }
     
     
-    //TODO MultiThread this?
 
-    //The Bug is in this method.
+
     //Input: Column; Output: Least-conflicted row for queen in column
-    func conflicts(variable : Int) -> Int {
+    func conflicts(variable : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int) {
 
         var bestMove = 0
         var currentPositionConflicts = 0
@@ -132,12 +158,13 @@ class minConflicts {
         }
         
         //Keeps the number of conflicts updated after a move is made
-        if bestMove != self.columns[variable] {
+        if bestMove != self.columns[variable] && updateRunnningConflicts{
             self.conflicts = self.conflicts + (minConflicts - currentPositionConflicts)
         }
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
-        return bestMove
+        //Returns the number of conflicts that will be reduced upon making this move-----------------This is different then what doc specifies
+        return (bestMove,minConflicts - currentPositionConflicts)
     }
     
     

@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
-            timestampString = "435273592.047644"
+            timestampString = "435290869.692518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "conflicts(_:)"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "conflicts(_:updateRunnningConflicts:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
-            timestampString = "435273592.047644"
+            timestampString = "435290869.692518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "minConflicts()"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "minConflicts(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
-            timestampString = "435273592.047644"
+            timestampString = "435290869.692518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "minConflicts"
             landmarkType = "3">
          </BreakpointContent>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
-            timestampString = "435273592.047644"
+            timestampString = "435290869.692518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "conflicts(_:)"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "conflicts(_:updateRunnningConflicts:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -314,12 +314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
-            timestampString = "435273592.047644"
+            timestampString = "435290869.692518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "conflicts(_:)"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "conflicts(_:updateRunnningConflicts:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -351,7 +351,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "minConflicts()"
+            landmarkName = "minConflicts(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/algorithms.swift"
-            timestampString = "435273592.047644"
+            timestampString = "435290869.692518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "randomPlacement(_:)"
             landmarkType = "5">
          </BreakpointContent>
