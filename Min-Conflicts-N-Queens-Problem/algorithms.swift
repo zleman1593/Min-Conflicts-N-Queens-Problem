@@ -85,13 +85,22 @@ class minConflicts {
                         bestConflicts = result.conflicts
                          bestQueen = index
                         moveQueenTo = result.bestRow
+                    } else if result.conflicts == bestConflicts {
+                        let randomNumber = Int.random(2)
+                        if randomNumber == 1{
+                            bestConflicts = result.conflicts
+                            bestQueen = index
+                            moveQueenTo = result.bestRow
+                        }
+                        
                     }
-                    //test for == condition?
+       
                 
                 }
             
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[bestQueen] = moveQueenTo
+                self.conflicts = self.conflicts + bestConflicts
             }
 
         }

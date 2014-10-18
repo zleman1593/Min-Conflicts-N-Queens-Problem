@@ -9,13 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
-    let NUMBER_OF_QUEENS : Int = 20
-    let MAX_STEPS : Int = 5000
+    let NUMBER_OF_QUEENS : Int = 30
+    let MAX_STEPS : Int = 500
+    // 1 for vanilla algorithm, 2 for randomness, 3 for greediness
+    //let ALGORITHM : Int = 3
     var solver : minConflicts!
     @IBOutlet var board : Board!
     @IBOutlet weak var maxSteps: UITextField!
     @IBOutlet weak var numberOfQueens: UITextField!
     
+    @IBOutlet weak var algorithmSelector: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets self as the view's delegate
@@ -36,11 +39,14 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     func reset() {
+        //Allow user Input
         self.numberOfQueens.enabled = true
         self.maxSteps.enabled = true
+        
         //See if user typed in parameters
         checkInput()
-        //generate new board based on input parameters or the default values
+        
+        //Generate new board based on input parameters or the default values
         solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
         self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
         //reset button on board
@@ -50,20 +56,22 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     func start() {
+         //Allow user Input
         self.numberOfQueens.enabled = false
          self.maxSteps.enabled = false
          //See if user typed in parameters
         checkInput()
+        
          //solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
-                self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
+        //self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
         //Update Board with starting Positions
         //self.board.setNeedsDisplay()
+        
         self.board.startSolving()
-        //in background thread
+        //In background thread
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
             var alert = UIAlertController()
-            //Passing 1 for vanilla algorithm, 2 for randomness, 3 for greediness
-            if self.solver.minConflicts(3) { //game solved!
+            if self.solver.minConflicts(self.algorithmSelector.selectedSegmentIndex + 1) {
                 println("Solved!")
                 println("Final Solution: \(self.solver.columns.description)")
                 println("Found at Step \(self.solver.stepsUsed)")
@@ -71,14 +79,12 @@ class ViewController: UIViewController, BoardDelegate {
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
                     self.board.doneSolving(true)
-
                     //Shows final board positions
                     self.board.setNeedsDisplay()
-                    
                     alert.title = "Solved!"
                     alert.message = "A solution was found at Step \(self.solver.stepsUsed)! Would you like to play again?"
                 }
-            } else { //game now solved
+            } else { //game not solved
                 println("Could no be solved in less than \(self.MAX_STEPS) steps :(")
                 println("Final Unsolved State " + self.solver.columns.description)
                 
@@ -87,7 +93,6 @@ class ViewController: UIViewController, BoardDelegate {
                     self.board.doneSolving(false)
                     //Shows final board positions
                     self.board.setNeedsDisplay()
-                    
                     alert.title = "Unsolved"
                     alert.message = "A solution was not found in \(self.solver.maxSteps) steps! Would you like to play again?"
                 }
@@ -98,10 +103,10 @@ class ViewController: UIViewController, BoardDelegate {
                 self.reset()
             })
             
-            var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+          //  var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
             
             alert.addAction(restartAction)
-            alert.addAction(cancelAction)
+            //alert.addAction(cancelAction)
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
@@ -122,7 +127,7 @@ class ViewController: UIViewController, BoardDelegate {
         return "0"
     }
     
-    
+    /*Checks to see if user added parameters*/
     func checkInput(){
         
         if self.maxSteps.text == ""{
@@ -133,7 +138,7 @@ class ViewController: UIViewController, BoardDelegate {
         }
     }
     
-    
+    /*Allows user to indicate where initial queens should be placed*/
     func updateColumn(column : Int, row : Int ){
     self.solver.updateColumn(column,row: row)
          self.board.setNeedsDisplay()
