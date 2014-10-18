@@ -70,7 +70,7 @@ class ViewController: UIViewController, BoardDelegate {
         self.board.startSolving()
         //In background thread
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
-            var alert = UIAlertController()
+            var alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             if self.solver.minConflicts(self.algorithmSelector.selectedSegmentIndex + 1) {
                 println("Solved!")
                 println("Final Solution: \(self.solver.columns.description)")
@@ -103,10 +103,12 @@ class ViewController: UIViewController, BoardDelegate {
                 self.reset()
             })
             
-          //  var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+            var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
             
             alert.addAction(restartAction)
-            //alert.addAction(cancelAction)
+
+            alert.addAction(cancelAction)
+
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
