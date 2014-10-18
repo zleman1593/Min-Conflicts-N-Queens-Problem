@@ -13,16 +13,22 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zackery leman &amp; Ruben Martinez Jr." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
                     <rect key="frame" x="20" y="439" width="441" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="cg8-x0-byq"/>
+                        <constraint firstAttribute="height" constant="21" id="v4p-ZL-hoT"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MinConflicts N-Queens Problem" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="44" y="140" width="393" height="167"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alzbeta_ii.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ktg-F5-aAd">
+                    <rect key="frame" x="51" y="133" width="386" height="298"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="167" id="YGW-sw-Ocf"/>
+                        <constraint firstAttribute="height" constant="298" id="hsX-ro-FiD"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MinConflicts N-Queens Problem" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                    <rect key="frame" x="44" y="21" width="393" height="167"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="167" id="TQF-2P-0Gf"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -31,16 +37,22 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="140" id="7UO-T9-FLQ"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="BNb-gx-Frg"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="pDB-LQ-a9d"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pQh-h9-uN5"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="44" id="y17-ey-R23"/>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="yz4-XT-ffA"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="1HU-p6-KHj"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="Ktg-F5-aAd" secondAttribute="bottom" constant="8" symbolic="YES" id="JVk-1f-boR"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="44" id="PcY-P6-mof"/>
+                <constraint firstItem="Ktg-F5-aAd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="51" id="Y1o-An-PxR"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="aae-CG-RBZ"/>
+                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="mz8-bC-pfx"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="21" id="q54-Up-ueA"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="trailing" secondItem="Ktg-F5-aAd" secondAttribute="trailing" id="sE7-04-5K8"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wL2-Lk-q41"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
+    <resources>
+        <image name="alzbeta_ii.jpg" width="320" height="400"/>
+    </resources>
 </document>
