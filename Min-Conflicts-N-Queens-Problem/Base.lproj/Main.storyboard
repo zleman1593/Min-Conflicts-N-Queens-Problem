@@ -55,7 +55,7 @@
                                     <constraint firstAttribute="width" constant="263" id="Gpj-5z-fRa"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Vanillia"/>
+                                    <segment title="Vanilla"/>
                                     <segment title="Random"/>
                                     <segment title="Greedy"/>
                                 </segments>
