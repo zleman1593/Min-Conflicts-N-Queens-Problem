@@ -77,6 +77,7 @@ class minConflicts {
                 var bestQueen = 0
                 var bestConflicts = Int.max
                 var moveQueenTo = 0
+                 var conUpdate = 0
                 for index in self.columns{
                     
                     let result = self.conflicts(index, updateRunnningConflicts: false)
@@ -91,6 +92,7 @@ class minConflicts {
                             bestConflicts = result.conflicts
                             bestQueen = index
                             moveQueenTo = result.bestRow
+                            conUpdate = result.numConflicts
                         }
                         
                     }
@@ -100,7 +102,7 @@ class minConflicts {
                 
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[bestQueen] = moveQueenTo
-                self.conflicts = self.conflicts + bestConflicts
+                self.conflicts = self.conflicts + conUpdate
             }
             
         }
@@ -113,7 +115,7 @@ class minConflicts {
     
     
     //Input: Column; Output: Least-conflicted row for queen in column
-    func conflicts(variable : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int) {
+    func conflicts(variable : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int,numConflicts:Int) {
         
         var bestMove = 0
         var currentPositionConflicts = 0
@@ -173,7 +175,7 @@ class minConflicts {
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
         //Returns the number of conflicts that will be reduced upon making this move-----------------This is different then what doc specifies
-        return (bestMove,minConflicts - currentPositionConflicts)
+        return (bestMove, minConflicts,minConflicts - currentPositionConflicts)
     }
     
     
