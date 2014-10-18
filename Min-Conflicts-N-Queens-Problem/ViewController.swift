@@ -54,10 +54,10 @@ class ViewController: UIViewController, BoardDelegate {
          self.maxSteps.enabled = false
          //See if user typed in parameters
         checkInput()
-         solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
+         //solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
                 self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
         //Update Board with starting Positions
-        self.board.setNeedsDisplay()
+        //self.board.setNeedsDisplay()
         self.board.startSolving()
         //in background thread
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {

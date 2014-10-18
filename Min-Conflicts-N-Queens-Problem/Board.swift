@@ -91,7 +91,7 @@ class Board : UIView {
             
             var done = false
             for var i = 0; i < boardWidth && done == false; i++ {
-                for var j = 0; j < boardHeight && done == false; j++ {
+                for var j = 0; j < (boardHeight! + 1) && done == false; j++ {
                     var x = CGFloat(FIELDINSET_X + i * cellSize!)
                     var y = CGFloat(FIELDINSET_Y + (j-1) * cellSize!)
                     
@@ -102,7 +102,6 @@ class Board : UIView {
                     if CGRectContainsPoint(rectangle,tapPoint) {
                         NSLog("Point(%f, %f) is contained in rectangle %d,%d ", tapPoint.x, tapPoint.y,x,y)
                         done = true
-                        //INSERT CALL TO DELEGATE METHOD THAT ADDS A QUEEN AT THIS i and j
                       self.delegate!.updateColumn(i,row: j-1)
                         println("i: \(i)  j: \(j-1)")
                         break
