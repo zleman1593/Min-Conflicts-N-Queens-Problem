@@ -13,7 +13,7 @@ class ViewController: UIViewController, BoardDelegate {
     let MAX_STEPS : Int = 500
     // 1 for vanilla algorithm, 2 for randomness, 3 for greediness
     //let ALGORITHM : Int = 3
-    var solver : minConflicts!
+    var solver : MinConflicts!
     @IBOutlet var board : Board!
     @IBOutlet weak var maxSteps: UITextField!
     @IBOutlet weak var numberOfQueens: UITextField!
@@ -25,10 +25,9 @@ class ViewController: UIViewController, BoardDelegate {
         self.board.delegate = self
         //Initial default board to display on load
         self.board.setBoardSize(NUMBER_OF_QUEENS)
-        solver = minConflicts(n: NUMBER_OF_QUEENS , maxSteps:MAX_STEPS)
+        solver = MinConflicts(n: NUMBER_OF_QUEENS , maxSteps:MAX_STEPS)
         //Update Board with starting Positions
         self.board.setNeedsDisplay()
-        
         
         //Creates a tap location detector
         let tap = UITapGestureRecognizer(target: self.board, action: "tap:")
@@ -47,7 +46,7 @@ class ViewController: UIViewController, BoardDelegate {
         self.checkInput()
         
         //Generate new board based on input parameters or the default values
-        solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
+        solver = MinConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
         self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
         //reset button on board
         self.board.reset()
@@ -55,14 +54,23 @@ class ViewController: UIViewController, BoardDelegate {
         self.board.setNeedsDisplay()
     }
     
+    func selectedAlgorithm() -> Algorithm {
+        switch self.algorithmSelector.selectedSegmentIndex {
+            case 0:  return Algorithm.Vanilla
+            case 1:  return Algorithm.Random
+            case 2:  return Algorithm.Greedy
+            default: return Algorithm.Vanilla
+        }
+    }
+    
     func start() {
-         //Allow user Input
+        //Allow user Input
         self.numberOfQueens.enabled = false
-         self.maxSteps.enabled = false
-         //See if user typed in parameters
+        self.maxSteps.enabled = false
+        //See if user typed in parameters
         self.checkInput()
         
-         //solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
+        //solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
         //self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
         //Update Board with starting Positions
         //self.board.setNeedsDisplay()
@@ -71,7 +79,7 @@ class ViewController: UIViewController, BoardDelegate {
         //In background thread
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
             var alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            if self.solver.minConflicts(self.algorithmSelector.selectedSegmentIndex + 1) {
+            if self.solver.minConflicts(self.selectedAlgorithm()) {
                 println("Solved!")
                 println("Final Solution: \(self.solver.columns.description)")
                 println("Found at Step \(self.solver.stepsUsed)")

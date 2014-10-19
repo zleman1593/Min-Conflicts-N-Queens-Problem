@@ -8,17 +8,19 @@
 
 import Foundation
 
-class minConflicts {
+class MinConflicts {
     //Number of rows and Columns
-    let n : Int!
+    let n : Int
     //Number of steps to find solution
-    let maxSteps  : Int!
+    let maxSteps  : Int
     //Number of steps actually used to find solution
-    var stepsUsed  : Int!
+    var stepsUsed : Int   = 0
     //Number of current conflicts
-    var conflicts : Int!
+    var conflicts : Int   = 0
     //Array of columns, where an element holds the row the queen in that column occupies
     var columns   : [Int] = []
+    
+    var algorithm : Algorithm?
     
     init(n : Int, maxSteps : Int) {
         self.n = n
@@ -29,19 +31,16 @@ class minConflicts {
             let rand = Int.random(n)
             columns.append(rand)
         }
-        
-        
     }
     
     /*So user can select where queens should start*/
-    func updateColumn(column : Int, row : Int ){
+    func updateColumn(column : Int, row : Int) {
         self.columns[column] = row
     }
     
-    
     //minConflicts board configuration.
     //Output: true if solution found within maxSteps, else false
-    func minConflicts(algorithm: Int)-> Bool {
+    func minConflicts(algorithm: Algorithm) -> Bool {
         //count initial number of conflicts
         self.conflicts = initialConflictCounter()
         println("Current Random Assignment " + columns.description)
@@ -54,14 +53,13 @@ class minConflicts {
                 return true
             }
             
-            
-            if algorithm == 1{
+            switch algorithm {
+            case Algorithm.Vanilla:
                 //choose a random column
                 let column = Int.random(self.n)
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
-            } else if algorithm == 2 {
-                
+            case Algorithm.Random:
                 //choose a random column
                 let column = Int.random(self.n)
                 if Int.random(3) != 0{
@@ -72,13 +70,11 @@ class minConflicts {
                     self.columns[column] = self.randomPlacement(column)
                 }
                 
-            } else if algorithm == 3 {
-                
+            case Algorithm.Greedy:
                 var bestQueen = 0
                 var bestConflicts = Int.max
                 var moveQueenTo = 0
                 for index in self.columns{
-                    
                     let result = self.conflicts(index, updateRunnningConflicts: false)
                     
                     if result.conflicts < bestConflicts {
@@ -94,27 +90,20 @@ class minConflicts {
                         }
                         
                     }
-                    
-                    
                 }
                 
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[bestQueen] = moveQueenTo
                 self.conflicts = self.conflicts + bestConflicts
             }
-            
         }
         
         //return that it had to give up
         return false
     }
     
-    
-    
-    
     //Input: Column; Output: Least-conflicted row for queen in column
     func conflicts(variable : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int) {
-        
         var bestMove = 0
         var currentPositionConflicts = 0
         var minConflicts = Int.max
@@ -179,14 +168,11 @@ class minConflicts {
     
     //Input: Column; Output: A random row for queen in column
     func randomPlacement(variable : Int) -> Int {
-        
         let nextRow = Int.random(self.n)//or +1 ?
         var currentPositionConflicts = 0
         var nextMoveConflicts = 0
         
-        
         //loop through columns
-        
         for column in 0..<self.columns.count {
             //skip conflict with self
             if column != variable{
@@ -195,10 +181,10 @@ class minConflicts {
                     nextMoveConflicts++
                 }
                 //Looks at up and down diagnals
-                if self.columns[column] ==  (nextRow + (variable-column)) {
+                if self.columns[column] == (nextRow + (variable-column)) {
                     nextMoveConflicts++
                 }
-                if self.columns[column] ==  (nextRow - (variable-column)) {
+                if self.columns[column] == (nextRow - (variable-column)) {
                     nextMoveConflicts++
                 }
             }
