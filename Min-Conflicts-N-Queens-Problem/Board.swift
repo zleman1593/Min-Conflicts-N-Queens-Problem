@@ -10,20 +10,20 @@ import Foundation
 import UIKit
 
 class Board : UIView {
-    let FIELDINSET_Y = 30
-    let FIELDINSET_X = 8
     var delegate : BoardDelegate?
     var boardHeight : Int?
     var boardWidth  : Int?
     var cellSize : Int?
+    var xPadding : CGFloat?
+    var yPadding : CGFloat?
     var fontSize : CGFloat?
     
     override func drawRect(rect: CGRect) {
         if boardWidth != nil && boardHeight != nil {
             for i in 0..<boardWidth! {
                 for j in 0..<boardHeight! {
-                    var x = CGFloat(FIELDINSET_X + i * cellSize!)
-                    var y = CGFloat(FIELDINSET_Y + j * cellSize!)
+                    var x = xPadding! + CGFloat(i * cellSize!)
+                    var y = yPadding! + CGFloat(j * cellSize!)
                     
                     var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
                     
@@ -52,7 +52,9 @@ class Board : UIView {
     func setBoardSize(rowsAndColumns: Int) {
         self.boardHeight = rowsAndColumns
         self.boardWidth  = rowsAndColumns
-        self.cellSize = Int(self.frame.width/CGFloat(self.boardWidth!))
+        self.cellSize = Int(self.frame.width / CGFloat(rowsAndColumns))
+        self.xPadding = (self.frame.width - (CGFloat(boardWidth!)*CGFloat(cellSize!)))/2
+        self.yPadding = 30
         self.fontSize = CGFloat(self.cellSize!-5)
     }
     
@@ -65,8 +67,8 @@ class Board : UIView {
             var done = false
             for var i = 0; i < boardWidth && done == false; i++ {
                 for var j = 0; j < (boardHeight! + 1) && done == false; j++ {
-                    var x = CGFloat(FIELDINSET_X + i * cellSize!)
-                    var y = CGFloat(FIELDINSET_Y + (j-1) * cellSize!)
+                    var x = xPadding! + CGFloat(i * cellSize!)
+                    var y = yPadding! + CGFloat(j * cellSize!)
                     
                     var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
 
