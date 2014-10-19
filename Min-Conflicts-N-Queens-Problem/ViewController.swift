@@ -44,7 +44,7 @@ class ViewController: UIViewController, BoardDelegate {
         self.maxSteps.enabled = true
         
         //See if user typed in parameters
-        checkInput()
+        self.checkInput()
         
         //Generate new board based on input parameters or the default values
         solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
@@ -60,7 +60,7 @@ class ViewController: UIViewController, BoardDelegate {
         self.numberOfQueens.enabled = false
          self.maxSteps.enabled = false
          //See if user typed in parameters
-        checkInput()
+        self.checkInput()
         
          //solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
         //self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
@@ -99,15 +99,11 @@ class ViewController: UIViewController, BoardDelegate {
             }
             
             //options to play a new game or exit
-            var restartAction = UIAlertAction(title: "Play Again", style: UIAlertActionStyle.Default, handler: { (alert) -> Void in
+            var continueAction = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: { (alert) -> Void in
                 self.reset()
             })
             
-            var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-            
-            alert.addAction(restartAction)
-
-            alert.addAction(cancelAction)
+            alert.addAction(continueAction)
 
             self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -131,7 +127,6 @@ class ViewController: UIViewController, BoardDelegate {
     
     /*Checks to see if user added parameters*/
     func checkInput(){
-        
         if self.maxSteps.text == ""{
             self.maxSteps.text = "\(MAX_STEPS)"
         }

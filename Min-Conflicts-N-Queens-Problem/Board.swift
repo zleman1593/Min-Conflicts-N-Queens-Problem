@@ -60,13 +60,9 @@ class Board : UIView {
     
     func doneSolving(solved: Bool) {
         self.activity.stopAnimating()
-        if solved {
-            self.solveButton.backgroundColor = UIColor(red: 0, green: 0.8, blue: 0.2, alpha: 1)
-            self.solveButton.setTitle("Solved!", forState: UIControlState.Normal)
-        } else {
-            self.solveButton.backgroundColor = UIColor.redColor()
-            self.solveButton.setTitle("Unsolved", forState: UIControlState.Normal)
-        }
+        self.solveButton.enabled = false
+        self.solveButton.backgroundColor = UIColor.blueColor()
+        self.solveButton.setTitle("Solve", forState: UIControlState.Normal)
     }
     
     func reset() {
