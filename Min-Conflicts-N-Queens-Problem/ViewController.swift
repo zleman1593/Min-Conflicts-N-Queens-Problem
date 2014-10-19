@@ -15,6 +15,7 @@ class ViewController: UIViewController, BoardDelegate {
     //let ALGORITHM : Int = 3
     var solver : MinConflicts!
     @IBOutlet var board : Board!
+    @IBOutlet var solveButton: UIButton!
     @IBOutlet weak var maxSteps: UITextField!
     @IBOutlet weak var algorithmSelector: UISegmentedControl!
     
@@ -69,28 +70,24 @@ class ViewController: UIViewController, BoardDelegate {
         self.maxSteps.enabled = true
 
         //reset button on board
-        self.board.reset()
+        self.resetSolveButton()
+        
+        //ask if new # of queens
         self.promptForBoardSize()
     }
     
-    func selectedAlgorithm() -> Algorithm {
-        switch self.algorithmSelector.selectedSegmentIndex {
-            case 0:  return Algorithm.Vanilla
-            case 1:  return Algorithm.Random
-            case 2:  return Algorithm.Greedy
-            default: return Algorithm.Vanilla
-        }
-    }
-    
-    func start() {
+    @IBAction func start() {
+        self.disableSolveButton()
+        
         //Allow user Input
         self.maxSteps.enabled = false
+        
         //See if user typed in parameters
         self.checkInput()
         
+        //set max steps
         solver.maxSteps = self.maxSteps.text.toInt()!
         
-        self.board.startSolving()
         //In background thread
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
             var alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
@@ -101,7 +98,7 @@ class ViewController: UIViewController, BoardDelegate {
                 
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.board.doneSolving(true)
+                    self.resetSolveButton()
                     //Shows final board positions
                     self.board.setNeedsDisplay()
                     alert.title = "Solved!"
@@ -113,7 +110,7 @@ class ViewController: UIViewController, BoardDelegate {
                 
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.board.doneSolving(false)
+                    self.resetSolveButton()
                     //Shows final board positions
                     self.board.setNeedsDisplay()
                     alert.title = "Unsolved"
@@ -130,6 +127,18 @@ class ViewController: UIViewController, BoardDelegate {
 
             self.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    func disableSolveButton() {
+        self.solveButton.enabled = false
+        self.solveButton.backgroundColor = UIColor.lightGrayColor()
+        self.solveButton.setTitle("Solving...", forState: UIControlState.Normal)
+    }
+    
+    func resetSolveButton() {
+        self.solveButton.enabled = true
+        self.solveButton.backgroundColor = UIColor(red: 0, green: 128/255, blue: 255, alpha: 1)
+        self.solveButton.setTitle("Solve", forState: UIControlState.Normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -157,8 +166,17 @@ class ViewController: UIViewController, BoardDelegate {
     
     /*Allows user to indicate where initial queens should be placed*/
     func updateColumn(column : Int, row : Int ){
-    self.solver.updateColumn(column,row: row)
-         self.board.setNeedsDisplay()
+        self.solver.updateColumn(column,row: row)
+        self.board.setNeedsDisplay()
+    }
+    
+    func selectedAlgorithm() -> Algorithm {
+        switch self.algorithmSelector.selectedSegmentIndex {
+        case 0:  return Algorithm.Vanilla
+        case 1:  return Algorithm.Random
+        case 2:  return Algorithm.Greedy
+        default: return Algorithm.Vanilla
+        }
     }
 }
 

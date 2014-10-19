@@ -16,10 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="IMf-kL-1ab">
-                                <rect key="frame" x="290" y="555" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNk-8j-iQA">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNk-8j-iQA">
                                 <rect key="frame" x="225" y="550" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -30,10 +27,10 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="solveConstraints:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="LE4-U7-aZh"/>
+                                    <action selector="start" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Eh-C5-F3h"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BdQ-e5-fOT">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BdQ-e5-fOT">
                                 <rect key="frame" x="169" y="476" width="263" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="263" id="Gpj-5z-fRa"/>
@@ -44,7 +41,7 @@
                                     <segment title="Greedy"/>
                                 </segments>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max Steps" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcg-lC-DXz">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max Steps" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcg-lC-DXz">
                                 <rect key="frame" x="252" y="512" width="97" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="lfv-mn-TmQ"/>
@@ -56,12 +53,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="IMf-kL-1ab" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Di-aX-xZV"/>
-                            <constraint firstItem="wNk-8j-iQA" firstAttribute="centerX" secondItem="IMf-kL-1ab" secondAttribute="centerX" id="L8d-ac-nMn"/>
                             <constraint firstItem="wNk-8j-iQA" firstAttribute="top" secondItem="bcg-lC-DXz" secondAttribute="bottom" constant="8" symbolic="YES" id="Ni8-tq-E58"/>
-                            <constraint firstItem="BdQ-e5-fOT" firstAttribute="centerX" secondItem="IMf-kL-1ab" secondAttribute="centerX" id="V8i-fh-V3e"/>
-                            <constraint firstItem="bcg-lC-DXz" firstAttribute="centerX" secondItem="IMf-kL-1ab" secondAttribute="centerX" id="b3H-aR-X9U"/>
-                            <constraint firstItem="IMf-kL-1ab" firstAttribute="centerY" secondItem="wNk-8j-iQA" secondAttribute="centerY" id="nY9-se-cCC"/>
                             <constraint firstItem="bcg-lC-DXz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="307" id="tWg-ia-hzz"/>
                             <constraint firstItem="bcg-lC-DXz" firstAttribute="top" secondItem="BdQ-e5-fOT" secondAttribute="bottom" constant="8" symbolic="YES" id="wOR-2h-oSP"/>
                             <constraint firstAttribute="bottom" secondItem="wNk-8j-iQA" secondAttribute="bottom" constant="20" symbolic="YES" id="zAN-yr-Vy9"/>
@@ -71,15 +63,12 @@
                                 <exclude reference="tWg-ia-hzz"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outlet property="activity" destination="IMf-kL-1ab" id="4Ne-uZ-Qsx"/>
-                            <outlet property="solveButton" destination="wNk-8j-iQA" id="49a-NA-Bmd"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="algorithmSelector" destination="BdQ-e5-fOT" id="blZ-dM-vTG"/>
                         <outlet property="board" destination="8bC-Xf-vdC" id="Fp8-vt-PQE"/>
                         <outlet property="maxSteps" destination="bcg-lC-DXz" id="Sod-u2-Wwz"/>
+                        <outlet property="solveButton" destination="wNk-8j-iQA" id="BCa-U6-92d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

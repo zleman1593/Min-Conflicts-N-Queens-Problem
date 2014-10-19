@@ -17,8 +17,6 @@ class Board : UIView {
     var boardWidth  : Int?
     var cellSize : Int?
     var fontSize : CGFloat?
-    @IBOutlet var activity: UIActivityIndicatorView!
-    @IBOutlet var solveButton: UIButton!
     
     override func drawRect(rect: CGRect) {
         if boardWidth != nil && boardHeight != nil {
@@ -49,31 +47,6 @@ class Board : UIView {
         } else {
             //perhaps draw grayed out board, or question mark?
         }
-    }
-    
-    @IBAction func solveConstraints(sender: AnyObject) {
-        self.delegate!.start()
-    }
-    
-    func startSolving() {
-        self.activity.startAnimating()
-        self.solveButton.enabled = false
-        self.solveButton.backgroundColor = UIColor.lightGrayColor()
-        self.solveButton.setTitle("Solving...", forState: UIControlState.Normal)
-    }
-    
-    func doneSolving(solved: Bool) {
-        self.activity.stopAnimating()
-        self.solveButton.enabled = false
-        self.solveButton.backgroundColor = UIColor.blueColor()
-        self.solveButton.setTitle("Solve", forState: UIControlState.Normal)
-    }
-    
-    func reset() {
-        self.activity.stopAnimating()
-        self.solveButton.enabled = true
-        self.solveButton.backgroundColor = UIColor(red: 0, green: 128/255, blue: 255, alpha: 1)
-        self.solveButton.setTitle("Solve", forState: UIControlState.Normal)
     }
     
     func setBoardSize(rowsAndColumns: Int) {
