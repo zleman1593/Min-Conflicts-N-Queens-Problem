@@ -150,8 +150,8 @@ class minConflicts {
                 /* Else if the row being looked at does not have the queen from the current column,
                 * update the best move if the move would result in fewer conflicts
                 */
-                
-            else if minConflicts > currentMoveConflicts {
+                /*This needs to be an else if to allow queen to state in the current optimal state. Make an else if you want to force it to move. But that would reduce performance drastically.*/
+             if minConflicts > currentMoveConflicts {
                 minConflicts = currentMoveConflicts
                 bestMove = row
             }//Breaks Ties randomly
