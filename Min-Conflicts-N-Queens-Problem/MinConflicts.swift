@@ -19,9 +19,7 @@ class MinConflicts {
     var conflicts : Int   = 0
     //Array of columns, where an element holds the row the queen in that column occupies
     var columns   : [Int] = []
-    
-    var algorithm : Algorithm?
-    
+        
     init(n : Int, maxSteps : Int) {
         self.n = n
         self.maxSteps = maxSteps
