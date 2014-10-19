@@ -9,10 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
-    let NUMBER_OF_QUEENS : Int = 30
     let MAX_STEPS : Int = 500
-    // 1 for vanilla algorithm, 2 for randomness, 3 for greediness
-    //let ALGORITHM : Int = 3
     var solver : MinConflicts!
     @IBOutlet var board : Board!
     @IBOutlet var solveButton: UIButton!
