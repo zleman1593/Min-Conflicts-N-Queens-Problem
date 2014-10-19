@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Zackery leman. All rights reserved.
 //
 
-import Foundation
-
 enum Algorithm {
     case Vanilla, Random, Greedy
 }

@@ -21,29 +21,33 @@ class Board : UIView {
     @IBOutlet var solveButton: UIButton!
     
     override func drawRect(rect: CGRect) {
-        for i in 0..<boardWidth! {
-            for j in 0..<boardHeight! {
-                var x = CGFloat(FIELDINSET_X + i * cellSize!)
-                var y = CGFloat(FIELDINSET_Y + j * cellSize!)
-                
-                var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
-
-                var context = UIGraphicsGetCurrentContext()
-                CGContextBeginPath(context)
-                CGContextStrokePath(context)
-                CGContextStrokeRect(context, rectangle)
-
-                //Asks for queen or a blank to place in each square
-                var queen = self.delegate!.getContentAtRow(j, col: i)
-                var textFont = UIFont.systemFontOfSize(fontSize!)
-                
-                //Determines if a queen is at a give location and colors the location appropriately
-                self.colorPickerWithContext(context)
-                if queen == "Q" {
-                    CGContextFillRect(context, rectangle)
-                    queen.drawInRect(rectangle, withAttributes: [NSFontAttributeName:textFont])
+        if boardWidth != nil && boardHeight != nil {
+            for i in 0..<boardWidth! {
+                for j in 0..<boardHeight! {
+                    var x = CGFloat(FIELDINSET_X + i * cellSize!)
+                    var y = CGFloat(FIELDINSET_Y + j * cellSize!)
+                    
+                    var rectangle = CGRectMake(x,y,CGFloat(cellSize!),CGFloat(cellSize!))
+                    
+                    var context = UIGraphicsGetCurrentContext()
+                    CGContextBeginPath(context)
+                    CGContextStrokePath(context)
+                    CGContextStrokeRect(context, rectangle)
+                    
+                    //Asks for queen or a blank to place in each square
+                    var queen = self.delegate!.getContentAtRow(j, col: i)
+                    var textFont = UIFont.systemFontOfSize(fontSize!)
+                    
+                    //Determines if a queen is at a give location and colors the location appropriately
+                    self.colorPickerWithContext(context)
+                    if queen == "Q" {
+                        CGContextFillRect(context, rectangle)
+                        queen.drawInRect(rectangle, withAttributes: [NSFontAttributeName:textFont])
+                    }
                 }
             }
+        } else {
+            //perhaps draw grayed out board, or question mark?
         }
     }
     

@@ -10,19 +10,18 @@ import Foundation
 
 class MinConflicts {
     //Number of rows and Columns
-    let n : Int
+    var n : Int? = nil
     //Number of steps to find solution
-    let maxSteps  : Int
+    var maxSteps  : Int? = nil
     //Number of steps actually used to find solution
     var stepsUsed : Int   = 0
     //Number of current conflicts
     var conflicts : Int   = 0
     //Array of columns, where an element holds the row the queen in that column occupies
     var columns   : [Int] = []
-        
-    init(n : Int, maxSteps : Int) {
+    
+    func randomlyPopulateBoardOfSize(n : Int) {
         self.n = n
-        self.maxSteps = maxSteps
         
         //initialize n columns with random values
         for index in 1...n {
@@ -44,7 +43,7 @@ class MinConflicts {
         println("Current Random Assignment " + columns.description)
         println("Current Conflicts " + self.conflicts.description)
         
-        for index in 1...self.maxSteps {
+        for index in 1...self.maxSteps! {
             //check if current assignment is solution
             if self.isSolution() {
                 self.stepsUsed = index
@@ -54,12 +53,12 @@ class MinConflicts {
             switch algorithm {
             case Algorithm.Vanilla:
                 //choose a random column
-                let column = Int.random(self.n)
+                let column = Int.random(self.n!)
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
             case Algorithm.Random:
                 //choose a random column
-                let column = Int.random(self.n)
+                let column = Int.random(self.n!)
                 if Int.random(3) != 0{
                     //set queen in the random column to row that minimizes conflicts
                     self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
@@ -166,7 +165,7 @@ class MinConflicts {
     
     //Input: Column; Output: A random row for queen in column
     func randomPlacement(variable : Int) -> Int {
-        let nextRow = Int.random(self.n)//or +1 ?
+        let nextRow = Int.random(self.n!)//or +1 ?
         var currentPositionConflicts = 0
         var nextMoveConflicts = 0
         

@@ -16,42 +16,61 @@ class ViewController: UIViewController, BoardDelegate {
     var solver : MinConflicts!
     @IBOutlet var board : Board!
     @IBOutlet weak var maxSteps: UITextField!
-    @IBOutlet weak var numberOfQueens: UITextField!
-    
     @IBOutlet weak var algorithmSelector: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //sets self as the view's delegate
         self.board.delegate = self
-        //Initial default board to display on load
-        self.board.setBoardSize(NUMBER_OF_QUEENS)
-        solver = MinConflicts(n: NUMBER_OF_QUEENS , maxSteps:MAX_STEPS)
-        //Update Board with starting Positions
-        self.board.setNeedsDisplay()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        //Creates a tap location detector
-        let tap = UITapGestureRecognizer(target: self.board, action: "tap:")
+        self.promptForBoardSize()
+    }
+    
+    func promptForBoardSize() {
+        var queensPrompt = UIAlertController(title: "N-Queens", message: "How many queens would you like on the board?", preferredStyle: UIAlertControllerStyle.Alert)
         
-        //Assigns detector to the view
-        self.board.addGestureRecognizer(tap)
-        //
+        queensPrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.keyboardType = UIKeyboardType.NumberPad
+        }
+        
+        var setQueens = UIAlertAction(title: "Set # of Queens", style: UIAlertActionStyle.Default) { (action) -> Void in
+            //Initial default board to display on load
+            var field = queensPrompt.textFields!.first as UITextField
+            var numQueens = field.text.toInt()
+            
+            if let n = numQueens {
+                self.solver = MinConflicts()
+                self.solver.randomlyPopulateBoardOfSize(n)
+                self.board.setBoardSize(n)
+                
+                //Update Board with starting size
+                self.board.setNeedsDisplay()
+                
+                //Creates a tap location detector
+                let tap = UITapGestureRecognizer(target: self.board, action: "tap:")
+                
+                //Assigns detector to the view
+                self.board.addGestureRecognizer(tap)
+            } else {
+                self.promptForBoardSize()
+            }
+        }
+        
+        queensPrompt.addAction(setQueens)
+        self.presentViewController(queensPrompt, animated: true, completion: nil)
     }
     
     func reset() {
         //Allow user Input
-        self.numberOfQueens.enabled = true
         self.maxSteps.enabled = true
-        
-        //See if user typed in parameters
-        self.checkInput()
-        
-        //Generate new board based on input parameters or the default values
-        solver = MinConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
-        self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
+
         //reset button on board
         self.board.reset()
-        //Update Board with starting Positions
-        self.board.setNeedsDisplay()
+        self.promptForBoardSize()
     }
     
     func selectedAlgorithm() -> Algorithm {
@@ -65,15 +84,11 @@ class ViewController: UIViewController, BoardDelegate {
     
     func start() {
         //Allow user Input
-        self.numberOfQueens.enabled = false
         self.maxSteps.enabled = false
         //See if user typed in parameters
         self.checkInput()
         
-        //solver = minConflicts(n: self.numberOfQueens.text.toInt()!, maxSteps:self.maxSteps.text.toInt()!)
-        //self.board.setBoardSize(self.numberOfQueens.text.toInt()!)
-        //Update Board with starting Positions
-        //self.board.setNeedsDisplay()
+        solver.maxSteps = self.maxSteps.text.toInt()!
         
         self.board.startSolving()
         //In background thread
@@ -102,7 +117,7 @@ class ViewController: UIViewController, BoardDelegate {
                     //Shows final board positions
                     self.board.setNeedsDisplay()
                     alert.title = "Unsolved"
-                    alert.message = "A solution was not found in \(self.solver.maxSteps) steps! Would you like to play again?"
+                    alert.message = "A solution was not found in \(self.solver.maxSteps!) steps! Would you like to play again?"
                 }
             }
             
@@ -137,9 +152,6 @@ class ViewController: UIViewController, BoardDelegate {
     func checkInput(){
         if self.maxSteps.text == ""{
             self.maxSteps.text = "\(MAX_STEPS)"
-        }
-        if self.numberOfQueens.text == ""{
-            self.numberOfQueens.text = "\(NUMBER_OF_QUEENS)"
         }
     }
     
