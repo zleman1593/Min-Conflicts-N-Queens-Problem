@@ -19,6 +19,8 @@ class MinConflicts {
     var conflicts : Int   = 0
     //Array of columns, where an element holds the row the queen in that column occupies
     var columns   : [Int] = []
+    //stores all conflicts in board
+    var allConflicts = [Int : NSMutableArray]()
     
     func randomlyPopulateBoardOfSize(n : Int) {
         self.n = n
@@ -59,7 +61,7 @@ class MinConflicts {
             case Algorithm.Random:
                 //choose a random column
                 let column = Int.random(self.n!)
-                if Int.random(3) != 0{
+                if Int.random(3) != 0 {
                     //set queen in the random column to row that minimizes conflicts
                     self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
                 } else {
@@ -110,7 +112,7 @@ class MinConflicts {
             var currentMoveConflicts = 0
             for column in 0..<self.columns.count {
                 //skip conflict with self
-                if column != variable{
+                if column != variable {
                     //Looks across row
                     if self.columns[column] == row {
                         currentMoveConflicts++
@@ -131,19 +133,18 @@ class MinConflicts {
             */
             if row == self.columns[variable] {
                 currentPositionConflicts = currentMoveConflicts
-                
             }
                 /*  If the row being looked at does not have the queen from the current column,
                 * update the best move if the move would result in fewer conflicts
                 */
                 /*This needs to be an if to allow queen to state in the current optimal state. Make an else if you want to force it to move. But that would reduce performance drastically.*/
-             if minConflicts > currentMoveConflicts {
+            if minConflicts > currentMoveConflicts {
                 minConflicts = currentMoveConflicts
                 bestMove = row
             }//Breaks Ties randomly
             else if minConflicts == currentMoveConflicts {
                 let randomNumber = Int.random(2)
-                if randomNumber == 1{
+                if randomNumber == 1 {
                     minConflicts = currentMoveConflicts
                     bestMove = row
                 }
@@ -153,8 +154,8 @@ class MinConflicts {
         }
         
         //Keeps the number of conflicts updated after a move is made
-        if bestMove != self.columns[variable] && updateRunnningConflicts{
-            self.conflicts = self.conflicts + (minConflicts - currentPositionConflicts)
+        if bestMove != self.columns[variable] && updateRunnningConflicts {
+            self.conflicts += (minConflicts - currentPositionConflicts)
         }
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
@@ -213,10 +214,6 @@ class MinConflicts {
         return nextRow
     }
     
-    
-    
-    
-    
     //Are we at a solution?
     //Output: true if no more conflicts, else false
     func isSolution() -> Bool {
@@ -235,25 +232,32 @@ class MinConflicts {
                 //Looks across row
                 if self.columns[index] == self.columns[nextIndex] {
                     totalConflicts++
+                    addConflict(index, columnB: nextIndex)
                 }
-                    //Looks at up and down diagnals
-                else if self.columns[nextIndex] ==  (self.columns[index] + (nextIndex-index)) {
+                //Looks at up and down diagnals
+                else if self.columns[nextIndex] == (self.columns[index] + (nextIndex-index)) {
                     totalConflicts++
+                    addConflict(index, columnB: nextIndex)
                 }
-                else if self.columns[nextIndex] ==  (self.columns[index] - (nextIndex-index)) {
+                else if self.columns[nextIndex] == (self.columns[index] - (nextIndex-index)) {
                     totalConflicts++
+                    addConflict(index, columnB: nextIndex)
                 }
             }
         }
         
         return totalConflicts
     }
-}
-
-//extensions for the Int class
-extension Int {
-    //generates a random number from 0 to n exclusive; wrapper for arc4random_uniform to aid readability
-    static func random(n : Int) -> Int {
-        return Int(arc4random_uniform(UInt32(n)))
+    
+    func addConflict(columnA : Int, columnB : Int) {
+        if (allConflicts[columnA]? != nil) {
+            allConflicts[columnA]!.addObject(columnB)
+        } else {
+            allConflicts[columnA] = NSMutableArray(array: [columnB])
+        }
+    }
+    
+    func resolveConflict(columnA : Int, columnB : Int) {
+        allConflicts[columnA]?.removeObject(columnB)
     }
 }

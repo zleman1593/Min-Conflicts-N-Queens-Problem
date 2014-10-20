@@ -98,6 +98,5 @@ class Board : UIView {
 
 protocol BoardDelegate {
     func getContentAtRow(row : Int, col : Int) -> String
-    func start()
     func updateColumn(column : Int, row : Int )
 }
