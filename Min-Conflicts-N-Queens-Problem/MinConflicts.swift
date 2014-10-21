@@ -255,6 +255,11 @@ class MinConflicts {
         } else {
             allConflicts[columnA] = NSMutableArray(array: [columnB])
         }
+        if (allConflicts[columnB]? != nil) {
+            allConflicts[columnB]!.addObject(columnA)
+        } else {
+            allConflicts[columnB] = NSMutableArray(array: [columnA])
+        }
     }
     
     func resolveConflict(columnA : Int, columnB : Int) {
