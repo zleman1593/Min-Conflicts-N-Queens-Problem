@@ -245,16 +245,16 @@ class MinConflicts {
                 //Looks across row
                 if self.columns[index] == self.columns[nextIndex] {
                     totalConflicts++
-                    addConflict(index, columnB: nextIndex)
+                    addInitialConflict(index, columnB: nextIndex)
                 }
                 //Looks at up and down diagnals
                 else if self.columns[nextIndex] == (self.columns[index] + (nextIndex-index)) {
                     totalConflicts++
-                    addConflict(index, columnB: nextIndex)
+                    addInitialConflict(index, columnB: nextIndex)
                 }
                 else if self.columns[nextIndex] == (self.columns[index] - (nextIndex-index)) {
                     totalConflicts++
-                    addConflict(index, columnB: nextIndex)
+                    addInitialConflict(index, columnB: nextIndex)
                 }
             }
         }
@@ -262,7 +262,7 @@ class MinConflicts {
         return totalConflicts
     }
     
-    func addConflict(columnA : Int, columnB : Int) {
+    func addInitialConflict(columnA : Int, columnB : Int) {
         if (allConflicts[columnA]? != nil) {
             allConflicts[columnA]!.addObject(columnB)
         } else {
@@ -274,6 +274,10 @@ class MinConflicts {
             allConflicts[columnB] = NSMutableArray(array: [columnA])
         }
     }
+    /*Adds the */
+    func addConflict(){
+        
+    }
     
    /* func resolveConflict(columnA : Int, columnB : Int) {
         allConflicts[columnA]?.removeObject(columnB)
@@ -281,9 +285,9 @@ class MinConflicts {
     
     func removeOldConflicts(column : Int) {
         //Run through all the conflicts and go to those columns and remove this column from these other columns
-       /* for (columnA, columnB) in allConflicts[column]{
-            
-        }*/
+        for (index, columnB) in enumerate(allConflicts[column]){
+             allConflicts[columnB]?.removeObject(column)
+        }
 
         //Then delete all current conflicts in this row
         allConflicts[column]?.removeAllObjects()
