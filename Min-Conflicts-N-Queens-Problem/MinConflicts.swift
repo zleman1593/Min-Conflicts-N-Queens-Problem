@@ -60,6 +60,8 @@ class MinConflicts {
                 //choose a random column
                 var column = Int.random(self.n!)
                 //only choose from set of conflicted variables
+                
+                //TODO this is not the fastest way to do the randomization
                 while  allConflicts[column]?.count ==  0{
                     column = Int.random(self.n!)
                 }
