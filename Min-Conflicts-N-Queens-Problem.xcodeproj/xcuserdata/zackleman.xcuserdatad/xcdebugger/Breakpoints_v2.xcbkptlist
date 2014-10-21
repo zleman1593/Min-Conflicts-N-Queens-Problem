@@ -543,7 +543,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "302"
             endingLineNumber = "302"
-            landmarkName = "addConflict(_:)"
+            landmarkName = "addConflictFromNewMove(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -559,7 +559,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "302"
             endingLineNumber = "302"
-            landmarkName = "addConflict(_:)"
+            landmarkName = "addConflictFromNewMove(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

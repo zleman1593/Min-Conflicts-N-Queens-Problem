@@ -112,14 +112,19 @@ class MinConflicts {
     
     //Input: Column; Output: Least-conflicted row for queen in column
     func conflicts(variable : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int) {
+        //This holds all the possible conflicts for each possible move to a new row
         var conflictStore : [Array<Int>] = []
+        //Keeps track of the best move so far
         var bestMove = 0
+        //The number of conflicts the current row position is involved in
         var currentPositionConflicts = 0
+        // keeps track of the minimum number of conflicts for the best new move so far
         var minConflicts = Int.max
         
         //loop through rows & columns
         for row in 0..<self.columns.count {
             var currentMoveConflicts = 0
+            //Array to hold the conflicts for this row choice. Last element will be the column number (Added later)
             var currentPossibleConflicts : Array<Int> = []
             
             for column in 0..<self.columns.count {
@@ -128,6 +133,7 @@ class MinConflicts {
                     //Looks across row
                     if self.columns[column] == row {
                         currentMoveConflicts++
+                        
                         currentPossibleConflicts.append(column)
                     }
                         //Looks at up and down diagnals
@@ -252,7 +258,6 @@ class MinConflicts {
         return self.conflicts == 0
     }
     
-    //TODO MultiThread this?
     /* Counts the number of conflicts created from the initial random assigmnet
     * so that the number of conflicts can quickly updated during runtime
     * Output: num conflicts in current board
@@ -281,6 +286,7 @@ class MinConflicts {
         return totalConflicts
     }
     
+    /*Adds the conflicts to the global conflict store*/
     func addConflicts(columnA : Int, columnB : Int) {
         if (allConflicts[columnA]? != nil) {
             allConflicts[columnA]!.addObject(columnB)
