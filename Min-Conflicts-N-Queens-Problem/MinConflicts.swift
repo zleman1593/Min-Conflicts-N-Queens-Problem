@@ -112,6 +112,7 @@ class MinConflicts {
     
     //Input: Column; Output: Least-conflicted row for queen in column
     func conflicts(variable : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int) {
+        var conflictStore : [Array<Int>] = []
         var bestMove = 0
         var currentPositionConflicts = 0
         var minConflicts = Int.max
@@ -119,24 +120,38 @@ class MinConflicts {
         //loop through rows & columns
         for row in 0..<self.columns.count {
             var currentMoveConflicts = 0
+            var currentPossibleConflicts : Array<Int> = []
+
             for column in 0..<self.columns.count {
                 //skip conflict with self
                 if column != variable {
                     //Looks across row
                     if self.columns[column] == row {
                         currentMoveConflicts++
+                        currentPossibleConflicts.append(column)
                     }
                         //Looks at up and down diagnals
                     else if self.columns[column] ==  (row + (variable-column)) {
                         currentMoveConflicts++
+                        currentPossibleConflicts.append(column)
                     }
                     else if self.columns[column] ==  (row - (variable-column)) {
                         currentMoveConflicts++
+                        currentPossibleConflicts.append(column)
                     }
                     
                 }
+              
                 
             }
+            //Makes the last element in the array the Initial column number. Important for later.
+            if currentPossibleConflicts.count != 0 {
+                currentPossibleConflicts.append(variable)
+            }
+            
+            //Adds array holding conflict information for potential moves
+              conflictStore.append(currentPossibleConflicts)
+            
             /* If row being looked at is the row that the queen in the current column currently occupies,
             * set currentPositionConflicts to the number of conflicts this queen is curently involved in.
             */
@@ -167,6 +182,8 @@ class MinConflicts {
             self.conflicts += (minConflicts - currentPositionConflicts)
             //Removes all old conflicts involving the old position
             removeOldConflicts(variable)
+            //Adds all the new conflicts
+            addConflict(conflictStore[bestMove])
         }
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
@@ -274,8 +291,15 @@ class MinConflicts {
             allConflicts[columnB] = NSMutableArray(array: [columnA])
         }
     }
-    /*Adds the */
-    func addConflict(){
+    /*Adds the conflicts*/
+    func addConflict(conflicts : [Int]){
+        var conflicts2 = conflicts
+        //Gets the mian column from the last element
+        let mainColumn = conflicts2.removeLast()
+        for columns in conflicts2 {
+      self.addInitialConflict(mainColumn,columnB: conflicts2[columns])
+        }
+        
         
     }
     
@@ -285,7 +309,7 @@ class MinConflicts {
     
     func removeOldConflicts(column : Int) {
         //Run through all the conflicts and go to those columns and remove this column from these other columns
-        for (index, columnB) in enumerate(allConflicts[column]){
+        for var columnB = 0;  columnB <  allConflicts[column]?.count; columnB++ {
              allConflicts[columnB]?.removeObject(column)
         }
 
