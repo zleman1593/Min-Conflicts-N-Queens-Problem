@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Zackery leman. All rights reserved.
 //
 
+
+//TODO add conflict updating for each of the three algorithms
+
 import Foundation
 
 class MinConflicts {
@@ -55,7 +58,11 @@ class MinConflicts {
             switch algorithm {
             case Algorithm.Vanilla:
                 //choose a random column
-                let column = Int.random(self.n!)
+                var column = Int.random(self.n!)
+                //only choose from set of conflicted variables
+                while  allConflicts[column] ==  0{
+                    column = Int.random(self.n!)
+                }
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
             case Algorithm.Random:
@@ -94,6 +101,8 @@ class MinConflicts {
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[bestQueen] = moveQueenTo
                 self.conflicts = self.conflicts + bestConflicts
+                //Removes all old conflicts involving the old position
+                //removeOldConflicts()
             }
         }
         
@@ -156,6 +165,8 @@ class MinConflicts {
         //Keeps the number of conflicts updated after a move is made
         if bestMove != self.columns[variable] && updateRunnningConflicts {
             self.conflicts += (minConflicts - currentPositionConflicts)
+            //Removes all old conflicts involving the old position
+            removeOldConflicts(variable)
         }
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
@@ -208,6 +219,8 @@ class MinConflicts {
         //Keeps the number of conflicts updated after a move is made
         if nextRow != self.columns[variable] {
             self.conflicts = self.conflicts + (nextMoveConflicts - currentPositionConflicts)
+            //Removes all old conflicts involving the old position
+            removeOldConflicts(variable)
         }
         
         //Returns new row for queen to occupy
@@ -262,7 +275,17 @@ class MinConflicts {
         }
     }
     
-    func resolveConflict(columnA : Int, columnB : Int) {
+   /* func resolveConflict(columnA : Int, columnB : Int) {
         allConflicts[columnA]?.removeObject(columnB)
+    }*/
+    
+    func removeOldConflicts(column : Int) {
+        //Run through all the conflicts and go to those columns and remove this column from these other columns
+       /* for (columnA, columnB) in allConflicts[column]{
+            
+        }*/
+
+        //Then delete all current conflicts in this row
+        allConflicts[column]?.removeAllObjects()
     }
 }
