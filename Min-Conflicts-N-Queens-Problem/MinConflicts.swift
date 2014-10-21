@@ -182,8 +182,10 @@ class MinConflicts {
             self.conflicts += (minConflicts - currentPositionConflicts)
             //Removes all old conflicts involving the old position
             removeOldConflicts(variable)
-            //Adds all the new conflicts
+            //Adds all the new conflicts if there are any
+            if minConflicts != 0{
             addConflict(conflictStore[bestMove])
+            }
         }
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
@@ -296,6 +298,7 @@ class MinConflicts {
         var conflicts2 = conflicts
         //Gets the mian column from the last element
         let mainColumn = conflicts2.removeLast()
+        
         for columns in conflicts2 {
       self.addInitialConflict(mainColumn,columnB: conflicts2[columns])
         }
