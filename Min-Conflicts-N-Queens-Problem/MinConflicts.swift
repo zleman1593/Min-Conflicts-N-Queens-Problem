@@ -60,7 +60,7 @@ class MinConflicts {
                 //choose a random column
                 var column = Int.random(self.n!)
                 //only choose from set of conflicted variables
-                while  allConflicts[column] ==  0{
+                while  allConflicts[column]?.count ==  0{
                     column = Int.random(self.n!)
                 }
                 //set queen in the random column to row that minimizes conflicts
@@ -306,10 +306,14 @@ class MinConflicts {
         var conflicts2 = conflicts
         //Gets the mian column from the last element
         let mainColumn = conflicts2.removeLast()
-        
+        if conflicts2.count != 1{
         for columns in conflicts2 {
+            //why is this saftey line needed?
+            
             self.addConflicts(mainColumn,columnB: conflicts2[columns])
+           
         }
+             }
     }
     
     
