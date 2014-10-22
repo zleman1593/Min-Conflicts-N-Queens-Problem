@@ -31,6 +31,7 @@ class MinConflicts {
         for index in 1...n {
             let rand = Int.random(n)
             columns.append(rand)
+
         }
     }
     
@@ -308,7 +309,9 @@ class MinConflicts {
                 //why is this saftey line needed?
                 self.addConflicts(mainColumn,columnB: conflicts2[columns])
             }
-        }
+        } else {
+                    self.addConflicts(mainColumn,columnB: conflicts2[0])
+}
     }
     
     func removeOldConflicts(column : Int) {
