@@ -60,10 +60,10 @@ class MinConflicts {
                 var column = Int.random(self.n!)
                 //only choose from set of conflicted variables
                 
-                //TODO this is not the fastest way to do the randomization
-                while allConflicts[column]?.count ==  0{
-                    column = Int.random(self.n!)
-                }
+                //picks a column with conflicts at random
+                let columnsWithConflicts = allConflicts.keys.array
+                column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
+                
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
             case Algorithm.Random:
@@ -319,7 +319,7 @@ class MinConflicts {
             }
         }
         
-        //Then delete all current conflicts in this column
-        allConflicts[column]?.removeAllObjects()
+        //Then remove conflicts for column
+        allConflicts.removeValueForKey(column)
     }
 }
