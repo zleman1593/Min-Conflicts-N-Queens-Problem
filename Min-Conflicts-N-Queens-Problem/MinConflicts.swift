@@ -54,22 +54,22 @@ class MinConflicts {
                 self.stepsUsed = index
                 return true
             }
+            //picks a column with conflicts at random
+            let columnsWithConflicts = allConflicts.keys.array
+            var column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
             
             switch algorithm {
             case Algorithm.Vanilla:
-                //choose a random column
-                var column = Int.random(self.n!)
+    
+    
                 //only choose from set of conflicted variables
                 
-                //picks a column with conflicts at random
-                let columnsWithConflicts = allConflicts.keys.array
-                column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
+                
                 
                 //set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
             case Algorithm.Random:
                 //choose a random column
-                let column = Int.random(self.n!)
                 if Int.random(3) != 0 {
                     //set queen in the random column to row that minimizes conflicts
                     self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
@@ -203,7 +203,8 @@ class MinConflicts {
         let nextRow = Int.random(self.n!) //or +1 ?
         var currentPositionConflicts = 0
         var nextMoveConflicts = 0
-        
+        //Array to hold the conflicts for this row choice. Last element will be the column number (Added later)
+        var currentPossibleConflicts : Array<Int> = []
         //loop through columns
         for column in 0..<self.columns.count {
             //skip conflict with self
@@ -211,13 +212,16 @@ class MinConflicts {
                 //Looks across row
                 if self.columns[column] == nextRow {
                     nextMoveConflicts++
+                     currentPossibleConflicts.append(column)
                 }
                 //Looks at up and down diagnals
                 if self.columns[column] == (nextRow + (variable-column)) {
                     nextMoveConflicts++
+                     currentPossibleConflicts.append(column)
                 }
                 if self.columns[column] == (nextRow - (variable-column)) {
                     nextMoveConflicts++
+                    currentPossibleConflicts.append(column)
                 }
             }
         }
@@ -244,6 +248,11 @@ class MinConflicts {
             self.conflicts = self.conflicts + (nextMoveConflicts - currentPositionConflicts)
             //Removes all old conflicts involving the old position
             removeOldConflicts(variable)
+            //Adds all the new conflicts if there are any
+            if minConflicts != 0 {
+                addConflictFromNewMove(conflictStore[bestMove])
+            }
+
         }
         
         //Returns new row for queen to occupy
