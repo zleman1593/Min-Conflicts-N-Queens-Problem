@@ -15,11 +15,12 @@ class Board : UIView {
     var boardWidth  : Int?
     var cellSize : Int?
     var xPadding : CGFloat?
-    var yPadding : CGFloat?
+    var yPadding : CGFloat? = 30
     var fontSize : CGFloat?
     
     override func drawRect(rect: CGRect) {
         if boardWidth != nil && boardHeight != nil {
+            //draw board
             for i in 0..<boardWidth! {
                 for j in 0..<boardHeight! {
                     var x = xPadding! + CGFloat(i * cellSize!)
@@ -45,7 +46,11 @@ class Board : UIView {
                 }
             }
         } else {
-            //perhaps draw grayed out board, or question mark?
+            //draw grayed-out board
+            var rectangle = CGRectMake(0,30,self.frame.width,self.frame.width)
+            var context = UIGraphicsGetCurrentContext()
+            CGContextSetRGBFillColor(context, 0.5, 0.5, 0.5, 1)
+            CGContextFillRect(context, rectangle)
         }
     }
     
@@ -54,7 +59,6 @@ class Board : UIView {
         self.boardWidth  = rowsAndColumns
         self.cellSize = Int(self.frame.width / CGFloat(rowsAndColumns))
         self.xPadding = (self.frame.width - (CGFloat(boardWidth!)*CGFloat(cellSize!)))/2
-        self.yPadding = 30
         self.fontSize = CGFloat(self.cellSize!-5)
     }
     
