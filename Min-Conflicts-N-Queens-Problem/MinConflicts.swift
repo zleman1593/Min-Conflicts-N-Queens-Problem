@@ -61,7 +61,7 @@ class MinConflicts {
                 //only choose from set of conflicted variables
                 
                 //TODO this is not the fastest way to do the randomization
-                while  allConflicts[column]?.count ==  0{
+                while allConflicts[column]?.count ==  0{
                     column = Int.random(self.n!)
                 }
                 //set queen in the random column to row that minimizes conflicts
@@ -313,8 +313,10 @@ class MinConflicts {
     
     func removeOldConflicts(column : Int) {
         //Run through all the conflicts and go to those columns and remove this column from these other columns
-        for columnB in 0..<allConflicts[column]!.count {
-            allConflicts[columnB]?.removeObject(column)
+        if allConflicts[column]? != nil {
+            for columnB in 0..<allConflicts[column]!.count {
+                allConflicts[columnB]?.removeObject(column)
+            }
         }
         
         //Then delete all current conflicts in this column
