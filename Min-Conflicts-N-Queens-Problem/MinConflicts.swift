@@ -182,7 +182,9 @@ class MinConflicts {
             if minConflicts > currentMoveConflicts {
                 minConflicts = currentMoveConflicts
                 // Replace the array with this new move since it is better than the moves currently in the array
-                bestMove = [row]
+                //bestMove = [row]
+                 bestMove = []
+                 bestMove.append(row)
 
             }
             else if minConflicts == currentMoveConflicts {
@@ -196,7 +198,7 @@ class MinConflicts {
         let bestMoveFromSelection = Int.random(bestMove.count)
         
         //If the new position is different from current position update conflict information
-        if bestMoveFromSelection != self.columns[currentSelectedColumn] && updateRunnningConflicts {
+        if bestMove[bestMoveFromSelection] != self.columns[currentSelectedColumn] && updateRunnningConflicts {
             
             //Keeps the number of conflicts updated after a move is made
             self.conflicts += (minConflicts - currentPositionConflicts)
@@ -204,13 +206,13 @@ class MinConflicts {
             removeOldConflicts(currentSelectedColumn)
             //Adds all the new conflicts if there are any
             if minConflicts != 0 {
-                addConflictFromNewMove(conflictStore[bestMoveFromSelection])
+                addConflictFromNewMove(conflictStore[bestMove[bestMoveFromSelection]])
             }
         }
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
         //Returns the number of conflicts that will be reduced upon making this move
-        return (bestMoveFromSelection,minConflicts - currentPositionConflicts)
+        return (bestMove[bestMoveFromSelection],minConflicts - currentPositionConflicts)
     }
     
     //Input: Column; Output: A random row for queen in column
