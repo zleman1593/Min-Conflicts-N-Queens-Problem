@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Zackery leman. All rights reserved.
 //
 
-//TODO When ties are broken randomly, the probability that the next best lower row will be choosen is cut in half. We dont want this. Shoudl have equal chance of being picked
-
 import Foundation
 
 class MinConflicts {
@@ -56,10 +54,6 @@ class MinConflicts {
             if self.isSolution() {
                 self.stepsUsed = index
                 return true
-            }
-            
-            if self.conflicts < 0 {
-                println("Error: Negative Conflicts")
             }
             
             //Picks a column with conflicts at random
