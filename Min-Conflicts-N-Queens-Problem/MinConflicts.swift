@@ -31,7 +31,7 @@ class MinConflicts {
         for index in 1...n {
             let rand = Int.random(n)
             columns.append(rand)
-
+            
         }
     }
     
@@ -40,7 +40,7 @@ class MinConflicts {
         self.columns[column] = row
     }
     
-    //minConflicts board configuration.
+    
     //Output: true if solution found within maxSteps, else false
     func minConflicts(algorithm: Algorithm) -> Bool {
         //count initial number of conflicts
@@ -60,19 +60,19 @@ class MinConflicts {
             
             switch algorithm {
             case Algorithm.Vanilla:
-    
-    
-                //only choose from set of conflicted variables
+                
+                
+                //only choose from set of conflicted currentSelectedColumns
                 
                 
                 
                 //set queen in the random column to row that minimizes conflicts
-                self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
+                self.columns[column] = self.findLeastConflictedRowForQueenToMoveToFrom(column, updateRunnningConflicts: true).bestRow
             case Algorithm.Random:
                 //choose a random column
                 if Int.random(3) != 0 {
                     //set queen in the random column to row that minimizes conflicts
-                    self.columns[column] = self.conflicts(column, updateRunnningConflicts: true).bestRow
+                    self.columns[column] = self.findLeastConflictedRowForQueenToMoveToFrom(column, updateRunnningConflicts: true).bestRow
                 } else {
                     //set queen in the random column to row that minimizes conflicts
                     self.columns[column] = self.randomPlacement(column)
@@ -83,7 +83,7 @@ class MinConflicts {
                 var bestConflicts = Int.max
                 var moveQueenTo = 0
                 for index in self.columns{
-                    let result = self.conflicts(index, updateRunnningConflicts: false)
+                    let result = self.findLeastConflictedRowForQueenToMoveToFrom(index, updateRunnningConflicts: false)
                     
                     if result.conflicts < bestConflicts {
                         bestConflicts = result.conflicts
@@ -108,12 +108,12 @@ class MinConflicts {
             }
         }
         
-        //return that it had to give up
+        //Return that it had to give up
         return false
     }
     
     //Input: Column; Output: Least-conflicted row for queen in column
-    func conflicts(variable : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int) {
+    func findLeastConflictedRowForQueenToMoveToFrom(currentSelectedColumn : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int) {
         //This holds all the possible conflicts for each possible move to a new row
         var conflictStore : [Array<Int>] = []
         //Keeps track of the best moves so far
@@ -130,7 +130,7 @@ class MinConflicts {
             var currentPossibleConflicts : Array<Int> = []
             for column in 0..<self.columns.count {
                 //skip conflict with self
-                if column != variable {
+                if column != currentSelectedColumn {
                     //Looks across row
                     if self.columns[column] == row {
                         currentMoveConflicts++
@@ -138,11 +138,11 @@ class MinConflicts {
                         currentPossibleConflicts.append(column)
                     }
                         //Looks at up and down diagnals
-                    else if self.columns[column] == (row + (variable-column)) {
+                    else if self.columns[column] == (row + (currentSelectedColumn-column)) {
                         currentMoveConflicts++
                         currentPossibleConflicts.append(column)
                     }
-                    else if self.columns[column] == (row - (variable-column)) {
+                    else if self.columns[column] == (row - (currentSelectedColumn-column)) {
                         currentMoveConflicts++
                         currentPossibleConflicts.append(column)
                     }
@@ -152,7 +152,7 @@ class MinConflicts {
             
             //Makes the last element in the array the Initial column number. Important for later.
             if currentPossibleConflicts.count != 0 {
-                currentPossibleConflicts.append(variable)
+                currentPossibleConflicts.append(currentSelectedColumn)
             }
             
             //Adds array holding conflict information for potential moves
@@ -161,12 +161,12 @@ class MinConflicts {
             /* If row being looked at is the row that the queen in the current column currently occupies,
             * set currentPositionConflicts to the number of conflicts this queen is curently involved in.
             */
-            if row == self.columns[variable] {
+            if row == self.columns[currentSelectedColumn] {
                 currentPositionConflicts = currentMoveConflicts
             }
             /* If the row being looked at does not have the queen from the current column,
-             * update the best move if the move would result in fewer conflicts
-             */
+            * update the best move if the move would result in fewer conflicts
+            */
             /*This needs to be an if to allow queen to state in the current optimal state. Make an else if you want to force it to move. But that would reduce performance drastically.*/
             if minConflicts > currentMoveConflicts {
                 
@@ -174,29 +174,25 @@ class MinConflicts {
                 minConflicts = currentMoveConflicts
                 bestMove = [row]
                 
-                 // Replace the array with a new array filled with the data from this move
+                // Replace the array with a new array filled with the data from this move
                 
-            }//Breaks Ties randomly
+            }
             else if minConflicts == currentMoveConflicts {
-                
-                //let randomNumber = Int.random(2)
-                //if randomNumber == 1 {
-                   // minConflicts = currentMoveConflicts
-                    bestMove.append(row)
-                //}
-                
-                
-               //Add to the current array
+                //Add to the current array
+                bestMove.append(row)
                 
             }
         }
         
+        //Breaks ties randomly from the best options
         let bestMoveFromSelection = Int.random(bestMove.count)
-        //Keeps the number of conflicts updated after a move is made
-        if bestMoveFromSelection != self.columns[variable] && updateRunnningConflicts {
+        
+        
+        if bestMoveFromSelection != self.columns[currentSelectedColumn] && updateRunnningConflicts {
+            //Keeps the number of conflicts updated after a move is made
             self.conflicts += (minConflicts - currentPositionConflicts)
             //Removes all old conflicts involving the old position
-            removeOldConflicts(variable)
+            removeOldConflicts(currentSelectedColumn)
             //Adds all the new conflicts if there are any
             if minConflicts != 0 {
                 addConflictFromNewMove(conflictStore[bestMoveFromSelection])
@@ -204,12 +200,12 @@ class MinConflicts {
         }
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
-        //Returns the number of conflicts that will be reduced upon making this move-----------------This is different then what doc specifies
+        //Returns the number of conflicts that will be reduced upon making this move
         return (bestMoveFromSelection,minConflicts - currentPositionConflicts)
     }
     
     //Input: Column; Output: A random row for queen in column
-    func randomPlacement(variable : Int) -> Int {
+    func randomPlacement(currentSelectedColumn : Int) -> Int {
         var minConflicts = 0
         //This holds all the possible conflicts for each possible move to a new row
         var conflictStore : [Array<Int>] = []
@@ -221,18 +217,18 @@ class MinConflicts {
         //loop through columns
         for column in 0..<self.columns.count {
             //skip conflict with self
-            if column != variable{
+            if column != currentSelectedColumn{
                 //Looks across row
                 if self.columns[column] == nextRow {
                     nextMoveConflicts++
-                     currentPossibleConflicts.append(column)
+                    currentPossibleConflicts.append(column)
                 }
                 //Looks at up and down diagnals
-                if self.columns[column] == (nextRow + (variable-column)) {
+                if self.columns[column] == (nextRow + (currentSelectedColumn-column)) {
                     nextMoveConflicts++
-                     currentPossibleConflicts.append(column)
+                    currentPossibleConflicts.append(column)
                 }
-                if self.columns[column] == (nextRow - (variable-column)) {
+                if self.columns[column] == (nextRow - (currentSelectedColumn-column)) {
                     nextMoveConflicts++
                     currentPossibleConflicts.append(column)
                 }
@@ -240,23 +236,23 @@ class MinConflicts {
         }
         //Makes the last element in the array the Initial column number. Important for later.
         if currentPossibleConflicts.count != 0 {
-            currentPossibleConflicts.append(variable)
+            currentPossibleConflicts.append(currentSelectedColumn)
         }
         //Adds array holding conflict information for potential moves
         conflictStore.append(currentPossibleConflicts)
         
         for column in 0..<self.columns.count {
             //skip conflict with self
-            if column != variable{
+            if column != currentSelectedColumn{
                 //Looks across row
-                if self.columns[column] == self.columns[variable] {
+                if self.columns[column] == self.columns[currentSelectedColumn] {
                     currentPositionConflicts++
                 }
                 //Looks at up and down diagnals
-                if self.columns[column] ==  (self.columns[variable] + (variable-column)) {
+                if self.columns[column] ==  (self.columns[currentSelectedColumn] + (currentSelectedColumn-column)) {
                     currentPositionConflicts++
                 }
-                if self.columns[column] ==  (self.columns[variable] - (variable-column)) {
+                if self.columns[column] ==  (self.columns[currentSelectedColumn] - (currentSelectedColumn-column)) {
                     currentPositionConflicts++
                 }
             }
@@ -264,7 +260,7 @@ class MinConflicts {
         
         //Makes the last element in the array the Initial column number. Important for later.
         if currentPossibleConflicts.count != 0 {
-            currentPossibleConflicts.append(variable)
+            currentPossibleConflicts.append(currentSelectedColumn)
         }
         
         //Adds array holding conflict information for potential moves
@@ -272,15 +268,15 @@ class MinConflicts {
         
         
         //Keeps the number of conflicts updated after a move is made
-        if nextRow != self.columns[variable] {
+        if nextRow != self.columns[currentSelectedColumn] {
             self.conflicts = self.conflicts + (nextMoveConflicts - currentPositionConflicts)
             //Removes all old conflicts involving the old position
-            removeOldConflicts(variable)
+            removeOldConflicts(currentSelectedColumn)
             //Adds all the new conflicts if there are any
-          /*  if minConflicts != 0 {
-                addConflictFromNewMove(conflictStore[bestMove])
+            /*  if minConflicts != 0 {
+            addConflictFromNewMove(conflictStore[bestMove])
             }*/
-
+            
         }
         
         //Returns new row for queen to occupy
@@ -323,6 +319,7 @@ class MinConflicts {
     
     /*Adds the conflicts to the global conflict store*/
     func addConflicts(columnA : Int, columnB : Int) {
+        
         if allConflicts[columnA]? != nil {
             allConflicts[columnA]!.addObject(columnB)
         } else {
@@ -347,8 +344,8 @@ class MinConflicts {
                 self.addConflicts(mainColumn,columnB: conflicts2[columns])
             }
         } else {
-                    self.addConflicts(mainColumn,columnB: conflicts2[0])
-}
+            self.addConflicts(mainColumn,columnB: conflicts2[0])
+        }
     }
     
     func removeOldConflicts(column : Int) {

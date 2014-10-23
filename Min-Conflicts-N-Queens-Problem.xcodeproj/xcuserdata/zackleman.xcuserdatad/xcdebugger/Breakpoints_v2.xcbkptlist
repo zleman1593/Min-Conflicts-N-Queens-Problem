@@ -575,7 +575,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
-            landmarkName = "conflicts(_:updateRunnningConflicts:)"
+            landmarkName = "findLeastCoflictedRowForQueenToMoveToFrom(_:updateRunnningConflicts:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -669,7 +669,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
             endingLineNumber = "199"
-            landmarkName = "conflicts(_:updateRunnningConflicts:)"
+            landmarkName = "findLeastCoflictedRowForQueenToMoveToFrom(_:updateRunnningConflicts:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -685,7 +685,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "202"
             endingLineNumber = "202"
-            landmarkName = "conflicts(_:updateRunnningConflicts:)"
+            landmarkName = "findLeastCoflictedRowForQueenToMoveToFrom(_:updateRunnningConflicts:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -731,7 +731,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
             endingLineNumber = "208"
-            landmarkName = "conflicts(_:updateRunnningConflicts:)"
+            landmarkName = "findLeastCoflictedRowForQueenToMoveToFrom(_:updateRunnningConflicts:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -777,7 +777,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
             endingLineNumber = "135"
-            landmarkName = "conflicts(_:updateRunnningConflicts:)"
+            landmarkName = "findLeastCoflictedRowForQueenToMoveToFrom(_:updateRunnningConflicts:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
