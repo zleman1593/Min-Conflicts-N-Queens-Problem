@@ -45,7 +45,7 @@ class MinConflicts {
         
         //Count initial number of conflicts
         self.conflicts = initialConflictCounter()
-        
+     
         println("Current Random Assignment " + columns.description)
         println("Current Conflicts " + self.conflicts.description)
         
@@ -60,6 +60,7 @@ class MinConflicts {
             
             if self.conflicts < 0 {
                 println("Error: Negative Conflicts")
+                println("allConflicts: \(allConflicts.count)")
             }
             
             //Picks a column with conflicts at random
@@ -169,8 +170,7 @@ class MinConflicts {
             conflictStore.append(currentPossibleConflicts)
             
             /* If row being looked at is the row that the queen in the current column currently occupies,
-            * set currentPositionConflicts to the number of conflicts this queen is curently involved in.
-            */
+            * set currentPositionConflicts to the number of conflicts this queen is curently involved in*/
             if row == self.columns[currentSelectedColumn] {
                 currentPositionConflicts = currentMoveConflicts
             }
