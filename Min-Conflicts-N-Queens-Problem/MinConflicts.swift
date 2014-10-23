@@ -119,17 +119,22 @@ class MinConflicts {
     //Input: Currently Selected Column; Output: Least-conflicted row for queen in column
     func findLeastConflictedRowForQueenToMoveToFrom(currentSelectedColumn : Int, updateRunnningConflicts: Bool) -> (bestRow:Int,conflicts:Int,conflictStore : [Int : Array<Int>]) {
         
-        /*
-        nextMoveInfo contains:
+        
+        //This holds all the possible conflicts for each  of the best possible moves to a new row
+        var conflictStore = [Int : Array<Int>]()
+        //Keeps track of the best moves (of equivalent conflicts)
+        var bestMoves : [Int] = []
+        
+        /*nextMoveInfo contains:
         * minConflictsForBestMoves: Number of conflicts that will be generated due to move to new row position
         * conflictsFromRowBeforeMove: Current conflicts due to current row position
         * bestMoves: Array of equivalently best moves
         * conflictStore: Stores the conflicts for each of the best possible moves
         */
-        let nextMoveInfo = leastConflictedSubRoutine(currentSelectedColumn)
+        let nextMoveInfo = leastConflictedSubRoutine(&conflictStore, bestMoves: &bestMoves, currentSelectedColumn: currentSelectedColumn)
         
         //Breaks ties randomly from the best options
-        let moveToMake = nextMoveInfo.bestMoves[Int.random(nextMoveInfo.bestMoves.count)]
+        let moveToMake = bestMoves[Int.random(bestMoves.count)]
         
         //If the new position is different from current position update conflict information
         if moveToMake != self.columns[currentSelectedColumn] && updateRunnningConflicts {
@@ -140,22 +145,20 @@ class MinConflicts {
             removeOldConflicts(currentSelectedColumn)
             //Adds all the new conflicts if there are any
             if nextMoveInfo.minConflictsForBestMoves != 0 {
-                addConflictFromNewMove(nextMoveInfo.conflictStore[moveToMake]!,mainColumn: currentSelectedColumn)
+                addConflictFromNewMove(conflictStore[moveToMake]!,mainColumn: currentSelectedColumn)
             }
         }
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
         //Returns the number of conflicts that will be reduced upon making this move
-        return (moveToMake, nextMoveInfo.minConflictsForBestMoves - nextMoveInfo.conflictsFromRowBeforeMove, nextMoveInfo.conflictStore)
+        return (moveToMake, nextMoveInfo.minConflictsForBestMoves - nextMoveInfo.conflictsFromRowBeforeMove,conflictStore)
     }
     
-    /*Does the heavy lifiting for row conflict Identification*/
-    func leastConflictedSubRoutine(currentSelectedColumn : Int)->(minConflictsForBestMoves: Int, conflictsFromRowBeforeMove : Int, bestMoves:[Int], conflictStore : [Int : Array<Int>]){
+    /*Does the heavy lifiting for row conflict Identification
+    *Note: First two parameters are passed by reference so that they do not need to be copied
+    */
+    func leastConflictedSubRoutine(inout conflictStore: [Int : Array<Int>], inout bestMoves : [Int] , currentSelectedColumn : Int)->(minConflictsForBestMoves: Int, conflictsFromRowBeforeMove : Int){
         
-        //This holds all the possible conflicts for each  of the best possible moves to a new row
-        var conflictStore = [Int : Array<Int>]()
-        //Keeps track of the best moves (of equivalent conflicts) so far
-        var bestMoves : [Int] = []
         //The number of conflicts the current row position is involved in
         var conflictsFromRowBeforeMove = 0
         // keeps track of the minimum number of conflicts for the best new moves so far
@@ -219,7 +222,7 @@ class MinConflicts {
             }
             
         }
-        return (minConflictsForBestMoves, conflictsFromRowBeforeMove, bestMoves, conflictStore)
+        return (minConflictsForBestMoves, conflictsFromRowBeforeMove)
     }
     
     
