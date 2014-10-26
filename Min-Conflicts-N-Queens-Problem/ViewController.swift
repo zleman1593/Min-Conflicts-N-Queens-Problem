@@ -88,7 +88,7 @@ class ViewController: UIViewController, BoardDelegate {
         //In background thread
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
             var alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            if self.solver.minConflicts(self.selectedAlgorithm()) {
+            if self.solver.run(self.selectedAlgorithm()) {
                 println("Solved!")
                 println("Final Solution: \(self.solver.columns.description)")
                 println("Found at Step \(self.solver.stepsUsed)")

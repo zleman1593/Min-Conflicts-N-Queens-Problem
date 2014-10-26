@@ -44,7 +44,7 @@ class MinConflicts {
     
     
     //Output: true if solution found within maxSteps, else false
-    func minConflicts(algorithm: Algorithm) -> Bool {
+    func run(algorithm: Algorithm) -> Bool {
         //Count initial number of conflicts
         self.conflicts = initialConflictCounter()
         println("Current Random Assignment " + columns.description)
@@ -197,7 +197,6 @@ class MinConflicts {
         
         //Loop through all the columns for each row choice and get conflicts
         for row in 0..<self.columns.count {
-            
             //Tracks the number of conflicts associated with this potential row change
             var currentPossibleConflicts = 0
             //Array to hold the conflicts for this row choice. Last element will be the column number (Added later)
