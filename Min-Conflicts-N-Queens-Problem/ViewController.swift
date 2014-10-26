@@ -43,11 +43,10 @@ class ViewController: UIViewController, BoardDelegate {
             
             if let n = numQueens {
                 self.solver = MinConflicts()
-                //self.solver.randomlyPopulateBoardOfSize(n)
                 self.solver.populateBoardOfSize(n, optimally: self.POPULATE_OPTIMALLY)
-                self.board.setBoardSize(n)
                 
                 //Update Board with starting size
+                self.board.setBoardSize(n)
                 self.board.setNeedsDisplay()
                 
                 //Creates a tap location detector

@@ -12,7 +12,12 @@
 import Foundation
 
 class MinConflicts {
-    let HOW_RANDOM : Float = 0.2 //% randomness in random algorithm
+    //% randomness in random algorithm
+    let HOW_RANDOM : Float = 0.2
+    //number of runs alloted; must be 1 at minimum to run at all
+    let MAX_RUNS = 5
+    //number of runs used
+    var runsUsed = 0
     //Number of rows and Columns
     var n : Int? = nil
     //Number of steps to find solution
@@ -55,15 +60,11 @@ class MinConflicts {
         println("Current Conflicts " + self.conflicts.description)
         
         //On Each step
-        for index in 1...self.maxSteps! {
+        for index in 1...self.maxSteps!/MAX_RUNS {
             //Check if current assignment is solution
             if self.isSolution() {
-                self.stepsUsed = index
+                self.stepsUsed = self.runsUsed*(self.maxSteps!/MAX_RUNS) + index
                 return true
-            }
-            
-            if  self.conflicts <= 0 {
-                println("Fail")
             }
            
             switch algorithm {
@@ -135,6 +136,12 @@ class MinConflicts {
                     addConflictFromNewMove(queenToChoose.conflictStore[queenToChoose.row]!,mainColumn: queenToChoose.selectedQueen)
                 }
             }
+        }
+        
+        self.runsUsed++ //increment runs
+        //check if we should run again
+        if self.runsUsed < self.MAX_RUNS {
+            return self.run(algorithm)
         }
         
         //Return that it had to give up
