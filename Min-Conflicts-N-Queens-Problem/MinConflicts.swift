@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Zackery leman. All rights reserved.
 //
 
+//TODO: Implement columnsWithConflictsButNoBetterMovesAvalible for Greedy
+//TODO: Second Part of assignment
+
 import Foundation
 
 class MinConflicts {
@@ -22,7 +25,7 @@ class MinConflicts {
     var columns   : [Int] = []
     //Stores all conflicts in board
     var allConflicts = [Int : NSMutableArray]()
-    //Tracks all the columns that still have conflicts, but shouln't be looked at as there are no moves left for that column currently
+    //Tracks all the columns that still have conflicts, but shouldn't be looked at as there are no moves left for that column currently
     var columnsWithConflictsButNoBetterMovesAvalible = [Int : Int]()
     
     func randomlyPopulateBoardOfSize(n : Int) {
@@ -80,7 +83,10 @@ class MinConflicts {
                 //Picks a column with conflicts at random
                 let columnsWithConflicts = allConflicts.keys.array
                 var column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
-
+                //While you have not selected a column that will result in a row change
+                while columnsWithConflictsButNoBetterMovesAvalible[column] != nil {
+                    column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
+                }
                 //choose a random column
                 if Int.random(HOW_RANDOM) != 0 {
                     //set queen in the random column to row that minimizes conflicts
@@ -96,7 +102,7 @@ class MinConflicts {
                 
                 //For all queens see which queen will result in the largest conflict reduction
                 for index in self.columns{
-
+                  //  if columnsWithConflictsButNoBetterMovesAvalible[index] == nil {
                     let nextMoveInfo = self.findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false)
                     
                     if nextMoveInfo.conflicts < bestConflicts {
@@ -107,6 +113,7 @@ class MinConflicts {
                         bestQueen.append(selectedQueen: index, row: nextMoveInfo.bestRow,conflictStore: nextMoveInfo.conflictStore)
 
                     }
+                   // }
                     
                 }
                 
