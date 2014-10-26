@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
     let MAX_STEPS : Int = 500
+    let POPULATE_OPTIMALLY = false //should board be populated poptimally?
     var solver : MinConflicts!
     @IBOutlet var board : Board!
     @IBOutlet var solveButton: UIButton!
@@ -43,7 +44,7 @@ class ViewController: UIViewController, BoardDelegate {
             if let n = numQueens {
                 self.solver = MinConflicts()
                 //self.solver.randomlyPopulateBoardOfSize(n)
-                self.solver.optimallyPopulateBoardOfSize(n)
+                self.solver.populateBoardOfSize(n, optimally: self.POPULATE_OPTIMALLY)
                 self.board.setBoardSize(n)
                 
                 //Update Board with starting size
