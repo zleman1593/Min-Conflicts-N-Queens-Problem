@@ -60,8 +60,6 @@ class MinConflicts {
             }
             
            
-           
-            
             switch algorithm {
             case Algorithm.Vanilla:
                 //Picks a column with conflicts at random
@@ -72,7 +70,6 @@ class MinConflicts {
                 self.columns[column] = self.findLeastConflictedRowForQueenToMoveToFrom(column, updateRunnningConflicts: true).bestRow
                 
             case Algorithm.Random:
-                //Picks a column with conflicts at random
                 //Picks a column with conflicts at random
                 let columnsWithConflicts = allConflicts.keys.array
                  var column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
@@ -88,8 +85,9 @@ class MinConflicts {
             case Algorithm.Greedy:
                 var bestQueen : [(selectedQueen: Int, row: Int, conflictStore: [Int : Array<Int>])] = []
                 var bestConflicts = Int.max
+                
+                //For all queens see which queen will result in the largest conflict reduction
                 for index in self.columns{
-                    
                     let nextMoveInfo = self.findLeastConflictedRowForQueenToMoveToFrom(index, updateRunnningConflicts: false)
                     
                     if nextMoveInfo.conflicts < bestConflicts {
@@ -101,6 +99,7 @@ class MinConflicts {
                     }
                     
                 }
+                
                 //Breaks ties randomly from the best options
                 let queenToChoose = bestQueen[Int.random(bestQueen.count)]
 
