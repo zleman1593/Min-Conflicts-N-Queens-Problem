@@ -59,18 +59,23 @@ class MinConflicts {
                 println("Fail")
             }
             
-            //Picks a column with conflicts at random
-            let columnsWithConflicts = allConflicts.keys.array
-            var column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
+           
+           
             
             switch algorithm {
             case Algorithm.Vanilla:
-                
+                //Picks a column with conflicts at random
+                let columnsWithConflicts = allConflicts.keys.array
+                //Picks a column with conflicts at random
+                 var column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
                 //Set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.findLeastConflictedRowForQueenToMoveToFrom(column, updateRunnningConflicts: true).bestRow
                 
             case Algorithm.Random:
-                
+                //Picks a column with conflicts at random
+                //Picks a column with conflicts at random
+                let columnsWithConflicts = allConflicts.keys.array
+                 var column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
                 //choose a random column
                 if Int.random(3) != 0 {
                     //set queen in the random column to row that minimizes conflicts
@@ -99,11 +104,14 @@ class MinConflicts {
                 //Breaks ties randomly from the best options
                 let queenToChoose = bestQueen[Int.random(bestQueen.count)]
 
-                //set queen in the random column to row that minimizes conflicts
+                //set queen  to row that minimizes conflicts
                 self.columns[queenToChoose.selectedQueen] = queenToChoose.row
+                
                 self.conflicts = self.conflicts + bestConflicts
+                
                 //Removes all old conflicts involving the old position
                 removeOldConflicts(queenToChoose.selectedQueen)
+                
                 //Adds all the new conflicts if there are any
                 if bestConflicts != 0 {
                     addConflictFromNewMove(queenToChoose.conflictStore[queenToChoose.row]!,mainColumn: queenToChoose.selectedQueen)
