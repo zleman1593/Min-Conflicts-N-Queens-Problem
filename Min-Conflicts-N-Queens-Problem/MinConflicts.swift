@@ -256,10 +256,6 @@ class MinConflicts {
                 }
             }
         }
-        //Makes the last element in the array the Initial column number. Important for later.
-        if enumeratedCurrentPossibleConflicts.count != 0 {
-            enumeratedCurrentPossibleConflicts.append(currentSelectedColumn)
-        }
         //Adds array holding conflict information for potential moves
         conflictStore.append(enumeratedCurrentPossibleConflicts)
         
@@ -280,10 +276,6 @@ class MinConflicts {
             }
         }
         
-        //Makes the last element in the array the Initial column number. Important for later.
-        if enumeratedCurrentPossibleConflicts.count != 0 {
-            enumeratedCurrentPossibleConflicts.append(currentSelectedColumn)
-        }
         
         //Adds array holding conflict information for potential moves
         conflictStore.append(enumeratedCurrentPossibleConflicts)
