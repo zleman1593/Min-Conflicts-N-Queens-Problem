@@ -10,7 +10,7 @@ import Foundation
 
 class MinConflicts {
     //Number of rows and Columns
-    var 🌀 : Int? = nil
+    var n : Int? = nil
     //Number of steps to find solution
     var maxSteps  : Int?  = nil
     //Number of steps actually used to find solution
@@ -22,11 +22,11 @@ class MinConflicts {
     //Stores all conflicts in board
     var allConflicts = [Int : NSMutableArray]()
     
-    func randomlyPopulateBoardOfSize(🌀 : Int) {
-        self.🌀 = 🌀
+    func randomlyPopulateBoardOfSize(n : Int) {
+        self.n = n
         //initialize n columns with random values
-        for index in 1...🌀 {
-            let rand = Int.random(🌀)
+        for index in 1...n {
+            let rand = Int.random(n)
             columns.append(rand)
         }
     }
@@ -66,6 +66,7 @@ class MinConflicts {
                 let columnsWithConflicts = allConflicts.keys.array
                 //Picks a column with conflicts at random
                  var column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
+
                 //Set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.findLeastConflictedRowForQueenToMoveToFrom(column, updateRunnningConflicts: true).bestRow
                 
@@ -88,6 +89,7 @@ class MinConflicts {
                 
                 //For all queens see which queen will result in the largest conflict reduction
                 for index in self.columns{
+
                     let nextMoveInfo = self.findLeastConflictedRowForQueenToMoveToFrom(index, updateRunnningConflicts: false)
                     
                     if nextMoveInfo.conflicts < bestConflicts {
@@ -96,6 +98,7 @@ class MinConflicts {
                         
                     } else if nextMoveInfo.conflicts == bestConflicts {
                         bestQueen.append(selectedQueen: index, row: nextMoveInfo.bestRow,conflictStore: nextMoveInfo.conflictStore)
+
                     }
                     
                 }
@@ -237,7 +240,7 @@ class MinConflicts {
         var minConflictsForBestMoves = 0
         //This holds all the possible conflicts for each possible move to a new row
         var conflictStore : [Array<Int>] = []
-        let nextRow = Int.random(self.🌀!) //or +1 ?
+        let nextRow = Int.random(self.n!) //or +1 ?
         var conflictsFromRowBeforeMove = 0
         var nextMoveConflicts = 0
         //Array to hold the conflicts for this row choice. Last element will be the column number (Added later)
@@ -293,7 +296,6 @@ class MinConflicts {
         
         //Adds array holding conflict information for potential moves
         conflictStore.append(enumeratedCurrentPossibleConflicts)
-        
         
         //Keeps the number of conflicts updated after a move is made
         if nextRow != self.columns[currentSelectedColumn] {
