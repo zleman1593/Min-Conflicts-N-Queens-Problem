@@ -12,7 +12,7 @@
 import Foundation
 
 class MinConflicts {
-    let HOW_RANDOM = 5
+    let HOW_RANDOM : Float = 0.2
     //Number of rows and Columns
     var n : Int? = nil
     //Number of steps to find solution
@@ -88,7 +88,7 @@ class MinConflicts {
                     column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
                 }
                 //choose a random column
-                if Int.random(HOW_RANDOM) != 0 {
+                if Float.random() >= HOW_RANDOM {
                     //set queen in the random column to row that minimizes conflicts
                     self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
                 } else {

@@ -19,3 +19,10 @@ extension Int {
         return Int(arc4random_uniform(UInt32(n)))
     }
 }
+
+extension Float {
+    //generates a random float from 0 to 1; wrapper for arc4random_uniform to aid readability
+    static func random() -> Float {
+        return Float(arc4random()) / Float(UINT32_MAX)
+    }
+}
