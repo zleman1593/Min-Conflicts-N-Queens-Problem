@@ -22,6 +22,8 @@ class MinConflicts {
     var columns   : [Int] = []
     //Stores all conflicts in board
     var allConflicts = [Int : NSMutableArray]()
+    //Tracks all the columns that still have conflicts, but shouln't be looked at as there are no moves left for that column currently
+    var columnsWithConflictsButNoBetterMovesAvalible = [Int : Int]()
     
     func randomlyPopulateBoardOfSize(n : Int) {
         self.n = n
@@ -62,8 +64,15 @@ class MinConflicts {
                 //Picks a column with conflicts at random
                 let columnsWithConflicts = allConflicts.keys.array
                 //Picks a column with conflicts at random
+                
+                
                 var column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
-
+                
+                //While you have not selected a column that will result in a row change
+                while columnsWithConflictsButNoBetterMovesAvalible[column] != nil {
+                     column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
+                }
+                
                 //Set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
                 
@@ -140,6 +149,12 @@ class MinConflicts {
         */
         let nextMoveInfo = leastConflictedSubRoutine(&conflictStore, bestMoves: &bestMoves, currentSelectedColumn: currentSelectedColumn)
         
+        if bestMoves.count == 1 {
+            //Indicates column cannot be updated until a conflict with it changes
+            columnsWithConflictsButNoBetterMovesAvalible.updateValue(currentSelectedColumn, forKey: currentSelectedColumn)
+        }
+        
+        
         //Breaks ties randomly from the best options
         let moveToMake = bestMoves[Int.random(bestMoves.count)]
         
@@ -171,6 +186,7 @@ class MinConflicts {
         var conflictsFromRowBeforeMove = 0
         // keeps track of the minimum number of conflicts for the best new moves so far
         var minConflictsForBestMoves = Int.max
+      
         
         //Loop through all the columns for each row choice and get conflicts
         for row in 0..<self.columns.count {
@@ -342,10 +358,14 @@ class MinConflicts {
     
     
     func removeOldConflicts(column : Int) {
+        //Frees up the column to be looked at in the future
+        columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(column)
+        
         //Run through all the conflicts and go to those columns and remove this column from these other columns
         if allConflicts[column]? != nil {
             for columnB in 0..<allConflicts[column]!.count {
                 allConflicts[columnB]?.removeObject(column)
+                columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
             }
         }
         
@@ -362,6 +382,10 @@ class MinConflicts {
     
     /*Adds the conflicts between the two columns to the global conflict store*/
     func addConflictsBetweenTwoColumns(columnA : Int, columnB : Int) {
+        //Frees up the column to be looked at in the future
+         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnA)
+         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
+        
         if allConflicts[columnA]? != nil {
             allConflicts[columnA]!.addObject(columnB)
         } else {
