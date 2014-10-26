@@ -234,7 +234,7 @@ class MinConflicts {
         let nextRow = Int.random(self.n!) //or +1 ?
         var conflictsFromRowBeforeMove = 0
         var nextMoveConflicts = 0
-        //Array to hold the conflicts for this row choice. Last element will be the column number (Added later)
+        //Array to hold the conflicts for this row choice. 
         var enumeratedCurrentPossibleConflicts : Array<Int> = []
         //loop through columns
         for column in 0..<self.columns.count {
@@ -259,19 +259,24 @@ class MinConflicts {
         //Adds array holding conflict information for potential moves
         conflictStore.append(enumeratedCurrentPossibleConflicts)
         
+        enumeratedCurrentPossibleConflicts = []
+        
         for column in 0..<self.columns.count {
             //skip conflict with self
             if column != currentSelectedColumn{
                 //Looks across row
                 if self.columns[column] == self.columns[currentSelectedColumn] {
                     conflictsFromRowBeforeMove++
+                    enumeratedCurrentPossibleConflicts.append(column)
                 }
                 //Looks at up and down diagnals
                 if self.columns[column] == (self.columns[currentSelectedColumn] + (currentSelectedColumn-column)) {
                     conflictsFromRowBeforeMove++
+                    enumeratedCurrentPossibleConflicts.append(column)
                 }
                 if self.columns[column] == (self.columns[currentSelectedColumn] - (currentSelectedColumn-column)) {
                     conflictsFromRowBeforeMove++
+                    enumeratedCurrentPossibleConflicts.append(column)
                 }
             }
         }
