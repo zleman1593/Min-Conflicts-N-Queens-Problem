@@ -7,7 +7,8 @@
 //
 
 //TODO: Implement columnsWithConflictsButNoBetterMovesAvalible for Greedy
-//TODO: Second Part of assignment
+//TODO: Add another button on popup to select optimal or nonoptimal board placement. (What about initial board?)
+//TODO: Implement last part off assignment
 
 import Foundation
 
@@ -45,6 +46,7 @@ class MinConflicts {
                 columns[index] = move
             }
         }
+        println("Finished board Setup and any Preprocessing.")
     }
     
     /*So user can select where queens should start*/

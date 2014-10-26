@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
     let MAX_STEPS : Int = 500
-    let POPULATE_OPTIMALLY = true //should board be populated poptimally?
+    let POPULATE_OPTIMALLY = true //should board be populated optimally?
     var solver : MinConflicts!
     @IBOutlet var board : Board!
     @IBOutlet var solveButton: UIButton!
