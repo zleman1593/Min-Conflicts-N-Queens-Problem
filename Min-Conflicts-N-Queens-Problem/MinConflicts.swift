@@ -235,7 +235,7 @@ class MinConflicts {
                 bestMoves = [row]
                 //Resets Array
                 conflictStore = [row: enumeratedCurrentPossibleConflicts]
-                
+                //early return for #3 will go here!
             }
             else if minConflictsForBestMoves == currentPossibleConflicts {
                 //Add to the current array because the move has the same number of conflicts
