@@ -15,7 +15,7 @@ class MinConflicts {
     //% randomness in random algorithm
     let HOW_RANDOM : Float = 0.2
     //number of runs alloted; must be 1 at minimum to run at all
-    let MAX_RUNS = 5
+    let MAX_RUNS = 1
     //number of runs used
     var runsUsed = 0
     //Number of rows and Columns
@@ -189,20 +189,20 @@ class MinConflicts {
         
         //Returns new row for queen to occupy that creates the fewest number of conflicts
         //Returns the number of conflicts that will be reduced upon making this move
-        return (moveToMake, nextMoveInfo.minConflictsForBestMoves - nextMoveInfo.conflictsFromRowBeforeMove,conflictStore)
+        return (moveToMake, nextMoveInfo.minConflictsForBestMoves - nextMoveInfo.conflictsFromRowBeforeMove, conflictStore)
     }
     
     /*Does the heavy lifiting for row conflict Identification
     *Note: First two parameters are passed by reference so that they do not need to be copied
     */
-    func leastConflictedSubRoutine(inout conflictStore: [Int : Array<Int>], inout bestMoves : [Int], currentSelectedColumn : Int) -> (minConflictsForBestMoves : Int, conflictsFromRowBeforeMove : Int) {
+    func leastConflictedSubRoutine(inout conflictStore: [Int : [Int]], inout bestMoves : [Int], currentSelectedColumn : Int) -> (minConflictsForBestMoves : Int, conflictsFromRowBeforeMove : Int) {
         //The number of conflicts the current row position is involved in
         var conflictsFromRowBeforeMove = 0
         // keeps track of the minimum number of conflicts for the best new moves so far
         var minConflictsForBestMoves = Int.max
         
         //Loop through all the columns for each row choice and get conflicts
-        for row in 0..<self.columns.count {
+        for row in 0..<n! {
             //Tracks the number of conflicts associated with this potential row change
             var currentPossibleConflicts = 0
             //Array to hold the conflicts for this row choice. Last element will be the column number (Added later)
