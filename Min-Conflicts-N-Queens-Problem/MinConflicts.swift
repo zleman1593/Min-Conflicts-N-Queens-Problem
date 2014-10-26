@@ -10,7 +10,7 @@ import Foundation
 
 class MinConflicts {
     //Number of rows and Columns
-    var n : Int? = nil
+    var 🌀 : Int? = nil
     //Number of steps to find solution
     var maxSteps  : Int?  = nil
     //Number of steps actually used to find solution
@@ -22,11 +22,11 @@ class MinConflicts {
     //Stores all conflicts in board
     var allConflicts = [Int : NSMutableArray]()
     
-    func randomlyPopulateBoardOfSize(n : Int) {
-        self.n = n
+    func randomlyPopulateBoardOfSize(🌀 : Int) {
+        self.🌀 = 🌀
         //initialize n columns with random values
-        for index in 1...n {
-            let rand = Int.random(n)
+        for index in 1...🌀 {
+            let rand = Int.random(🌀)
             columns.append(rand)
         }
     }
@@ -43,7 +43,6 @@ class MinConflicts {
         
         //Count initial number of conflicts
         self.conflicts = initialConflictCounter()
-        
         println("Current Random Assignment " + columns.description)
         println("Current Conflicts " + self.conflicts.description)
         
@@ -231,7 +230,7 @@ class MinConflicts {
         var minConflictsForBestMoves = 0
         //This holds all the possible conflicts for each possible move to a new row
         var conflictStore : [Array<Int>] = []
-        let nextRow = Int.random(self.n!) //or +1 ?
+        let nextRow = Int.random(self.🌀!) //or +1 ?
         var conflictsFromRowBeforeMove = 0
         var nextMoveConflicts = 0
         //Array to hold the conflicts for this row choice. Last element will be the column number (Added later)
