@@ -42,7 +42,8 @@ class ViewController: UIViewController, BoardDelegate {
             
             if let n = numQueens {
                 self.solver = MinConflicts()
-                self.solver.randomlyPopulateBoardOfSize(n)
+                //self.solver.randomlyPopulateBoardOfSize(n)
+                self.solver.optimallyPopulateBoardOfSize(n)
                 self.board.setBoardSize(n)
                 
                 //Update Board with starting size

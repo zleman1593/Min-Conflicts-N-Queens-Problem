@@ -12,7 +12,7 @@
 import Foundation
 
 class MinConflicts {
-    let HOW_RANDOM : Float = 0.2
+    let HOW_RANDOM : Float = 0.2 //% randomness in random algorithm
     //Number of rows and Columns
     var n : Int? = nil
     //Number of steps to find solution
@@ -31,9 +31,18 @@ class MinConflicts {
     func randomlyPopulateBoardOfSize(n : Int) {
         self.n = n
         //initialize n columns with random values
-        for index in 1...n {
-            let rand = Int.random(n)
-            columns.append(rand)
+        for index in 0..<n {
+            let row = Int.random(n)
+            columns.append(row)
+        }
+    }
+    
+    func optimallyPopulateBoardOfSize(n : Int) {
+        self.n = n
+        //initialize n columns with random values
+        for index in 0..<n {
+            let row = findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false).bestRow
+            columns.append(row)
         }
     }
     
@@ -41,7 +50,6 @@ class MinConflicts {
     func updateColumn(column : Int, row : Int) {
         self.columns[column] = row
     }
-    
     
     //Output: true if solution found within maxSteps, else false
     func run(algorithm: Algorithm) -> Bool {
@@ -166,8 +174,7 @@ class MinConflicts {
         let moveToMake = bestMoves[Int.random(bestMoves.count)]
         
         //If the new position is different from current position update conflict information
-        if moveToMake != self.columns[currentSelectedColumn] && updateRunnningConflicts {
-            
+        if updateRunnningConflicts && moveToMake != self.columns[currentSelectedColumn] {
             //Keeps the number of conflicts updated after a move is made
             self.conflicts += (nextMoveInfo.minConflictsForBestMoves - nextMoveInfo.conflictsFromRowBeforeMove)
             
@@ -193,7 +200,6 @@ class MinConflicts {
         var conflictsFromRowBeforeMove = 0
         // keeps track of the minimum number of conflicts for the best new moves so far
         var minConflictsForBestMoves = Int.max
-      
         
         //Loop through all the columns for each row choice and get conflicts
         for row in 0..<self.columns.count {
@@ -205,23 +211,14 @@ class MinConflicts {
             for column in 0..<self.columns.count {
                 //skip conflict with self
                 if column != currentSelectedColumn {
-                    //Looks across row
-                    if self.columns[column] == row {
-                        currentPossibleConflicts++
-                        enumeratedCurrentPossibleConflicts.append(column)
-                    }
-                        //Looks at up and down diagnals
-                    else if self.columns[column] == (row + (currentSelectedColumn-column)) {
-                        currentPossibleConflicts++
-                        enumeratedCurrentPossibleConflicts.append(column)
-                    }
-                    else if self.columns[column] == (row - (currentSelectedColumn-column)) {
+                    if  self.columns[column] == row || //looks across row
+                        self.columns[column] == (row + (currentSelectedColumn-column)) || //looks up diagonal
+                        self.columns[column] == (row - (currentSelectedColumn-column)) {  //looks down diagonal
                         currentPossibleConflicts++
                         enumeratedCurrentPossibleConflicts.append(column)
                     }
                 }
             }
-            
             
             /* If row being looked at is the row that the queen in the current column currently occupies,
             * set conflictsFromRowBeforeMove to the number of conflicts this queen is curently involved in*/
@@ -266,19 +263,11 @@ class MinConflicts {
         for column in 0..<self.columns.count {
             //skip conflict with self
             if column != currentSelectedColumn {
-                //Looks across row
-                if self.columns[column] == nextRow {
-                    nextMoveConflicts++
-                    enumeratedCurrentPossibleConflicts.append(column)
-                }
-                //Looks at up and down diagnals
-                if self.columns[column] == (nextRow + (currentSelectedColumn-column)) {
-                    nextMoveConflicts++
-                    enumeratedCurrentPossibleConflicts.append(column)
-                }
-                if self.columns[column] == (nextRow - (currentSelectedColumn-column)) {
-                    nextMoveConflicts++
-                    enumeratedCurrentPossibleConflicts.append(column)
+                if  self.columns[column] == nextRow || //looks across row
+                    self.columns[column] == (nextRow + (currentSelectedColumn-column)) || //looks up diagonal
+                    self.columns[column] == (nextRow - (currentSelectedColumn-column)) {  //looks down diagonal
+                        nextMoveConflicts++
+                        enumeratedCurrentPossibleConflicts.append(column)
                 }
             }
         }
@@ -290,20 +279,12 @@ class MinConflicts {
         
         for column in 0..<self.columns.count {
             //skip conflict with self
-            if column != currentSelectedColumn{
-                //Looks across row
-                if self.columns[column] == self.columns[currentSelectedColumn] {
-                    conflictsFromRowBeforeMove++
-                    enumeratedCurrentPossibleConflicts.append(column)
-                }
-                //Looks at up and down diagnals
-                if self.columns[column] == (self.columns[currentSelectedColumn] + (currentSelectedColumn-column)) {
-                    conflictsFromRowBeforeMove++
-                    enumeratedCurrentPossibleConflicts.append(column)
-                }
-                if self.columns[column] == (self.columns[currentSelectedColumn] - (currentSelectedColumn-column)) {
-                    conflictsFromRowBeforeMove++
-                    enumeratedCurrentPossibleConflicts.append(column)
+            if column != currentSelectedColumn {
+                if  self.columns[column] == self.columns[currentSelectedColumn] || //looks across row
+                    self.columns[column] == (self.columns[currentSelectedColumn] + (currentSelectedColumn-column)) || //looks up diagonal
+                    self.columns[column] == (self.columns[currentSelectedColumn] - (currentSelectedColumn-column)) {  //looks down diagonal
+                        conflictsFromRowBeforeMove++
+                        enumeratedCurrentPossibleConflicts.append(column)
                 }
             }
         }
@@ -340,21 +321,12 @@ class MinConflicts {
         var totalConflicts = 0
         
         for index in 0..<self.columns.count {
-            
             for nextIndex in index+1..<self.columns.count {
-                //Looks across row
-                if self.columns[index] == self.columns[nextIndex] {
-                    totalConflicts++
-                    addConflictsBetweenTwoColumns(index, columnB: nextIndex)
-                }
-                    //Looks at up and down diagnals
-                else if self.columns[nextIndex] == (self.columns[index] + (nextIndex-index)) {
-                    totalConflicts++
-                    addConflictsBetweenTwoColumns(index, columnB: nextIndex)
-                }
-                else if self.columns[nextIndex] == (self.columns[index] - (nextIndex-index)) {
-                    totalConflicts++
-                    addConflictsBetweenTwoColumns(index, columnB: nextIndex)
+                if  self.columns[nextIndex] == self.columns[index] || //looks across row
+                    self.columns[nextIndex] == (self.columns[index] + (nextIndex-index)) || //looks up diagonal
+                    self.columns[nextIndex] == (self.columns[index] - (nextIndex-index)) {  //looks down diagonal
+                        totalConflicts++
+                        addConflictsBetweenTwoColumns(index, columnB: nextIndex)
                 }
             }
         }
