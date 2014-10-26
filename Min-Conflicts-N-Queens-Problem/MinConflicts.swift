@@ -9,6 +9,7 @@
 import Foundation
 
 class MinConflicts {
+    let HOW_RANDOM = 5
     //Number of rows and Columns
     var n : Int? = nil
     //Number of steps to find solution
@@ -72,7 +73,7 @@ class MinConflicts {
                 var column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
 
                 //choose a random column
-                if Int.random(3) != 0 {
+                if Int.random(HOW_RANDOM) != 0 {
                     //set queen in the random column to row that minimizes conflicts
                     self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
                 } else {
@@ -124,6 +125,8 @@ class MinConflicts {
     
     //Input: Currently Selected Column; Output: Least-conflicted row for queen in column
     func findLeastConflictedMoveForQueen(currentSelectedColumn : Int, updateRunnningConflicts: Bool) -> (bestRow : Int, conflicts : Int, conflictStore : [Int : [Int]]) {
+        /*These two variables are delcared and initilized in this method,
+        *passed by reference to the subRoutine (where they are modified), and then accesed at the end of this method*/
         //This holds all the possible conflicts for each  of the best possible moves to a new row
         var conflictStore = [Int : Array<Int>]()
         //Keeps track of the best moves (of equivalent conflicts)
@@ -232,7 +235,7 @@ class MinConflicts {
         var minConflictsForBestMoves = 0
         //This holds all the possible conflicts for each possible move to a new row
         var conflictStore : [Array<Int>] = []
-        let nextRow = Int.random(self.n!) //or +1 ?
+        let nextRow = Int.random(self.n!)
         var conflictsFromRowBeforeMove = 0
         var nextMoveConflicts = 0
         //Array to hold the conflicts for this row choice. 
@@ -288,14 +291,14 @@ class MinConflicts {
         conflictStore.append(enumeratedCurrentPossibleConflicts)
         
         //Keeps the number of conflicts updated after a move is made
-        if nextRow != self.columns[currentSelectedColumn] {
+       //if nextRow != self.columns[currentSelectedColumn] {
             self.conflicts = self.conflicts + (nextMoveConflicts - conflictsFromRowBeforeMove)
             //Removes all old conflicts involving the old position
             removeOldConflicts(currentSelectedColumn)
             
             //Adds all the new conflicts if there are any
             addConflictFromNewMove(conflictStore[0], mainColumn: currentSelectedColumn)
-        }
+        //}
         
         //Returns new row for queen to occupy
         return nextRow
