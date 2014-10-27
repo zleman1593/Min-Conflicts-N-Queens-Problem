@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
     let MAX_STEPS : Int = 500
-    let POPULATE_OPTIMALLY = true //should board be populated optimally?
     var solver : MinConflicts!
     @IBOutlet var board : Board!
     @IBOutlet var solveButton: UIButton!
@@ -34,8 +33,10 @@ class ViewController: UIViewController, BoardDelegate {
         
         queensPrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
             textField.keyboardType = UIKeyboardType.NumberPad
+            textField.placeholder = "Number of Queens"
         }
         
+        //populates board optimally
         var setQueensOptimally = UIAlertAction(title: "Populate Optimally", style: UIAlertActionStyle.Default) { (action) -> Void in
             //Initial default board to display on load
             var field = queensPrompt.textFields!.first as UITextField
@@ -48,6 +49,7 @@ class ViewController: UIViewController, BoardDelegate {
             }
         }
         
+        //populates board randomly
         var setQueensRandomly = UIAlertAction(title: "Populate Randomly", style: UIAlertActionStyle.Default) { (action) -> Void in
             //Initial default board to display on load
             var field = queensPrompt.textFields!.first as UITextField
