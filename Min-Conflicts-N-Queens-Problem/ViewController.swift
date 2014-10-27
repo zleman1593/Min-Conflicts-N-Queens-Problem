@@ -36,31 +36,48 @@ class ViewController: UIViewController, BoardDelegate {
             textField.keyboardType = UIKeyboardType.NumberPad
         }
         
-        var setQueens = UIAlertAction(title: "Set # of Queens", style: UIAlertActionStyle.Default) { (action) -> Void in
+        var setQueensOptimally = UIAlertAction(title: "Populate Optimally", style: UIAlertActionStyle.Default) { (action) -> Void in
             //Initial default board to display on load
             var field = queensPrompt.textFields!.first as UITextField
             var numQueens = field.text.toInt()
             
             if let n = numQueens {
-                self.solver = MinConflicts()
-                self.solver.populateBoardOfSize(n, optimally: self.POPULATE_OPTIMALLY)
-                
-                //Update Board with starting size
-                self.board.setBoardSize(n)
-                self.board.setNeedsDisplay()
-                
-                //Creates a tap location detector
-                let tap = UITapGestureRecognizer(target: self.board, action: "tap:")
-                
-                //Assigns detector to the view
-                self.board.addGestureRecognizer(tap)
+                self.populateBoardOfSize(n, optimally: true)
             } else {
                 self.promptForBoardSize()
             }
         }
         
-        queensPrompt.addAction(setQueens)
+        var setQueensRandomly = UIAlertAction(title: "Populate Randomly", style: UIAlertActionStyle.Default) { (action) -> Void in
+            //Initial default board to display on load
+            var field = queensPrompt.textFields!.first as UITextField
+            var numQueens = field.text.toInt()
+            
+            if let n = numQueens {
+                self.populateBoardOfSize(n, optimally: false)
+            } else {
+                self.promptForBoardSize()
+            }
+        }
+        
+        queensPrompt.addAction(setQueensOptimally)
+        queensPrompt.addAction(setQueensRandomly)
         self.presentViewController(queensPrompt, animated: true, completion: nil)
+    }
+    
+    func populateBoardOfSize(n: Int, optimally: Bool) {
+        self.solver = MinConflicts()
+        self.solver.populateBoardOfSize(n, optimally: optimally)
+        
+        //Update Board with starting size
+        self.board.setBoardSize(n)
+        self.board.setNeedsDisplay()
+        
+        //Creates a tap location detector
+        let tap = UITapGestureRecognizer(target: self.board, action: "tap:")
+        
+        //Assigns detector to the view
+        self.board.addGestureRecognizer(tap)
     }
     
     func reset() {

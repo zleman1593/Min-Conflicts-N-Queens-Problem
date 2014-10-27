@@ -10,7 +10,6 @@
 // I commented out  the if statement for this ^ because for some reason it was not working.
 //Check to make sure the random method works. Is it supposed to suck? Maybe, but maybe not.
 
-//TODO: Add another button on popup to select optimal or non-optimal board placement. (What about initial board?)
 //TODO: Implement last part off assignment (#3)
 //TODO: Make a testing mode that will run 100 trials for various settings. (Needs to tally up the data and report it)
 // Report: Average steps for n Runs, Average Running Time for n runs, Average Preprocessing Time for n runs if any.
