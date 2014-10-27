@@ -6,16 +6,23 @@
 //  Copyright (c) 2014 Zackery leman. All rights reserved.
 //
 
-//TODO: Implement columnsWithConflictsButNoBetterMovesAvalible for Greedy
-//TODO: Add another button on popup to select optimal or nonoptimal board placement. (What about initial board?)
-//TODO: Implement last part off assignment
+//TODO: Implement columnsWithConflictsButNoBetterMovesAvalible for Greedy to make it more efficient.
+// I commented out  the if statement for this ^ because for some reason it was not working.
+//Check to make sure the random method works. Is it supposed to suck? Maybe, but maybe not.
+
+//TODO: Add another button on popup to select optimal or non-optimal board placement. (What about initial board?)
+//TODO: Implement last part off assignment (#3)
+//TODO: Make a testing mode that will run 100 trials for various settings. (Needs to tally up the data and report it)
+// Report: Average steps for n Runs, Average Running Time for n runs, Average Preprocessing Time for n runs if any.
+
+//Todo: Lastly, Make sure all parameters can be changed via the UI for Majercik
 
 import Foundation
 
 class MinConflicts {
     //% randomness in random algorithm
     let HOW_RANDOM : Float = 0.2
-    //number of runs alloted; must be 1 at minimum to run at all
+    //number of runs allotted; must be 1 at minimum to run at all
     let MAX_RUNS = 1
     //number of runs used
     var runsUsed = 0
@@ -152,8 +159,8 @@ class MinConflicts {
     
     //Input: Currently Selected Column; Output: Least-conflicted row for queen in column
     func findLeastConflictedMoveForQueen(currentSelectedColumn : Int, updateRunnningConflicts: Bool) -> (bestRow : Int, conflicts : Int, conflictStore : [Int : [Int]]) {
-        /*These two variables are delcared and initilized in this method,
-        *passed by reference to the subRoutine (where they are modified), and then accesed at the end of this method*/
+        /*These two variables are declared and initialized in this method,
+        *passed by reference to the subRoutine (where they are modified), and then accessed at the end of this method*/
         //This holds all the possible conflicts for each  of the best possible moves to a new row
         var conflictStore = [Int : Array<Int>]()
         //Keeps track of the best moves (of equivalent conflicts)
@@ -194,7 +201,7 @@ class MinConflicts {
         return (moveToMake, nextMoveInfo.minConflictsForBestMoves - nextMoveInfo.conflictsFromRowBeforeMove, conflictStore)
     }
     
-    /*Does the heavy lifiting for row conflict Identification
+    /*Does the heavy lifting for row conflict Identification
     *Note: First two parameters are passed by reference so that they do not need to be copied
     */
     func leastConflictedSubRoutine(inout conflictStore: [Int : [Int]], inout bestMoves : [Int], currentSelectedColumn : Int) -> (minConflictsForBestMoves : Int, conflictsFromRowBeforeMove : Int) {
@@ -223,7 +230,7 @@ class MinConflicts {
             }
             
             /* If row being looked at is the row that the queen in the current column currently occupies,
-            * set conflictsFromRowBeforeMove to the number of conflicts this queen is curently involved in*/
+            * set conflictsFromRowBeforeMove to the number of conflicts this queen is currently involved in*/
             if row == self.columns[currentSelectedColumn] {
                 conflictsFromRowBeforeMove = currentPossibleConflicts
             }
@@ -316,7 +323,7 @@ class MinConflicts {
         return self.conflicts == 0
     }
     
-    /* Counts the number of conflicts created from the initial random assigmnet
+    /* Counts the number of conflicts created from the initial random assignment
     * so that the number of conflicts can quickly updated during runtime
     * Output: num conflicts in current board
     */
