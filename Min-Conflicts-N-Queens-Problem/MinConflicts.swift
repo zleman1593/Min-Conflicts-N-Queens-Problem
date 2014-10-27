@@ -13,7 +13,7 @@
 //TODO: Implement last part off assignment (#3)
 //TODO: Make a testing mode that will run 100 trials for various settings. (Needs to tally up the data and report it)
 // Report: Average steps for n Runs, Average Running Time for n runs, Average Preprocessing Time for n runs if any.
-
+//Prompt for Randomness value to replace HOW_RANDOM  on "Random" selection
 //Todo: Lastly, Make sure all parameters can be changed via the UI for Majercik
 
 import Foundation
