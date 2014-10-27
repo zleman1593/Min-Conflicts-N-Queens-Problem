@@ -543,7 +543,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "365"
             endingLineNumber = "365"
-            landmarkName = "addConflictFromNewMove(_:mainColumn:)"
+            landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -559,7 +559,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "365"
             endingLineNumber = "365"
-            landmarkName = "addConflictFromNewMove(_:mainColumn:)"
+            landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -807,7 +807,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "289"
             endingLineNumber = "289"
-            landmarkName = "randomPlacement(_:)"
+            landmarkName = "initialConflictCounter()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -823,7 +823,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "313"
             endingLineNumber = "313"
-            landmarkName = "randomPlacement(_:)"
+            landmarkName = "removeOldConflicts(_:)"
             landmarkType = "5">
             <Locations>
                <Location
