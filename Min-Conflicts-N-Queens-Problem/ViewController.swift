@@ -208,30 +208,58 @@ class ViewController: UIViewController, BoardDelegate {
             self.presentViewController(beginPrompt, animated: true, completion: nil)
             
             
-            self.runAllTests(10, queens: 10, steps: 100)
-            self.runAllTests(10, queens: 10, steps: 500)
+            self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 100)
+            self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 500)
             
-            self.runAllTests(10, queens: 50, steps: 100)
-            self.runAllTests(10, queens: 50, steps: 500)
+            self.runTestForThreeBasicAlgorithms(10, queens: 50, steps: 100)
+            self.runTestForThreeBasicAlgorithms(10, queens: 50, steps: 500)
             
-            self.runAllTests(10, queens: 100, steps: 100)
-            self.runAllTests(10, queens: 100, steps: 500)
+            self.runTestForThreeBasicAlgorithms(10, queens: 100, steps: 100)
+            self.runTestForThreeBasicAlgorithms(10, queens: 100, steps: 500)
             
-            self.runAllTests(10, queens: 250, steps: 500)
-            self.runAllTests(10, queens: 250, steps: 500)
+            self.runTestForThreeBasicAlgorithms(10, queens: 250, steps: 500)
+            self.runTestForThreeBasicAlgorithms(10, queens: 250, steps: 500)
             
-            self.runAllTests(10, queens: 500, steps: 100)
-            self.runAllTests(10, queens: 500, steps: 500)
+            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 100)
+            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 500)
             
-            self.runAllTests(10, queens: 1000, steps: 100)
-            self.runAllTests(10, queens: 1000, steps: 500)
-            
-            
-            
-            self.runAllTests(10, queens: 500, steps: 5000)
+            self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 100)
+            self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 500)
             
             
-            self.runAllTests(10, queens: 1000, steps: 5000)
+            
+            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 5000)
+            
+            
+            self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 5000)
+            
+            
+            
+            self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 100)
+            self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 500)
+            
+            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 100)
+            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 500)
+            
+            self.runThreeTestOnBestAlgorithm(10, queens: 100, steps: 100)
+            self.runThreeTestOnBestAlgorithm(10, queens: 100, steps: 500)
+            
+            self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 500)
+            self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 500)
+            
+            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 100)
+            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 500)
+            
+            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 100)
+            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 500)
+            
+            
+            
+            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 5000)
+            
+            
+            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 5000)
+
             
             println("End Testing")
             
@@ -247,7 +275,9 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     
-    func runAllTests(trials : Int, queens : Int, steps : Int) {
+
+    
+    func runTestForThreeBasicAlgorithms(trials : Int, queens : Int, steps : Int) {
         println()
         println("Begin Testing: \(trials) trials, \(queens) queens, \(steps) steps")
         //Different Algorithms, all else default
@@ -259,6 +289,11 @@ class ViewController: UIViewController, BoardDelegate {
         //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
         println("Random Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+    }
+    
+    func runThreeTestOnBestAlgorithm(trials : Int, queens : Int, steps : Int) {
+        println()
+        println("Begin Testing Modifications for Vanilla: \(trials) trials, \(queens) queens, \(steps) steps")
         
         //Optimal Placement, all else default
         println()
@@ -274,9 +309,6 @@ class ViewController: UIViewController, BoardDelegate {
         println()
         println("Pick First Better Move") //still not working
         //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-        
-        
-        
     }
     
     func testMinConflicts(trials : Int, n : Int, optimally : Bool, algorithm : Algorithm, maxRuns : Int, maxSteps : Int, randomness : Float, pickFirstBetter : Bool) {

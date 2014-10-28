@@ -100,6 +100,8 @@ class MinConflicts {
                 return true
             }
             
+        
+            
             switch self.algorithm! {
             case Algorithm.Vanilla:
                 //Picks a column with conflicts at random
