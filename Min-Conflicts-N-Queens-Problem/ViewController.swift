@@ -238,14 +238,21 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     func testMinConflicts(trials : Int, n : Int, optimally : Bool, algorithm : Algorithm, maxRuns : Int, maxSteps : Int, randomness : Float, pickFirstBetter : Bool) {
-        var averageTime = 0.0 //tracks average time per run
+        var averageTotalTime = 0.0 //tracks average solve time per run
+        var averageTime = 0.0 //tracks average solve time per run
+        var averageTimePreprocess = 0.0 //tracks average preprocessing time per run
         var averageSteps = 0.0 //tracks average steps when solved
         //run MinConflicts with parameters for trials times
         for i in 1...trials {
-            let start = NSDate() //Start Time
+            
             var solver = MinConflicts()
+            let startPreprocess = NSDate() //Start Time
             solver.populateBoardOfSize(n, optimally: optimally)
+            let endPreprocess = NSDate()   //End Time
+            let timeIntervalPreprocess: Double = endPreprocess.timeIntervalSinceDate(startPreprocess)
+            
             solver.prepareForRunWith(algorithm, maxRuns: maxRuns, maxSteps: maxSteps, randomness: randomness, pickFirstBetter: pickFirstBetter)
+            let start = NSDate() //Start Time
             if solver.run() {
                 println("Solved at Step \(solver.stepsUsed)")
             } else {
@@ -253,13 +260,19 @@ class ViewController: UIViewController, BoardDelegate {
             }
             let end = NSDate()   //End Time
             let timeInterval: Double = end.timeIntervalSinceDate(start)
+            
             averageTime += timeInterval
+            averageTimePreprocess += timeIntervalPreprocess
             averageSteps += Double(solver.stepsUsed)
         }
+        averageTotalTime = (averageTime + averageTimePreprocess) / Double(trials)
         //Calculate & print average time
         averageTime /= Double(trials)
         averageSteps /= Double(trials)
-        println("Average Time Per Run: \(averageTime)")
+        averageTimePreprocess /= Double(trials)
+        println("Average Solve Time Per Run: \(averageTime)")
+        println("Average Preprocessing Time Per Run: \(averageTimePreprocess)")
+        println("Average Total Time Per Run: \(averageTotalTime)")
         println("Average Steps Per Run: \(averageSteps)")
     }
 }

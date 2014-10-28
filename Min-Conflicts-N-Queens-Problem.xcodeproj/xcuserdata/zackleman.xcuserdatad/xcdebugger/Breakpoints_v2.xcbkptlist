@@ -175,7 +175,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
             endingLineNumber = "84"
-            landmarkName = "reset()"
+            landmarkName = "populateBoardOfSize(_:optimally:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -191,7 +191,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
-            landmarkName = "reset()"
+            landmarkName = "populateBoardOfSize(_:optimally:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -255,7 +255,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
-            landmarkName = "populateBoardOfSize(_:optimally:)"
+            landmarkName = "promptForBoardSize()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -522,12 +522,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "populateBoardOfSize(_:optimally:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436189025.312387"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -538,12 +554,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -554,12 +570,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -570,28 +586,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "run(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "run(_:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -632,12 +632,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "run(_:)"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "run()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -648,11 +648,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -664,11 +664,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
             landmarkType = "5">
             <Locations>
@@ -710,11 +710,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
             landmarkType = "5">
             <Locations>
@@ -756,12 +756,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "run()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -802,12 +802,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
-            landmarkName = "initialConflictCounter()"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "randomPlacement(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -818,12 +818,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436042181.79534"
+            timestampString = "436189025.312387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
-            landmarkName = "removeOldConflicts(_:)"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "initialConflictCounter()"
             landmarkType = "5">
             <Locations>
                <Location
