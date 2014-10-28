@@ -17,7 +17,9 @@
 // number of steps is Nan?
 ////When the run all tests method is multi-Threaded the tests should be arranged so that each thread will finish roughly at the same time
 //, so each thread does as much works as possible without lagging behind all the others
-//Prompt for Randomness value to replace HOW_RANDOM  on "Random" selection
+
+//Need to make the restarts termiante on max step limit but keep track of steps since last reset to report if successful
+
 //Todo: Lastly, Make sure all parameters can be changed via the UI for Majercik
 
 
@@ -68,7 +70,6 @@ class MinConflicts {
                 columns[index] = move
             }
         }
-        
         if debug {
             println("Finished board Setup and any Preprocessing.")
         }

@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, BoardDelegate {
     let MAX_STEPS : Int = 500
+    var maxRuns : Int = 1
+    var randomness : Double = 0.2
     var solver : MinConflicts!
     @IBOutlet var board : Board!
     @IBOutlet var solveButton: UIButton!
@@ -72,6 +74,42 @@ class ViewController: UIViewController, BoardDelegate {
         self.presentViewController(queensPrompt, animated: true, completion: nil)
     }
     
+    @IBAction func algoNeedsPrompt(sender: UISegmentedControl) {
+        //Ask user for the number of Runs
+        if self.algorithmSelector.selectedSegmentIndex ==  3{
+            var runsPrompt = UIAlertController(title: "Runs", message: "Specify the number of runs you would like.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            runsPrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
+                textField.keyboardType = UIKeyboardType.NumberPad
+                textField.placeholder = "Number of Runs"
+            }
+            
+            var runs = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default) { (action) -> Void in
+                var field = runsPrompt.textFields!.first as UITextField
+                
+                self.maxRuns = field.text.toInt()!
+            }
+            runsPrompt.addAction(runs)
+            self.presentViewController(runsPrompt, animated: true, completion: nil)
+            
+        } else if self.algorithmSelector.selectedSegmentIndex ==  1{
+            var runsPrompt = UIAlertController(title: "Randomness", message: "Specify the randomness you would like.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            runsPrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
+                textField.keyboardType = UIKeyboardType.NumberPad
+                textField.placeholder = "Randomness"
+            }
+            
+            var runs = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default) { (action) -> Void in
+                var field = runsPrompt.textFields!.first as UITextField
+                
+           
+                self.randomness = Double((field.text as NSString).doubleValue)
+            }
+            runsPrompt.addAction(runs)
+            self.presentViewController(runsPrompt, animated: true, completion: nil)
+        }
+    }
     func populateBoardOfSize(n: Int, optimally: Bool) {
         self.solver = MinConflicts()
         self.solver.populateBoardOfSize(n, optimally: optimally)
@@ -107,10 +145,11 @@ class ViewController: UIViewController, BoardDelegate {
         //See if user typed in parameters
         self.checkInput()
         
+        
         //In background thread
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
             var alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            self.solver.prepareForRunWith(self.selectedAlgorithm(), maxRuns: 1, maxSteps: self.maxSteps.text.toInt()!, randomness: 0.2, pickFirstBetter: false)
+            self.solver.prepareForRunWith(self.selectedAlgorithm(), maxRuns: self.maxRuns, maxSteps: self.maxSteps.text.toInt()!, randomness: 0.2, pickFirstBetter: false)
             if self.solver.run() {
                 println("Solved!")
                 println("Final Solution: \(self.solver.columns.description)")
@@ -195,11 +234,13 @@ class ViewController: UIViewController, BoardDelegate {
         case 0:  return Algorithm.Vanilla
         case 1:  return Algorithm.Random
         case 2:  return Algorithm.Greedy
-        case 3:  return Algorithm.VanillaRestart
+        case 3:  return Algorithm.Vanilla
         case 4:  return Algorithm.VanillaChooseFirstBest
         default: return Algorithm.Vanilla
         }
     }
+    
+    
     
     //When this is multi-Threaded the tests should be arranged so that each thread will finish roughly at the same time
     //, so each thread does as much works as possible without lagging behind all the others

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,9 +20,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNk-8j-iQA">
                                 <rect key="frame" x="225" y="550" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="gN5-xa-MAG"/>
-                                </constraints>
                                 <state key="normal" title="Solve">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -30,11 +28,8 @@
                                     <action selector="start" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Eh-C5-F3h"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BdQ-e5-fOT">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BdQ-e5-fOT">
                                 <rect key="frame" x="85" y="476" width="456" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="263" id="Gpj-5z-fRa"/>
-                                </constraints>
                                 <segments>
                                     <segment title="Vanilla"/>
                                     <segment title="Random"/>
@@ -42,11 +37,14 @@
                                     <segment title="V. Restarts"/>
                                     <segment title="V. Best First"/>
                                 </segments>
+                                <connections>
+                                    <action selector="algoNeedsPrompt:" destination="BYZ-38-t0r" eventType="valueChanged" id="r2G-Tc-YYP"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max Steps" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcg-lC-DXz">
                                 <rect key="frame" x="225" y="512" width="150" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="lfv-mn-TmQ"/>
+                                    <constraint firstAttribute="width" constant="150" id="v3D-cH-JtQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -55,13 +53,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="BdQ-e5-fOT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bur-Ft-Azv"/>
-                            <constraint firstItem="BdQ-e5-fOT" firstAttribute="centerX" secondItem="bcg-lC-DXz" secondAttribute="centerX" id="D40-R0-MLd"/>
-                            <constraint firstItem="wNk-8j-iQA" firstAttribute="top" secondItem="bcg-lC-DXz" secondAttribute="bottom" constant="8" symbolic="YES" id="Ni8-tq-E58"/>
-                            <constraint firstItem="wNk-8j-iQA" firstAttribute="centerX" secondItem="bcg-lC-DXz" secondAttribute="centerX" id="pHf-RK-MgS"/>
+                            <constraint firstItem="BdQ-e5-fOT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="69" id="JcR-1W-7Lo"/>
+                            <constraint firstItem="bcg-lC-DXz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JxG-Px-J9j"/>
+                            <constraint firstAttribute="bottom" secondItem="wNk-8j-iQA" secondAttribute="bottom" constant="20" symbolic="YES" id="WNo-kG-ewd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BdQ-e5-fOT" secondAttribute="trailing" constant="43" id="aVQ-ON-PlE"/>
+                            <constraint firstItem="wNk-8j-iQA" firstAttribute="leading" secondItem="bcg-lC-DXz" secondAttribute="leading" id="crU-9E-RV9"/>
+                            <constraint firstItem="wNk-8j-iQA" firstAttribute="trailing" secondItem="bcg-lC-DXz" secondAttribute="trailing" id="hWo-UF-abb"/>
+                            <constraint firstItem="wNk-8j-iQA" firstAttribute="top" secondItem="bcg-lC-DXz" secondAttribute="bottom" constant="8" symbolic="YES" id="lAh-08-z38"/>
+                            <constraint firstItem="bcg-lC-DXz" firstAttribute="top" secondItem="BdQ-e5-fOT" secondAttribute="bottom" constant="8" symbolic="YES" id="okh-05-cAp"/>
                             <constraint firstItem="bcg-lC-DXz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="307" id="tWg-ia-hzz"/>
-                            <constraint firstItem="bcg-lC-DXz" firstAttribute="top" secondItem="BdQ-e5-fOT" secondAttribute="bottom" constant="8" symbolic="YES" id="wOR-2h-oSP"/>
-                            <constraint firstAttribute="bottom" secondItem="wNk-8j-iQA" secondAttribute="bottom" constant="20" symbolic="YES" id="zAN-yr-Vy9"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
