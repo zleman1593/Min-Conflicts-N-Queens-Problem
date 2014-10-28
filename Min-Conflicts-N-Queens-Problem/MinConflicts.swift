@@ -11,7 +11,7 @@
 //Check to make sure the random method works. Is it supposed to suck? Maybe, but maybe not.
 
 //TODO: Implement last part off assignment (#3)
-//TODO: Make a testing mode that will run 100 trials for various settings. (Needs to tally up the data and report it)
+//TODO: Make a testing mode that will run 10 trials for various settings. (Needs to tally up the data and report it)
 // Report: Average steps for n Runs, Average Running Time for n runs, Average Preprocessing Time for n runs if any.
 //Prompt for Randomness value to replace HOW_RANDOM  on "Random" selection
 //Todo: Lastly, Make sure all parameters can be changed via the UI for Majercik
@@ -19,18 +19,25 @@
 import Foundation
 
 class MinConflicts {
-    //picks first move better than current move
-    let pickFirstBetter = false
-    //% randomness in random algorithm
-    let HOW_RANDOM : Float = 0.2
-    //number of runs allotted; must be 1 at minimum to run at all
-    let MAX_RUNS = 1
-    //number of runs used
-    var runsUsed = 0
-    //Number of rows and Columns
+    /* Parameters */
+    //number of queens on board
     var n : Int? = nil
+    //which algorithm to use
+    var algorithm : Algorithm? = nil
+    //picks first move better, or best move?
+    var pickFirstBetter : Bool? = nil
+    //% randomness in random algorithm
+    var randomness : Float? = nil
+    //number of runs allotted; must be 1 at minimum to run at all
+    var maxRuns : Int? = nil
     //Number of steps to find solution
-    var maxSteps  : Int?  = nil
+    var maxSteps : Int? = nil
+    //Print Messages to Console
+    var debug = false
+    
+    /* Runtime Info */
+    //number of runs used so far
+    var runsUsed = 0
     //Number of steps actually used to find solution
     var stepsUsed : Int   = 0
     //Number of current conflicts
@@ -56,38 +63,54 @@ class MinConflicts {
                 columns[index] = move
             }
         }
-        println("Finished board Setup and any Preprocessing.")
+        
+        if debug {
+            println("Finished board Setup and any Preprocessing.")
+        }
+    }
+    
+    //sets algorithm parameters
+    func prepareForRunWith(algorithm: Algorithm, maxRuns : Int, maxSteps : Int, randomness : Float, pickFirstBetter : Bool) {
+        //set stage for algorithm on first run
+        self.maxRuns = maxRuns
+        self.maxSteps = maxSteps
+        self.algorithm = algorithm
+        self.randomness = randomness
+        self.pickFirstBetter = pickFirstBetter
     }
     
     //Output: true if solution found within maxSteps, else false
-    func run(algorithm: Algorithm) -> Bool {
+    func run() -> Bool {
         //Count initial number of conflicts
         self.conflicts = initialConflictCounter()
-        println("Current Random Assignment " + columns.description)
-        println("Current Conflicts " + self.conflicts.description)
+        
+        if debug {
+            println("Current Random Assignment " + columns.description)
+            println("Current Conflicts " + self.conflicts.description)
+        }
         
         //On Each step
-        for index in 1...self.maxSteps!/MAX_RUNS {
+        for index in 1...self.maxSteps!/self.maxRuns! {
             //Check if current assignment is solution
             if self.isSolution() {
-                self.stepsUsed = self.runsUsed*(self.maxSteps!/MAX_RUNS) + index
+                self.stepsUsed = self.runsUsed*(self.maxSteps!/self.maxRuns!) + index
                 return true
             }
-           
-            switch algorithm {
+            
+            switch self.algorithm! {
             case Algorithm.Vanilla:
                 //Picks a column with conflicts at random
                 let column = findColumnWithConflicts()
                 
                 //Set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
-
+                
             case Algorithm.Random:
                 //Picks a column with conflicts at random
                 let column = findColumnWithConflicts()
                 
                 //choose a random column
-                if Float.random() >= HOW_RANDOM {
+                if Float.random() >= self.randomness {
                     //set queen in the random column to row that minimizes conflicts
                     self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
                 } else {
@@ -101,7 +124,7 @@ class MinConflicts {
                 
                 //For all queens see which queen will result in the largest conflict reduction
                 for index in self.columns {
-                  //  if columnsWithConflictsButNoBetterMovesAvalible[index] == nil {
+                    //  if columnsWithConflictsButNoBetterMovesAvalible[index] == nil {
                     let nextMoveInfo = self.findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false)
                     
                     if nextMoveInfo.conflicts < bestConflicts {
@@ -110,14 +133,14 @@ class MinConflicts {
                         
                     } else if nextMoveInfo.conflicts == bestConflicts {
                         bestQueen.append(selectedQueen: index, row: nextMoveInfo.bestRow,conflictStore: nextMoveInfo.conflictStore)
-
+                        
                     }
-                   // }
+                    // }
                 }
                 
                 //Breaks ties randomly from the best options
                 let queenToChoose = bestQueen[Int.random(bestQueen.count)]
-
+                
                 //set queen  to row that minimizes conflicts
                 self.columns[queenToChoose.selectedQueen] = queenToChoose.row
                 
@@ -135,8 +158,8 @@ class MinConflicts {
         
         self.runsUsed++ //increment runs
         //check if we should run again
-        if self.runsUsed < self.MAX_RUNS {
-            return self.run(algorithm)
+        if self.runsUsed < self.maxRuns! {
+            return self.run()
         }
         
         //Return that it had to give up
@@ -218,7 +241,7 @@ class MinConflicts {
                 conflictStore = [row: possibleConflicts]
                 
                 //early return for #3 will go here
-                if pickFirstBetter {
+                if pickFirstBetter! {
                     return (minConflictsForBestMoves, conflictsFromRowBeforeMove)
                 }
             }
