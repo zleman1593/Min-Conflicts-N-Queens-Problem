@@ -245,12 +245,12 @@ class ViewController: UIViewController, BoardDelegate {
     //When this is multi-Threaded the tests should be arranged so that each thread will finish roughly at the same time
     //, so each thread does as much works as possible without lagging behind all the others
     func runAllTestsWithNQueens() {
+        //this needs to run on main thread
+        var beginPrompt = UIAlertController(title: "MinConflicts", message: "Beginning all tests. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        self.presentViewController(beginPrompt, animated: true, completion: nil)
         //run tests in new thread
         dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
-            var beginPrompt = UIAlertController(title: "MinConflicts", message: "Beginning all tests. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            self.presentViewController(beginPrompt, animated: true, completion: nil)
-            
             //Three main Algorithms
             self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 100)
             self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 500)
@@ -301,14 +301,17 @@ class ViewController: UIViewController, BoardDelegate {
             
             println("End All Testing")
             
-            beginPrompt.dismissViewControllerAnimated(true, completion: { () -> Void in
-                var completePrompt = UIAlertController(title: "MinConflicts", message: "All tests have completed. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
-                var continueAction = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                    self.promptForBoardSize()
+            //go back to main thread
+            dispatch_async(dispatch_get_main_queue()) {
+                beginPrompt.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    var completePrompt = UIAlertController(title: "MinConflicts", message: "All tests have completed. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
+                    var continueAction = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                        self.promptForBoardSize()
+                    })
+                    completePrompt.addAction(continueAction)
+                    self.presentViewController(completePrompt, animated: true, completion: nil)
                 })
-                completePrompt.addAction(continueAction)
-                self.presentViewController(completePrompt, animated: true, completion: nil)
-            })
+            }
         }
     }
     
