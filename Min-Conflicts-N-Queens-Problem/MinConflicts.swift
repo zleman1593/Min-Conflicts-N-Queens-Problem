@@ -11,13 +11,13 @@
 //Check to make sure the random method works. Is it supposed to suck? Maybe, but maybe not.
 
 //TODO: Implement last part off assignment (#3)
-//TODO: MultiThread the testingt to make tasks run simultaneously on 4 different cores
-//TODO: For reported stats. Check Sample output and idetify errors and things we need to change for output 
+//TODO: MultiThread the testing to make tasks run simultaneously on 4 different cores
+//TODO: For reported stats. Check Sample output and identify errors and things we need to change for output 
 //inf + inf = a small float value?
 // number of steps is Nan?
 ////When the run all tests method is multi-Threaded the tests should be arranged so that each thread will finish roughly at the same time
 //, so each thread does as much works as possible without lagging behind all the others
-
+//Make the VanillaChooseFirstBest actual run the correct algorithm
 //Need to make the restarts termiante on max step limit but keep track of steps since last reset to report if successful
 
 //Todo: Lastly, Make sure all parameters can be changed via the UI for Majercik
