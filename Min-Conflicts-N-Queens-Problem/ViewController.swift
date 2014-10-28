@@ -62,8 +62,8 @@ class ViewController: UIViewController, BoardDelegate {
         }
         
         var testMode = UIAlertAction(title: "Test Mode", style: UIAlertActionStyle.Default) { (action) -> Void in
-           // self.runAllTests(10, queens: 250, steps: 500)
-           self.runAllTestsWithNQueens()
+            // self.runAllTests(10, queens: 250, steps: 500)
+            self.runAllTestsWithNQueens()
         }
         
         queensPrompt.addAction(setQueensOptimally)
@@ -90,7 +90,7 @@ class ViewController: UIViewController, BoardDelegate {
     func reset() {
         //Allow user Input
         self.maxSteps.enabled = true
-
+        
         //reset button on board
         self.resetSolveButton()
         
@@ -144,7 +144,7 @@ class ViewController: UIViewController, BoardDelegate {
             })
             
             alert.addAction(continueAction)
-
+            
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
@@ -200,81 +200,83 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     
-     func runAllTestsWithNQueens() {
+    func runAllTestsWithNQueens() {
         //run tests in new thread
         dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
-        var beginPrompt = UIAlertController(title: "MinConflicts", message: "Beginning all tests. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
-        self.presentViewController(beginPrompt, animated: true, completion: nil)
+            var beginPrompt = UIAlertController(title: "MinConflicts", message: "Beginning all tests. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
+            self.presentViewController(beginPrompt, animated: true, completion: nil)
             
             
-        self.runAllTests(10, queens: 10, steps: 100)
-        self.runAllTests(10, queens: 10, steps: 500)
-        
-        self.runAllTests(10, queens: 50, steps: 100)
-        self.runAllTests(10, queens: 50, steps: 500)
-        
-        self.runAllTests(10, queens: 100, steps: 100)
-        self.runAllTests(10, queens: 100, steps: 500)
-        
-        self.runAllTests(10, queens: 250, steps: 500)
-        self.runAllTests(10, queens: 250, steps: 500)
-        
-        self.runAllTests(10, queens: 500, steps: 100)
-        self.runAllTests(10, queens: 500, steps: 500)
-        
-        self.runAllTests(10, queens: 1000, steps: 100)
-        self.runAllTests(10, queens: 1000, steps: 500)
-        
+            self.runAllTests(10, queens: 10, steps: 100)
+            self.runAllTests(10, queens: 10, steps: 500)
             
-
-
-        self.runAllTests(10, queens: 500, steps: 5000)
+            self.runAllTests(10, queens: 50, steps: 100)
+            self.runAllTests(10, queens: 50, steps: 500)
             
-
-        self.runAllTests(10, queens: 1000, steps: 5000)
+            self.runAllTests(10, queens: 100, steps: 100)
+            self.runAllTests(10, queens: 100, steps: 500)
+            
+            self.runAllTests(10, queens: 250, steps: 500)
+            self.runAllTests(10, queens: 250, steps: 500)
+            
+            self.runAllTests(10, queens: 500, steps: 100)
+            self.runAllTests(10, queens: 500, steps: 500)
+            
+            self.runAllTests(10, queens: 1000, steps: 100)
+            self.runAllTests(10, queens: 1000, steps: 500)
             
             
             
-        beginPrompt.dismissViewControllerAnimated(true, completion: { () -> Void in
-            var completePrompt = UIAlertController(title: "MinConflicts", message: "All tests have completed. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
-            var continueAction = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-                self.promptForBoardSize()
+            
+            self.runAllTests(10, queens: 500, steps: 5000)
+            
+            
+            self.runAllTests(10, queens: 1000, steps: 5000)
+            
+            println("End Testing")
+            
+            beginPrompt.dismissViewControllerAnimated(true, completion: { () -> Void in
+                var completePrompt = UIAlertController(title: "MinConflicts", message: "All tests have completed. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
+                var continueAction = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                    self.promptForBoardSize()
+                })
+                completePrompt.addAction(continueAction)
+                self.presentViewController(completePrompt, animated: true, completion: nil)
             })
-            completePrompt.addAction(continueAction)
-            self.presentViewController(completePrompt, animated: true, completion: nil)
-        })
-               }
+        }
     }
     
     
     func runAllTests(trials : Int, queens : Int, steps : Int) {
+        println()
+        println("Begin Testing: \(trials) trials, \(queens) queens, \(steps) steps")
+        //Different Algorithms, all else default
+        println()
+        println("Vanilla Algorithm")
+        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+        println()
+        println("Greedy Algorithm") //is taking an eternity right now :(
+        //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+        println("Random Algorithm")
+        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
         
-      
+        //Optimal Placement, all else default
+        println()
+        println("Optimal Placement")
+        self.testMinConflicts(trials, n: queens, optimally: true, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
         
-       
-            println("Begin Testing: \(trials) trials, \(queens) queens, \(steps) steps")
-            //Different Algorithms, all else default
-            println("Vanilla Algorithm")
-            self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-            println("Greedy Algorithm") //is taking an eternity right now :(
-            //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-            println("Random Algorithm")
-            self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-            
-            //Optimal Placement, all else default
-            println("Optimal Placement")
-            self.testMinConflicts(trials, n: queens, optimally: true, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-            
-            //Increased Runs, all else default
-            println("5 Runs")
-            self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-            
-            //Pick First Better Move, all else default
-            println("Pick First Better Move") //still not working
-            //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-            println("End Testing")
-           
-     
+        //Increased Runs, all else default
+        println()
+        println("5 Runs")
+        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+        
+        //Pick First Better Move, all else default
+        println()
+        println("Pick First Better Move") //still not working
+        //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+        
+        
+        
     }
     
     func testMinConflicts(trials : Int, n : Int, optimally : Bool, algorithm : Algorithm, maxRuns : Int, maxSteps : Int, randomness : Float, pickFirstBetter : Bool) {
@@ -282,7 +284,7 @@ class ViewController: UIViewController, BoardDelegate {
         var averageTime = 0.0 //tracks average solve time per run
         var averageTimePreprocess = 0.0 //tracks average preprocessing time per run
         var averageSteps = 0.0 //tracks average steps when solved
-        var sucessRate = 0.0 //Tracks number of problems solved under the step limit
+        var successRate = 0.0 //Tracks number of problems solved under the step limit
         //run MinConflicts with parameters for trials times
         for i in 1...trials {
             
@@ -296,7 +298,7 @@ class ViewController: UIViewController, BoardDelegate {
             let start = NSDate() //Start Time
             if solver.run() {
                 println("Solved at Step \(solver.stepsUsed)")
-                sucessRate += 1
+                successRate += 1
             } else {
                 println("Not Solved!")
             }
@@ -308,17 +310,18 @@ class ViewController: UIViewController, BoardDelegate {
             averageSteps += Double(solver.stepsUsed)
         }
         averageTotalTime = (averageTime + averageTimePreprocess) / Double(trials)
-       
+        
         //Calculate & print average time
-        averageTime /= Double(sucessRate)
-        averageSteps /= Double(sucessRate)
-        averageTimePreprocess /= Double(sucessRate)
-        println("Average Solve Time Per Run: \(averageTime)")
-        println("Average Preprocessing Time Per Run: \(averageTimePreprocess)")
-        println("Average Total Time Per Run: \(averageTotalTime)")
-        println("Average Steps Per Run: \(averageSteps)")
-         sucessRate  /= Double(trials)
-        println("Sucess Rate: \(sucessRate)")
+        averageTime /= Double(successRate)
+        averageSteps /= Double(successRate)
+        averageTimePreprocess /= Double(successRate)
+        println()
+        println("Average Solve Time Per Successful Run : \(averageTime)")
+        println("Average Preprocessing Time Per Successful Run: \(averageTimePreprocess)")
+        println("Average Total Time Per Successful Run: \(averageTotalTime)")
+        println("Average Steps Per Successful Run: \(averageSteps)")
+        successRate  /= Double(trials)
+        println("Success Rate: \(successRate)")
     }
 }
 
