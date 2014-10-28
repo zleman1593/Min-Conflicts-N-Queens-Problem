@@ -12,8 +12,10 @@
 
 //TODO: Implement last part off assignment (#3)
 //TODO: MultiThread the testingt to make tasks run simultaneously on 4 different cores
-//TODO: For reported stats. Check Sample output and idetify errors and things we need to change for output.
-//^ Things like do we average trials that didnt complete?
+//TODO: For reported stats. Check Sample output and idetify errors and things we need to change for output 
+//inf + inf = a small float value?
+// number of steps is Nan?
+
 //Prompt for Randomness value to replace HOW_RANDOM  on "Random" selection
 //Todo: Lastly, Make sure all parameters can be changed via the UI for Majercik
 

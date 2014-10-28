@@ -204,6 +204,7 @@ class ViewController: UIViewController, BoardDelegate {
         //run tests in new thread
         dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
             var beginPrompt = UIAlertController(title: "MinConflicts", message: "Beginning all tests. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
+            
             self.presentViewController(beginPrompt, animated: true, completion: nil)
             
             
@@ -224,7 +225,6 @@ class ViewController: UIViewController, BoardDelegate {
             
             self.runAllTests(10, queens: 1000, steps: 100)
             self.runAllTests(10, queens: 1000, steps: 500)
-            
             
             
             
@@ -284,7 +284,7 @@ class ViewController: UIViewController, BoardDelegate {
         var averageTime = 0.0 //tracks average solve time per run
         var averageTimePreprocess = 0.0 //tracks average preprocessing time per run
         var averageSteps = 0.0 //tracks average steps when solved
-        var successRate = 0.0 //Tracks number of problems solved under the step limit
+        var successRate = 0 //Tracks number of problems solved under the step limit
         //run MinConflicts with parameters for trials times
         for i in 1...trials {
             
@@ -320,8 +320,7 @@ class ViewController: UIViewController, BoardDelegate {
         println("Average Preprocessing Time Per Successful Run: \(averageTimePreprocess)")
         println("Average Total Time Per Successful Run: \(averageTotalTime)")
         println("Average Steps Per Successful Run: \(averageSteps)")
-        successRate  /= Double(trials)
-        println("Success Rate: \(successRate)")
+        println("Success Rate: \( (Double(successRate)/Double(trials)) )")
     }
 }
 
