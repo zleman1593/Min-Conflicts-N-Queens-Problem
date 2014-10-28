@@ -11,8 +11,9 @@
 //Check to make sure the random method works. Is it supposed to suck? Maybe, but maybe not.
 
 //TODO: Implement last part off assignment (#3)
-//TODO: Make a testing mode that will run 10 trials for various settings. (Needs to tally up the data and report it)
-// Report: Average steps for n Runs, Average Running Time for n runs, Average Preprocessing Time for n runs if any.
+//TODO: MultiThread the testingt to make tasks run simultaneously on 4 different cores
+//TODO: For reported stats. Check Sample output and idetify errors and things we need to change for output.
+//^ Things like do we average trials that didnt complete?
 //Prompt for Randomness value to replace HOW_RANDOM  on "Random" selection
 //Todo: Lastly, Make sure all parameters can be changed via the UI for Majercik
 
