@@ -15,9 +15,11 @@
 //TODO: For reported stats. Check Sample output and idetify errors and things we need to change for output 
 //inf + inf = a small float value?
 // number of steps is Nan?
-
+////When the run all tests method is multi-Threaded the tests should be arranged so that each thread will finish roughly at the same time
+//, so each thread does as much works as possible without lagging behind all the others
 //Prompt for Randomness value to replace HOW_RANDOM  on "Random" selection
 //Todo: Lastly, Make sure all parameters can be changed via the UI for Majercik
+
 
 import Foundation
 
@@ -110,6 +112,22 @@ class MinConflicts {
                 //Set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
                 
+            case Algorithm.VanillaRestart:
+                //Picks a column with conflicts at random
+                let column = findColumnWithConflicts()
+                
+                //Set queen in the random column to row that minimizes conflicts
+                self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
+                
+            case Algorithm.VanillaChooseFirstBest:
+                //Picks a column with conflicts at random
+                let column = findColumnWithConflicts()
+                
+                //Set queen in the random column to row that minimizes conflicts
+                self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
+
+
+                
             case Algorithm.Random:
                 //Picks a column with conflicts at random
                 let column = findColumnWithConflicts()
@@ -164,6 +182,7 @@ class MinConflicts {
         self.runsUsed++ //increment runs
         //check if we should run again
         if self.runsUsed < self.maxRuns! {
+            populateBoardOfSize(self.n!, optimally:false)
             return self.run()
         }
         

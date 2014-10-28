@@ -195,11 +195,14 @@ class ViewController: UIViewController, BoardDelegate {
         case 0:  return Algorithm.Vanilla
         case 1:  return Algorithm.Random
         case 2:  return Algorithm.Greedy
+        case 3:  return Algorithm.VanillaRestart
+        case 4:  return Algorithm.VanillaChooseFirstBest
         default: return Algorithm.Vanilla
         }
     }
     
-    
+    //When this is multi-Threaded the tests should be arranged so that each thread will finish roughly at the same time
+    //, so each thread does as much works as possible without lagging behind all the others
     func runAllTestsWithNQueens() {
         //run tests in new thread
         dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
@@ -207,7 +210,7 @@ class ViewController: UIViewController, BoardDelegate {
             
             self.presentViewController(beginPrompt, animated: true, completion: nil)
             
-            
+            //Three main Algorithms
             self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 100)
             self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 500)
             
@@ -226,15 +229,12 @@ class ViewController: UIViewController, BoardDelegate {
             self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 100)
             self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 500)
             
-            
-            
             self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 5000)
-            
             
             self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 5000)
             
             
-            
+            //Modifications of Vanilla
             self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 100)
             self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 500)
             
@@ -252,16 +252,13 @@ class ViewController: UIViewController, BoardDelegate {
             
             self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 100)
             self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 500)
-            
-            
-            
+
             self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 5000)
-            
             
             self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 5000)
 
             
-            println("End Testing")
+            println("End All Testing")
             
             beginPrompt.dismissViewControllerAnimated(true, completion: { () -> Void in
                 var completePrompt = UIAlertController(title: "MinConflicts", message: "All tests have completed. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -275,18 +272,19 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     
-
-    
     func runTestForThreeBasicAlgorithms(trials : Int, queens : Int, steps : Int) {
         println()
         println("Begin Testing: \(trials) trials, \(queens) queens, \(steps) steps")
         //Different Algorithms, all else default
+       
         println()
         println("Vanilla Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+        
         println()
         println("Greedy Algorithm") //is taking an eternity right now :(
         //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+        
         println("Random Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
     }

@@ -9,7 +9,7 @@
 import Foundation
 
 enum Algorithm {
-    case Vanilla, Random, Greedy
+    case Vanilla, Random, Greedy, VanillaRestart, VanillaChooseFirstBest
 }
 
 //extensions for the Int class

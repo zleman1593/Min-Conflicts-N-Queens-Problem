@@ -30,8 +30,8 @@
                                     <action selector="start" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Eh-C5-F3h"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BdQ-e5-fOT">
-                                <rect key="frame" x="169" y="476" width="263" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BdQ-e5-fOT">
+                                <rect key="frame" x="85" y="476" width="456" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="263" id="Gpj-5z-fRa"/>
                                 </constraints>
@@ -39,6 +39,8 @@
                                     <segment title="Vanilla"/>
                                     <segment title="Random"/>
                                     <segment title="Greedy"/>
+                                    <segment title="V. Restarts"/>
+                                    <segment title="V. Best First"/>
                                 </segments>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max Steps" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcg-lC-DXz">
