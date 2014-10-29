@@ -20,10 +20,6 @@
 
 //TODO: Make the VanillaChooseFirstBest actual run the correct algorithm
 
-//TODO: The multiple runs does not seem to be working
-//Test case: MAx limit 3500 steps, runs 10, board 250. Shoudl be solved in under 350 steps during one of the runs. But it isn't.
-//So somehtign is wrong
-
 
 
 import Foundation
@@ -43,7 +39,7 @@ class MinConflicts {
     //Number of steps to find solution
     var maxSteps : Int? = nil
     //Print Messages to Console
-    var debug = false
+    var debug = true
     
     /* Runtime Info */
     //number of runs used so far
@@ -62,6 +58,7 @@ class MinConflicts {
     //sets queens on board to start
     //Input: n, the number of queens on the board; optimally, whether or not to place queens "optimally"
     func populateBoardOfSize(n : Int, optimally: Bool) {
+        columns = []
         self.n = n
         //initialize n columns with random values
         for index in 0..<n {
@@ -187,7 +184,11 @@ class MinConflicts {
         //check if we should run again
         if self.runsUsed < self.maxRuns! {
             populateBoardOfSize(self.n!, optimally:false)
-            return self.run()
+            if self.debug {
+            println("Starting New Run: \(self.runsUsed + 1 )")
+            }
+             return self.run()
+
         }
         
         //Return that it had to give up
@@ -431,3 +432,4 @@ class MinConflicts {
         return enumeratedCurrentPossibleConflicts
     }
 }
+
