@@ -39,7 +39,7 @@ class MinConflicts {
     //Number of steps to find solution
     var maxSteps : Int? = nil
     //Print Messages to Console
-    var debug = true
+    var debug = false
     
     /* Runtime Info */
     //number of runs used so far

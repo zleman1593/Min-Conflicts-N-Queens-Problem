@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436236182.886122"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "MinConflicts"
             landmarkType = "3">
             <Locations>
@@ -610,11 +610,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -626,11 +626,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -642,11 +642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -658,11 +658,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
             landmarkType = "5">
             <Locations>
@@ -704,11 +704,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "run()"
             landmarkType = "5">
             <Locations>
@@ -750,11 +750,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -766,11 +766,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
             landmarkType = "5">
             <Locations>
@@ -812,11 +812,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
             landmarkType = "5">
             <Locations>
@@ -858,11 +858,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "run()"
             landmarkType = "5">
             <Locations>
@@ -918,11 +918,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "randomPlacement(_:)"
             landmarkType = "5">
             <Locations>
@@ -978,11 +978,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "initialConflictCounter()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1040,11 +1040,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
             landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
@@ -1100,11 +1100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
@@ -1160,11 +1160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "randomPlacement(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1176,11 +1176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
             landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
             <Locations>
@@ -1250,11 +1250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "428"
-            endingLineNumber = "428"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
             <Locations>
@@ -1324,11 +1324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
             <Locations>
@@ -1398,11 +1398,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
             <Locations>
@@ -1472,11 +1472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "populateBoardOfSize(_:optimally:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1488,11 +1488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1518,11 +1518,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "425"
-            endingLineNumber = "425"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
             landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
             <Locations>
@@ -1592,11 +1592,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "run()"
             landmarkType = "5">
             <Locations>
@@ -1638,11 +1638,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "run()"
             landmarkType = "5">
             <Locations>
@@ -1684,11 +1684,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "populateBoardOfSize(_:optimally:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1700,11 +1700,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-            timestampString = "436237008.876974"
+            timestampString = "436237209.98088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "run()"
             landmarkType = "5">
             <Locations>
