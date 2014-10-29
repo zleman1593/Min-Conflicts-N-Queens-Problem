@@ -8,19 +8,22 @@
 
 //TODO: Implement columnsWithConflictsButNoBetterMovesAvalible for Greedy to make it more efficient.
 // I commented out  the if statement for this ^ because for some reason it was not working.
-//Check to make sure the random method works. Is it supposed to suck? Maybe, but maybe not.
 
-//TODO: Implement last part off assignment (#3)
-//TODO: MultiThread the testing to make tasks run simultaneously on 4 different cores
-//TODO: For reported stats. Check Sample output and identify errors and things we need to change for output 
-//inf + inf = a small float value?
-// number of steps is Nan?
-////When the run all tests method is multi-Threaded the tests should be arranged so that each thread will finish roughly at the same time
-//, so each thread does as much works as possible without lagging behind all the others
-//Make the VanillaChooseFirstBest actual run the correct algorithm
-//Need to make the restarts termiante on max step limit but keep track of steps since last reset to report if successful
 
-//Todo: Lastly, Make sure all parameters can be changed via the UI for Majercik
+//TODO: Implement last part off assignment (#3). Ruben: we have to make it evaluate its current position and then go through the rows and discover the first best.
+//it doesn't currently work because we are not currently looking at the current move immediately
+
+/*TODO: For reported stats. Check Sample output and identify errors and things we need to change for output
+*inf + inf = a small float value?
+*number of steps is Nan?
+*/
+
+//TODO: Make the VanillaChooseFirstBest actual run the correct algorithm
+
+//TODO: The multiple runs does not seem to be working
+//Test case: MAx limit 3500 steps, runs 10, board 250. Shoudl be solved in under 350 steps during one of the runs. But it isn't.
+//So somehtign is wrong
+
 
 
 import Foundation
@@ -99,11 +102,11 @@ class MinConflicts {
         for index in 1...self.maxSteps!/self.maxRuns! {
             //Check if current assignment is solution
             if self.isSolution() {
-                self.stepsUsed = self.runsUsed*(self.maxSteps!/self.maxRuns!) + index
+                self.stepsUsed = index
                 return true
             }
             
-        
+            
             
             switch self.algorithm! {
             case Algorithm.Vanilla:
@@ -126,8 +129,8 @@ class MinConflicts {
                 
                 //Set queen in the random column to row that minimizes conflicts
                 self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
-
-
+                
+                
                 
             case Algorithm.Random:
                 //Picks a column with conflicts at random
@@ -148,7 +151,7 @@ class MinConflicts {
                 
                 //For all queens see which queen will result in the largest conflict reduction
                 for index in self.columns {
-                    //  if columnsWithConflictsButNoBetterMovesAvalible[index] == nil {
+                    // if columnsWithConflictsButNoBetterMovesAvalible[index] == nil {
                     let nextMoveInfo = self.findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false)
                     
                     if nextMoveInfo.conflicts < bestConflicts {
@@ -159,7 +162,7 @@ class MinConflicts {
                         bestQueen.append(selectedQueen: index, row: nextMoveInfo.bestRow,conflictStore: nextMoveInfo.conflictStore)
                         
                     }
-                    // }
+                    //   }
                 }
                 
                 //Breaks ties randomly from the best options
@@ -235,7 +238,7 @@ class MinConflicts {
         return (moveToMake, nextMoveInfo.minConflictsForBestMoves - nextMoveInfo.conflictsFromRowBeforeMove, conflictStore)
     }
     
-
+    
     /*Note: First two parameters are passed by reference so that they do not need to be copied
     */
     func bestMovesForQueen(inout conflictStore: [Int : [Int]], inout bestMoves : [Int], currentSelectedColumn : Int) -> (minConflictsForBestMoves : Int, conflictsFromRowBeforeMove : Int) {
@@ -286,11 +289,14 @@ class MinConflicts {
         var minConflictsForBestMoves = 0
         //This holds all the possible conflicts for each possible move to a new row
         var conflictStore : [[Int]] = []
-        let nextRow = Int.random(self.n!)
+        var nextRow = Int.random(self.n!)
         var conflictsFromRowBeforeMove = 0
         var nextMoveConflicts = 0
+        while nextRow != self.columns[currentSelectedColumn] {
+            nextRow = Int.random(self.n!)
+        }
         
-        //Array to hold the conflicts for this row choice. 
+        //Array to hold the conflicts for this row choice.
         var possibleConflicts : [Int] = []
         
         possibleConflicts = findConflictsForQueen(currentSelectedColumn, atRow: nextRow)
@@ -306,14 +312,14 @@ class MinConflicts {
         conflictStore.append(possibleConflicts)
         
         //Keeps the number of conflicts updated after a move is made
-       //if nextRow != self.columns[currentSelectedColumn] {
-            self.conflicts = self.conflicts + (nextMoveConflicts - conflictsFromRowBeforeMove)
-            //Removes all old conflicts involving the old position
-            removeOldConflicts(currentSelectedColumn)
-            
-            //Adds all the new conflicts if there are any
-            addConflictFromNewMove(conflictStore[0], mainColumn: currentSelectedColumn)
-        //}
+        
+        self.conflicts = self.conflicts + (nextMoveConflicts - conflictsFromRowBeforeMove)
+        //Removes all old conflicts involving the old position
+        removeOldConflicts(currentSelectedColumn)
+        
+        //Adds all the new conflicts if there are any
+        addConflictFromNewMove(conflictStore[0], mainColumn: currentSelectedColumn)
+        
         
         //Returns new row for queen to occupy
         return nextRow
@@ -377,8 +383,8 @@ class MinConflicts {
     /*Adds the conflicts between the two columns to the global conflict store*/
     func addConflictsBetweenTwoColumns(columnA : Int, columnB : Int) {
         //Frees up the column to be looked at in the future
-         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnA)
-         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
+        columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnA)
+        columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
         
         if allConflicts[columnA]? != nil {
             allConflicts[columnA]!.addObject(columnB)
