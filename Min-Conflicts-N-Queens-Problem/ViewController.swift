@@ -115,8 +115,11 @@ class ViewController: UIViewController, BoardDelegate {
         self.solver.populateBoardOfSize(n, optimally: optimally)
         
         //Update Board with starting size
+           if   self.solver.columns.count <= 250 {
         self.board.setBoardSize(n)
+     
         self.board.setNeedsDisplay()
+        }
         
         //Creates a tap location detector
         let tap = UITapGestureRecognizer(target: self.board, action: "tap:")
@@ -150,18 +153,25 @@ class ViewController: UIViewController, BoardDelegate {
         dispatch_async(dispatch_queue_create("Solving queue", nil)) {
             var alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             self.solver.prepareForRunWith(self.selectedAlgorithm(), maxRuns: self.maxRuns, maxSteps: self.maxSteps.text.toInt()!, randomness: 0.2, pickFirstBetter: false)
+              let start = NSDate() //Start Time
             if self.solver.run() {
+                let end = NSDate()   //End Time
+                let timeInterval: Double = end.timeIntervalSinceDate(start)
+
                 println("Solved!")
                 println("Final Solution: \(self.solver.columns.description)")
                 println("Found at Step \(self.solver.stepsUsed)")
+                println("Solution Took \(timeInterval) seconds.")
                 
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
                     self.resetSolveButton()
                     //Shows final board positions
+                if  self.solver.columns.count <= 250 {
                     self.board.setNeedsDisplay()
+                    }
                     alert.title = "Solved!"
-                    alert.message = "A solution was found at Step \(self.solver.stepsUsed)! Would you like to play again?"
+                    alert.message = "A solution was found at Step \(self.solver.stepsUsed) using \(timeInterval)  seconds! Would you like to play again?"
                 }
             } else { //game not solved
                 println("Could no be solved in less than \(self.MAX_STEPS) steps :(")
@@ -170,8 +180,11 @@ class ViewController: UIViewController, BoardDelegate {
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
                     self.resetSolveButton()
+                     if  self.solver.columns.count <= 250 {
                     //Shows final board positions
                     self.board.setNeedsDisplay()
+                    }
+                    
                     alert.title = "Unsolved"
                     alert.message = "A solution was not found in \(self.solver.maxSteps!) steps! Would you like to play again?"
                 }

@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/ViewController.swift"
-            timestampString = "436209308.392436"
+            timestampString = "436363372.473926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "populateBoardOfSize(_:optimally:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/ViewController.swift"
-            timestampString = "436209308.392436"
+            timestampString = "436363372.473926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "populateBoardOfSize(_:optimally:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -647,8 +647,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -663,7 +663,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
             endingLineNumber = "80"
-            landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
+            landmarkName = "resetBoard()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -755,7 +755,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "201"
             endingLineNumber = "201"
-            landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
+            landmarkName = "run()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -933,12 +933,12 @@
                   symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.randomPlacement (Min_Conflicts_N_Queens_Problem.MinConflicts)(Swift.Int) -&gt; Swift.Int"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-                  timestampString = "436236652.118382"
+                  timestampString = "436363429.286705"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "325"
-                  endingLineNumber = "325"
-                  offsetFromSymbolStart = "2505">
+                  startingLineNumber = "322"
+                  endingLineNumber = "322"
+                  offsetFromSymbolStart = "2301">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -947,26 +947,12 @@
                   symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.randomPlacement (Min_Conflicts_N_Queens_Problem.MinConflicts)(Swift.Int) -&gt; Swift.Int"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-                  timestampString = "436236652.11854"
+                  timestampString = "436363429.287418"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "325"
-                  endingLineNumber = "325"
-                  offsetFromSymbolStart = "2785">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.randomPlacement (Min_Conflicts_N_Queens_Problem.MinConflicts)(Swift.Int) -&gt; Swift.Int"
-                  moduleName = "Min-Conflicts-N-Queens-Problem"
-                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-                  timestampString = "436236652.118629"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "325"
-                  endingLineNumber = "325"
-                  offsetFromSymbolStart = "2878">
+                  startingLineNumber = "322"
+                  endingLineNumber = "322"
+                  offsetFromSymbolStart = "2331">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -994,11 +980,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/ViewController.swift"
-            timestampString = "436210962.877458"
+            timestampString = "436363372.473926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "testMinConflicts(_:n:optimally:algorithm:maxRuns:maxSteps:randomness:pickFirstBetter:)"
             landmarkType = "5">
             <Locations>
@@ -1009,12 +995,12 @@
                   symbolName = "Min_Conflicts_N_Queens_Problem.ViewController.testMinConflicts (Min_Conflicts_N_Queens_Problem.ViewController)(Swift.Int, n : Swift.Int, optimally : Swift.Bool, algorithm : Min_Conflicts_N_Queens_Problem.Algorithm, maxRuns : Swift.Int, maxSteps : Swift.Int, randomness : Swift.Float, pickFirstBetter : Swift.Bool) -&gt; ()"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/ViewController.swift"
-                  timestampString = "436236652.121137"
+                  timestampString = "436363429.288228"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "371"
-                  endingLineNumber = "371"
-                  offsetFromSymbolStart = "140">
+                  startingLineNumber = "379"
+                  endingLineNumber = "379"
+                  offsetFromSymbolStart = "143">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1023,12 +1009,12 @@
                   symbolName = "Min_Conflicts_N_Queens_Problem.ViewController.testMinConflicts (Min_Conflicts_N_Queens_Problem.ViewController)(Swift.Int, n : Swift.Int, optimally : Swift.Bool, algorithm : Min_Conflicts_N_Queens_Problem.Algorithm, maxRuns : Swift.Int, maxSteps : Swift.Int, randomness : Swift.Float, pickFirstBetter : Swift.Bool) -&gt; ()"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/ViewController.swift"
-                  timestampString = "436236652.121724"
+                  timestampString = "436363429.288359"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "371"
-                  endingLineNumber = "371"
-                  offsetFromSymbolStart = "470">
+                  startingLineNumber = "379"
+                  endingLineNumber = "379"
+                  offsetFromSymbolStart = "1350">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1045,8 +1031,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "408"
             endingLineNumber = "408"
-            landmarkName = "findColumnWithConflicts()"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1156,7 +1142,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
@@ -1165,7 +1151,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "290"
             endingLineNumber = "290"
-            landmarkName = "randomPlacement(_:)"
+            landmarkName = "bestMovesForQueen(_:bestMoves:currentSelectedColumn:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1181,7 +1167,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "422"
             endingLineNumber = "422"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
+            landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1255,7 +1241,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "424"
             endingLineNumber = "424"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
+            landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1329,7 +1315,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "428"
             endingLineNumber = "428"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
+            landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1403,7 +1389,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "427"
             endingLineNumber = "427"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
+            landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1468,7 +1454,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
@@ -1493,7 +1479,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
             endingLineNumber = "81"
-            landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
+            landmarkName = "resetBoard()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1504,11 +1490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/ViewController.swift"
-            timestampString = "436210962.877458"
+            timestampString = "436363372.473926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401">
+            startingLineNumber = "409"
+            endingLineNumber = "409">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1523,7 +1509,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "421"
             endingLineNumber = "421"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
+            landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1653,12 +1639,12 @@
                   symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-                  timestampString = "436236652.162846"
+                  timestampString = "436363429.289052"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "155"
                   endingLineNumber = "155"
-                  offsetFromSymbolStart = "4148">
+                  offsetFromSymbolStart = "2690">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1667,12 +1653,12 @@
                   symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-                  timestampString = "436236652.163111"
+                  timestampString = "436363429.289169"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "155"
                   endingLineNumber = "155"
-                  offsetFromSymbolStart = "4208">
+                  offsetFromSymbolStart = "2951">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1696,7 +1682,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
@@ -1709,32 +1695,46 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-                  timestampString = "436236652.164035"
+                  timestampString = "436362081.138171"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "193"
-                  endingLineNumber = "193"
-                  offsetFromSymbolStart = "12610">
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "8286">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
-                  timestampString = "436236652.164154"
+                  timestampString = "436362081.138309"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "193"
-                  endingLineNumber = "193"
-                  offsetFromSymbolStart = "12648">
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "8308">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362081.138419"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "8351">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1742,7 +1742,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Min-Conflicts-N-Queens-Problem/ViewController.swift"
@@ -1755,13 +1755,13 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Min_Conflicts_N_Queens_Problem.ViewController.populateBoardOfSize (Min_Conflicts_N_Queens_Problem.ViewController)(Swift.Int, optimally : Swift.Bool) -&gt; ()"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/ViewController.swift"
-                  timestampString = "436236652.164752"
+                  timestampString = "436329257.401125"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
@@ -1769,13 +1769,13 @@
                   offsetFromSymbolStart = "23">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Min_Conflicts_N_Queens_Problem.ViewController.populateBoardOfSize (Min_Conflicts_N_Queens_Problem.ViewController)(Swift.Int, optimally : Swift.Bool) -&gt; ()"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/ViewController.swift"
-                  timestampString = "436236652.164865"
+                  timestampString = "436329257.401253"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
@@ -1783,13 +1783,13 @@
                   offsetFromSymbolStart = "39">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "@objc Min_Conflicts_N_Queens_Problem.ViewController.populateBoardOfSize (Min_Conflicts_N_Queens_Problem.ViewController)(Swift.Int, optimally : Swift.Bool) -&gt; ()"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/ViewController.swift"
-                  timestampString = "436236652.164956"
+                  timestampString = "436329257.401382"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
@@ -1797,13 +1797,13 @@
                   offsetFromSymbolStart = "42">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "@objc Min_Conflicts_N_Queens_Problem.ViewController.populateBoardOfSize (Min_Conflicts_N_Queens_Problem.ViewController)(Swift.Int, optimally : Swift.Bool) -&gt; ()"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/ViewController.swift"
-                  timestampString = "436236652.165042"
+                  timestampString = "436329257.401501"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
@@ -1811,13 +1811,13 @@
                   offsetFromSymbolStart = "58">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Min_Conflicts_N_Queens_Problem.ViewController.(promptForBoardSize (Min_Conflicts_N_Queens_Problem.ViewController) -&gt; () -&gt; ()).(closure #2) with unmangled suffix &quot;_promote0&quot;"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/ViewController.swift"
-                  timestampString = "436236652.165134"
+                  timestampString = "436329257.402451"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
@@ -1825,18 +1825,478 @@
                   offsetFromSymbolStart = "2205">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Min_Conflicts_N_Queens_Problem.ViewController.(promptForBoardSize (Min_Conflicts_N_Queens_Problem.ViewController) -&gt; () -&gt; ()).(closure #3) with unmangled suffix &quot;_promote0&quot;"
                   moduleName = "Min-Conflicts-N-Queens-Problem"
                   urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/ViewController.swift"
-                  timestampString = "436236652.165219"
+                  timestampString = "436329257.402677"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
                   endingLineNumber = "114"
                   offsetFromSymbolStart = "2205">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436329271.576845"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "run()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362081.139327"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362081.139447"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "162">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436329854.586121"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "populateBoardOfSize(_:optimally:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436329858.550824"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "populateBoardOfSize(_:optimally:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436329859.414265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "populateBoardOfSize(_:optimally:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436329862.753556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "populateBoardOfSize(_:optimally:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436329893.356548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "bestMovesForQueen(_:bestMoves:currentSelectedColumn:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.bestMovesForQueen (Min_Conflicts_N_Queens_Problem.MinConflicts)(inout Swift.Dictionary&lt;Swift.Int, Swift.Array&lt;Swift.Int&gt;&gt;, bestMoves : inout Swift.Array&lt;Swift.Int&gt;, currentSelectedColumn : Swift.Int) -&gt; (minConflictsForBestMoves : Swift.Int, conflictsFromRowBeforeMove : Swift.Int)"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362081.14148"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "258"
+                  endingLineNumber = "258"
+                  offsetFromSymbolStart = "199">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.bestMovesForQueen (Min_Conflicts_N_Queens_Problem.MinConflicts)(inout Swift.Dictionary&lt;Swift.Int, Swift.Array&lt;Swift.Int&gt;&gt;, bestMoves : inout Swift.Array&lt;Swift.Int&gt;, currentSelectedColumn : Swift.Int) -&gt; (minConflictsForBestMoves : Swift.Int, conflictsFromRowBeforeMove : Swift.Int)"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362081.141593"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "258"
+                  endingLineNumber = "258"
+                  offsetFromSymbolStart = "1114">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436329914.245591"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
+            landmarkName = "findConflictsForQueen(_:atRow:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.bestMovesForQueen (Min_Conflicts_N_Queens_Problem.MinConflicts)(inout Swift.Dictionary&lt;Swift.Int, Swift.Array&lt;Swift.Int&gt;&gt;, bestMoves : inout Swift.Array&lt;Swift.Int&gt;, currentSelectedColumn : Swift.Int) -&gt; (minConflictsForBestMoves : Swift.Int, conflictsFromRowBeforeMove : Swift.Int)"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362081.141897"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "443"
+                  endingLineNumber = "443"
+                  offsetFromSymbolStart = "522">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.randomPlacement (Min_Conflicts_N_Queens_Problem.MinConflicts)(Swift.Int) -&gt; Swift.Int"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362081.142016"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "443"
+                  endingLineNumber = "443"
+                  offsetFromSymbolStart = "647">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.randomPlacement (Min_Conflicts_N_Queens_Problem.MinConflicts)(Swift.Int) -&gt; Swift.Int"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362081.142111"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "443"
+                  endingLineNumber = "443"
+                  offsetFromSymbolStart = "1649">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.findConflictsForQueen (Min_Conflicts_N_Queens_Problem.MinConflicts)(Swift.Int, atRow : Swift.Int) -&gt; Swift.Array&lt;Swift.Int&gt;"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362081.142213"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "443"
+                  endingLineNumber = "443"
+                  offsetFromSymbolStart = "237">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436362613.600867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "run()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362613.606668"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "1349">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362613.606825"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "1373">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436362614.514823"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "run()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362614.516439"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "1349">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362614.516567"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "1373">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436362619.880633"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "run()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362619.88363"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362619.883819"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "73">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436362625.519558"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "run()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362625.523122"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "1625">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436362625.523287"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "1952">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+            timestampString = "436362632.252092"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "run()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436363429.289791"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "2064">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Min_Conflicts_N_Queens_Problem.MinConflicts.run (Min_Conflicts_N_Queens_Problem.MinConflicts)() -&gt; Swift.Bool"
+                  moduleName = "Min-Conflicts-N-Queens-Problem"
+                  urlString = "file:///Users/zackleman/Documents/Current%20Projects/Min-Conflicts-N-Queens-Problem/Min-Conflicts-N-Queens-Problem/MinConflicts.swift"
+                  timestampString = "436363429.289915"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "2112">
                </Location>
             </Locations>
          </BreakpointContent>
