@@ -252,7 +252,7 @@ class ViewController: UIViewController, BoardDelegate {
         //run tests in new thread
         dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
             //Three main Algorithms
-            self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 500)
+            self.runTestForThreeBasicAlgorithms(100, queens: 10, steps: 50000000)
             self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 5000)
             
             self.runTestForThreeBasicAlgorithms(10, queens: 50, steps: 500)
@@ -353,6 +353,45 @@ class ViewController: UIViewController, BoardDelegate {
         //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
     }
     
+    func runAllTests(trials : Int, queens : Int, steps : Int) {
+        var beginPrompt = UIAlertController(title: "MinConflicts", message: "Beginning all tests. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
+        self.presentViewController(beginPrompt, animated: true, completion: nil)
+        
+        //run tests in new thread
+        dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
+            println("Begin Testing: \(trials) trials, \(queens) queens, \(steps) steps")
+            //Different Algorithms, all else default
+            println("Vanilla Algorithm")
+            self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+            println("Greedy Algorithm") //is taking an eternity right now :(
+            //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+            println("Random Algorithm")
+            self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+            
+            //Optimal Placement, all else default
+            println("Optimal Placement")
+            self.testMinConflicts(trials, n: queens, optimally: true, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+            
+            //Increased Runs, all else default
+            println("5 Runs")
+            self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+            
+            //Pick First Better Move, all else default
+            println("Pick First Better Move") //still not working
+            //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+            println("End Testing")
+            
+            beginPrompt.dismissViewControllerAnimated(true, completion: { () -> Void in
+                var completePrompt = UIAlertController(title: "MinConflicts", message: "All tests have completed. Please see console for details.", preferredStyle: UIAlertControllerStyle.Alert)
+                var continueAction = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                    self.promptForBoardSize()
+                })
+                completePrompt.addAction(continueAction)
+                self.presentViewController(completePrompt, animated: true, completion: nil)
+            })
+        }
+    }
+    
     func testMinConflicts(trials : Int, n : Int, optimally : Bool, algorithm : Algorithm, maxRuns : Int, maxSteps : Int, randomness : Float, pickFirstBetter : Bool) {
         var averageTotalTime = 0.0 //tracks average solve time per run
         var averageTime = 0.0 //tracks average solve time per run
@@ -361,7 +400,7 @@ class ViewController: UIViewController, BoardDelegate {
         var successRate = 0 //Tracks number of problems solved under the step limit
         //run MinConflicts with parameters for trials times
         for i in 1...trials {
-            
+            println("Trial: \(i)")
             var solver = MinConflicts()
             let startPreprocess = NSDate() //Start  preprocessing Time
             solver.populateBoardOfSize(n, optimally: optimally)

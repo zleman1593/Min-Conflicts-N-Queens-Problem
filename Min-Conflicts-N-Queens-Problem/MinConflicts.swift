@@ -97,6 +97,9 @@ class MinConflicts {
         
         //On Each step
         for index in 1...self.maxSteps!/self.maxRuns! {
+            if index%100 == 0 {
+                println("Step  \(index)")
+            }
             //Check if current assignment is solution
             if self.isSolution() {
                 self.stepsUsed = index
@@ -403,12 +406,22 @@ class MinConflicts {
     //extracted logic for retrieving a random column with conflicts
     func findColumnWithConflicts() -> Int {
         //Picks a column with conflicts at random
-        let columnsWithConflicts = allConflicts.keys.array
+        var columnsWithConflicts = allConflicts.keys.array
+        var columnsWithConflictsButNoBetterMovesAvalibleArray = columnsWithConflictsButNoBetterMovesAvalible.keys.array
         var column : Int?
         
-        do { //While you have not selected a column that will result in a row change
-            column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
-        } while columnsWithConflictsButNoBetterMovesAvalible[column!] != nil
+        //sort arrays for comparison in next step
+        columnsWithConflicts.sort { $0 < $1 }
+        columnsWithConflictsButNoBetterMovesAvalibleArray.sort { $0 < $1 }
+
+        //if there exist columns with conflicts with better moves...
+        if columnsWithConflicts == columnsWithConflictsButNoBetterMovesAvalibleArray {
+            do { //While you have not selected a column that will result in a row change
+                column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
+            } while columnsWithConflictsButNoBetterMovesAvalible[column!] != nil
+        } else {
+            //TODO
+        }
         
         return column!
     }
