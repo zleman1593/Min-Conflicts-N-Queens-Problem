@@ -52,6 +52,8 @@ class MinConflicts {
     var allConflicts = [Int : NSMutableArray]()
     //Tracks all the columns that still have conflicts, but shouldn't be looked at as there are no moves left for that column currently
     var columnsWithConflictsButNoBetterMovesAvalible = [Int : Int]()
+    var otherBestMovesAvalible = [Int : ([Int], Int, Int, [Int : [Int]])]()
+    
     
     //sets queens on board to start
     //Input: n, the number of queens on the board; optimally, whether or not to place queens "optimally"
@@ -63,6 +65,7 @@ class MinConflicts {
         for index in 0..<n {
             let row = Int.random(n)
             columns.append(row)
+           
             
             if optimally {
                 let move = findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false).bestRow
@@ -79,6 +82,7 @@ class MinConflicts {
         conflicts = 0
         allConflicts.removeAll(keepCapacity: false)
         columnsWithConflictsButNoBetterMovesAvalible.removeAll(keepCapacity: false)
+        otherBestMovesAvalible.removeAll(keepCapacity: false)
         populateBoardOfSize(n!, optimally: optimally!)
     }
     
@@ -208,6 +212,9 @@ class MinConflicts {
         var conflictStore = [Int : Array<Int>]()
         //Keeps track of the best moves (of equivalent conflicts)
         var bestMoves : [Int] = []
+        var nextMoveInfo: (minConflictsForBestMoves: Int, conflictsFromRowBeforeMove: Int)!
+        
+        if  otherBestMovesAvalible[currentSelectedColumn] == nil{
         
         /*nextMoveInfo contains:
         * minConflictsForBestMoves: Number of conflicts that will be generated due to move to new row position
@@ -215,11 +222,20 @@ class MinConflicts {
         * bestMoves: Array of equivalently best moves
         * conflictStore: Stores the conflicts for each of the best possible moves
         */
-        let nextMoveInfo = bestMovesForQueen(&conflictStore, bestMoves: &bestMoves, currentSelectedColumn: currentSelectedColumn)
+         nextMoveInfo = bestMovesForQueen(&conflictStore, bestMoves: &bestMoves, currentSelectedColumn: currentSelectedColumn)
         
         if self.algorithm != Algorithm.Greedy && bestMoves.count == 1 {
             //Indicates column cannot be updated until a conflict with it changes
             columnsWithConflictsButNoBetterMovesAvalible.updateValue(currentSelectedColumn, forKey: currentSelectedColumn)
+        } else{
+
+            otherBestMovesAvalible.updateValue((bestMoves,nextMoveInfo.minConflictsForBestMoves, nextMoveInfo.conflictsFromRowBeforeMove,conflictStore), forKey: currentSelectedColumn)
+        }
+            
+        } else {
+            nextMoveInfo = (otherBestMovesAvalible[currentSelectedColumn].1,otherBestMovesAvalible[currentSelectedColumn].2)
+            bestMoves = otherBestMovesAvalible[currentSelectedColumn].0
+            conflictStore = otherBestMovesAvalible[currentSelectedColumn].3
         }
         
         //Breaks ties randomly from the best options
@@ -366,12 +382,14 @@ class MinConflicts {
     func removeOldConflicts(column : Int) {
         //Frees up the column to be looked at in the future
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(column)
+         otherBestMovesAvalible.removeValueForKey(column)
         
         //Run through all the conflicts and go to those columns and remove this column from these other columns
         if allConflicts[column]? != nil {
             for columnB in 0..<allConflicts[column]!.count {
                 allConflicts[columnB]?.removeObject(column)
                 columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
+                 otherBestMovesAvalible.removeValueForKey(column)
             }
         }
         
@@ -390,7 +408,9 @@ class MinConflicts {
     func addConflictsBetweenTwoColumns(columnA : Int, columnB : Int) {
         //Frees up the column to be looked at in the future
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnA)
+         otherBestMovesAvalible.removeValueForKey(columnA)
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
+         otherBestMovesAvalible.removeValueForKey(columnB)
         
         if allConflicts[columnA]? != nil {
             allConflicts[columnA]!.addObject(columnB)
