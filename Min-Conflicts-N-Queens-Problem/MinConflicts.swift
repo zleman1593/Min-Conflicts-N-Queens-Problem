@@ -97,16 +97,11 @@ class MinConflicts {
         
         //On Each step
         for index in 1...self.maxSteps!/self.maxRuns! {
-            if index%100 == 0 {
-                println("Step  \(index)")
-            }
             //Check if current assignment is solution
             if self.isSolution() {
                 self.stepsUsed = index
                 return true
             }
-            
-            
             
             switch self.algorithm! {
             case Algorithm.Vanilla:
