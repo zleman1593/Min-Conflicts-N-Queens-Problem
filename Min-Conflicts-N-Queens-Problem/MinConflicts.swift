@@ -6,10 +6,6 @@
 //  Copyright (c) 2014 Zackery leman. All rights reserved.
 //
 
-//TODO: Implement columnsWithConflictsButNoBetterMovesAvalible for Greedy to make it more efficient.
-// I commented out  the if statement for this ^ because for some reason it was not working.
-
-
 //TODO: Implement last part off assignment (#3). Ruben: we have to make it evaluate its current position and then go through the rows and discover the first best.
 //it doesn't currently work because we are not currently looking at the current move immediately
 
@@ -38,6 +34,8 @@ class MinConflicts {
     var maxRuns : Int? = nil
     //Number of steps to find solution
     var maxSteps : Int? = nil
+    //Are we populating the board optimally?
+    var optimally : Bool? = nil
     //Print Messages to Console
     var debug = false
     
@@ -58,8 +56,9 @@ class MinConflicts {
     //sets queens on board to start
     //Input: n, the number of queens on the board; optimally, whether or not to place queens "optimally"
     func populateBoardOfSize(n : Int, optimally: Bool) {
-        columns = []
         self.n = n
+        self.optimally = optimally
+        
         //initialize n columns with random values
         for index in 0..<n {
             let row = Int.random(n)
@@ -73,6 +72,14 @@ class MinConflicts {
         if debug {
             println("Finished board Setup and any Preprocessing.")
         }
+    }
+    
+    func resetBoard() {
+        columns = []
+        conflicts = 0
+        allConflicts.removeAll(keepCapacity: false)
+        columnsWithConflictsButNoBetterMovesAvalible.removeAll(keepCapacity: false)
+        populateBoardOfSize(n!, optimally: optimally!)
     }
     
     //sets algorithm parameters
@@ -102,7 +109,7 @@ class MinConflicts {
                 self.stepsUsed = index
                 return true
             }
-            
+                        
             switch self.algorithm! {
             case Algorithm.Vanilla:
                 //Picks a column with conflicts at random
@@ -141,23 +148,23 @@ class MinConflicts {
                 }
                 
             case Algorithm.Greedy:
-                var bestQueen : [(selectedQueen: Int, row: Int, conflictStore: [Int : Array<Int>])] = []
+                var bestQueen : [(selectedQueen: Int, row: Int, conflictStore: [Int : [Int]])] = []
                 var bestConflicts = Int.max
                 
                 //For all queens see which queen will result in the largest conflict reduction
                 for index in self.columns {
-                    // if columnsWithConflictsButNoBetterMovesAvalible[index] == nil {
-                    let nextMoveInfo = self.findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false)
-                    
-                    if nextMoveInfo.conflicts < bestConflicts {
-                        bestConflicts = nextMoveInfo.conflicts
-                        bestQueen = [(selectedQueen: index, row: nextMoveInfo.bestRow, conflictStore: nextMoveInfo.conflictStore)]
+                    if columnsWithConflictsButNoBetterMovesAvalible[index] == nil {
+                        let nextMoveInfo = self.findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false)
                         
-                    } else if nextMoveInfo.conflicts == bestConflicts {
-                        bestQueen.append(selectedQueen: index, row: nextMoveInfo.bestRow,conflictStore: nextMoveInfo.conflictStore)
-                        
+                        if nextMoveInfo.conflicts < bestConflicts {
+                            bestConflicts = nextMoveInfo.conflicts
+                            bestQueen = [(selectedQueen: index, row: nextMoveInfo.bestRow, conflictStore: nextMoveInfo.conflictStore)]
+                            
+                        } else if nextMoveInfo.conflicts == bestConflicts {
+                            bestQueen.append(selectedQueen: index, row: nextMoveInfo.bestRow,conflictStore: nextMoveInfo.conflictStore)
+                            
+                        }
                     }
-                    //   }
                 }
                 
                 //Breaks ties randomly from the best options
@@ -181,11 +188,11 @@ class MinConflicts {
         self.runsUsed++ //increment runs
         //check if we should run again
         if self.runsUsed < self.maxRuns! {
-            populateBoardOfSize(self.n!, optimally:false)
+            self.resetBoard()
             if self.debug {
-            println("Starting New Run: \(self.runsUsed + 1 )")
+                println("Starting New Run: \(self.runsUsed + 1 )")
             }
-             return self.run()
+            return self.run()
 
         }
         
@@ -210,7 +217,7 @@ class MinConflicts {
         */
         let nextMoveInfo = bestMovesForQueen(&conflictStore, bestMoves: &bestMoves, currentSelectedColumn: currentSelectedColumn)
         
-        if bestMoves.count == 1 {
+        if self.algorithm != Algorithm.Greedy && bestMoves.count == 1 {
             //Indicates column cannot be updated until a conflict with it changes
             columnsWithConflictsButNoBetterMovesAvalible.updateValue(currentSelectedColumn, forKey: currentSelectedColumn)
         }
@@ -410,12 +417,16 @@ class MinConflicts {
         columnsWithConflictsButNoBetterMovesAvalibleArray.sort { $0 < $1 }
 
         //if there exist columns with conflicts with better moves...
-        if columnsWithConflicts == columnsWithConflictsButNoBetterMovesAvalibleArray {
+        if columnsWithConflicts != columnsWithConflictsButNoBetterMovesAvalibleArray {
             do { //While you have not selected a column that will result in a row change
                 column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
             } while columnsWithConflictsButNoBetterMovesAvalible[column!] != nil
         } else {
-            //TODO
+            //We're at a local max, return nil to restart
+            println("HANG")
+            self.resetBoard()
+            self.initialConflictCounter()
+            return findColumnWithConflicts()
         }
         
         return column!

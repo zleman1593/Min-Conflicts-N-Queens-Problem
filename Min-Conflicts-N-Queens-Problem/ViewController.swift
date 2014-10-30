@@ -252,51 +252,51 @@ class ViewController: UIViewController, BoardDelegate {
         //run tests in new thread
         dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
             //Three main Algorithms
-            self.runTestForThreeBasicAlgorithms(100, queens: 10, steps: 50000000)
-            self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 5000)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 500)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 5000)
             
-            self.runTestForThreeBasicAlgorithms(10, queens: 50, steps: 500)
-            self.runTestForThreeBasicAlgorithms(10, queens: 50, steps: 5000)
-            
+//            self.runTestForThreeBasicAlgorithms(10, queens: 50, steps: 500)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 50, steps: 5000)
+//            
             self.runTestForThreeBasicAlgorithms(10, queens: 100, steps: 500)
-            self.runTestForThreeBasicAlgorithms(10, queens: 100, steps: 5000)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 100, steps: 5000)
             
-            self.runTestForThreeBasicAlgorithms(10, queens: 250, steps: 500)
-            self.runTestForThreeBasicAlgorithms(10, queens: 250, steps: 5000)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 250, steps: 500)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 250, steps: 5000)
             
-            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 500)
-            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 5000)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 500)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 5000)
             
-            self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 500)
-            self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 5000)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 500)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 5000)
             
-            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 10000)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 10000)
             
-            self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 10000)
+//            self.runTestForThreeBasicAlgorithms(10, queens: 1000, steps: 10000)
             
             
             //Modifications of Vanilla
-            self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 500)
-            self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 5000)
-            
-            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 500)
-            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 5000)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 500)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 5000)
+//            
+//            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 500)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 5000)
             
             self.runThreeTestOnBestAlgorithm(10, queens: 100, steps: 500)
-            self.runThreeTestOnBestAlgorithm(10, queens: 100, steps: 5000)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 100, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 500)
-            self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 5000)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 500)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 500)
-            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 5000)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 500)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 500)
-            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 5000)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 500)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 5000)
 
-            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 10000)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 10000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 10000)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 10000)
 
             
             println("End All Testing")
@@ -327,10 +327,10 @@ class ViewController: UIViewController, BoardDelegate {
         
         println()
         println("Greedy Algorithm") //is taking an eternity right now :(
-        //self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
         
         println("Random Algorithm")
-        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+//        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
     }
     
     func runThreeTestOnBestAlgorithm(trials : Int, queens : Int, steps : Int) {
