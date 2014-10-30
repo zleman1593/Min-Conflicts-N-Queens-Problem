@@ -615,7 +615,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "390"
             endingLineNumber = "390"
-            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
+            landmarkName = "removeOldConflicts(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -631,7 +631,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "390"
             endingLineNumber = "390"
-            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
+            landmarkName = "removeOldConflicts(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -647,8 +647,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "MinConflicts"
-            landmarkType = "3">
+            landmarkName = "resetBoard()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -709,7 +709,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
             endingLineNumber = "97"
-            landmarkName = "run()"
+            landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -771,7 +771,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "204"
             endingLineNumber = "204"
-            landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
+            landmarkName = "run()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -939,7 +939,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "338"
             endingLineNumber = "338"
-            landmarkName = "isSolution()"
+            landmarkName = "randomPlacement(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1001,7 +1001,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "402"
             endingLineNumber = "402"
-            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
+            landmarkName = "addConflictFromNewMove(_:mainColumn:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1061,7 +1061,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "403"
             endingLineNumber = "403"
-            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
+            landmarkName = "addConflictFromNewMove(_:mainColumn:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1137,7 +1137,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "416"
             endingLineNumber = "416"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1211,7 +1211,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "418"
             endingLineNumber = "418"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1285,7 +1285,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "422"
             endingLineNumber = "422"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1359,7 +1359,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "421"
             endingLineNumber = "421"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1481,7 +1481,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "415"
             endingLineNumber = "415"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1889,8 +1889,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
-            landmarkName = "populateBoardOfSize(_:optimally:)"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1905,7 +1905,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "252"
             endingLineNumber = "252"
-            landmarkName = "bestMovesForQueen(_:bestMoves:currentSelectedColumn:)"
+            landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1951,7 +1951,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "437"
             endingLineNumber = "437"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
+            landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -2117,8 +2117,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "run()"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"

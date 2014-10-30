@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "415"
             endingLineNumber = "415"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
             landmarkType = "5">
             <Locations>
                <Location
