@@ -21,6 +21,8 @@
 import Foundation
 
 class MinConflicts {
+    var testAlgo: Int = 0
+var testAlgoADD: Int = 0
     /* Parameters */
     //number of queens on board
     var n : Int? = nil
@@ -111,6 +113,7 @@ class MinConflicts {
             //Check if current assignment is solution
             if self.isSolution() {
                 self.stepsUsed = index
+println("Added: \(self.testAlgoADD) Used: \(self.testAlgo)")
                 return true
             }
                         
@@ -214,7 +217,7 @@ class MinConflicts {
         var bestMoves : [Int] = []
         var nextMoveInfo: (minConflictsForBestMoves: Int, conflictsFromRowBeforeMove: Int)!
         
-        if  otherBestMovesAvalible[currentSelectedColumn] == nil{
+        if  true {
         
         /*nextMoveInfo contains:
         * minConflictsForBestMoves: Number of conflicts that will be generated due to move to new row position
@@ -227,12 +230,15 @@ class MinConflicts {
         if self.algorithm != Algorithm.Greedy && bestMoves.count == 1 {
             //Indicates column cannot be updated until a conflict with it changes
             columnsWithConflictsButNoBetterMovesAvalible.updateValue(currentSelectedColumn, forKey: currentSelectedColumn)
-        } else{
+        }
 
+        if  bestMoves.count > 1 {
+                self.testAlgoADD++
             otherBestMovesAvalible.updateValue((bestMoves,nextMoveInfo.minConflictsForBestMoves, nextMoveInfo.conflictsFromRowBeforeMove,conflictStore), forKey: currentSelectedColumn)
         }
             
         } else {
+self.testAlgo++
             nextMoveInfo = (otherBestMovesAvalible[currentSelectedColumn]!.1,otherBestMovesAvalible[currentSelectedColumn]!.2)
             bestMoves = otherBestMovesAvalible[currentSelectedColumn]!.0
             conflictStore = otherBestMovesAvalible[currentSelectedColumn]!.3
