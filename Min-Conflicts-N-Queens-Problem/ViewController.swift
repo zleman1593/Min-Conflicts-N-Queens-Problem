@@ -368,20 +368,20 @@ class ViewController: UIViewController, BoardDelegate {
     
     func testMinConflicts(trials : Int, n : Int, optimally : Bool, algorithm : Algorithm, maxRuns : Int, maxSteps : Int, randomness : Float, pickFirstBetter : Bool) {
         var averageTotalTime = 0.0 //tracks average solve time per run
-        var averageTime = 0.0 //tracks average solve time per run
+        var averageTime  = 0.0 //tracks average solve time per run
         var averageTimePreprocess = 0.0 //tracks average preprocessing time per run
         var averageSteps = 0.0 //tracks average steps when solved
-        var successRate = 0 //Tracks number of problems solved under the step limit
+        var successRate  = 0.0 //Tracks number of problems solved under the step limit
         //run MinConflicts with parameters for trials times
         for i in 1...trials {
-            println("Trial: \(i)")
             var solver = MinConflicts()
             let startPreprocess = NSDate() //Start  preprocessing Time
             solver.populateBoardOfSize(n, optimally: optimally)
-            let endPreprocess = NSDate()   //End preprocessing Time
-            let timeIntervalPreprocess: Double = endPreprocess.timeIntervalSinceDate(startPreprocess)
+            let endPreprocess   = NSDate()   //End preprocessing Time
+            let timeIntervalPreprocess = endPreprocess.timeIntervalSinceDate(startPreprocess)
             
             solver.prepareForRunWith(algorithm, maxRuns: maxRuns, maxSteps: maxSteps, randomness: randomness, pickFirstBetter: pickFirstBetter)
+            
             let start = NSDate() //Start Time
             if solver.run() {
                 println("Solved at Step \(solver.stepsUsed)")
@@ -390,23 +390,23 @@ class ViewController: UIViewController, BoardDelegate {
                 println("Not Solved!")
             }
             let end = NSDate()   //End Time
-            let timeInterval: Double = end.timeIntervalSinceDate(start)
+            let timeInterval = end.timeIntervalSinceDate(start)
             
-            averageTime += timeInterval
+            averageTime  += timeInterval
             averageTimePreprocess += timeIntervalPreprocess
             averageSteps += Double(solver.stepsUsed)
         }
         averageTotalTime = (averageTime + averageTimePreprocess) / Double(trials)
         
         //Calculate & print average time
-        averageTime /= Double(successRate)
-        averageSteps /= Double(successRate)
-        averageTimePreprocess /= Double(successRate)
+        averageTime  /= successRate
+        averageSteps /= successRate
+        averageTimePreprocess /= successRate
         println()
-        println("Average Solve Time Per Successful Run : \(averageTime)")
-        println("Average Preprocessing Time Per Successful Run: \(averageTimePreprocess)")
-        println("Average Total Time Per Successful Run: \(averageTotalTime)")
-        println("Average Steps Per Successful Run: \(averageSteps)")
+        println("Average Solve Time Per Run : \(averageTime)")
+        println("Average Preprocessing Time Per Run: \(averageTimePreprocess)")
+        println("Average Total Time Per Run: \(averageTotalTime)")
+        println("Average Steps Per Run: \(averageSteps)")
         println("Success Rate: \( (Double(successRate)/Double(trials)) )")
     }
 }
