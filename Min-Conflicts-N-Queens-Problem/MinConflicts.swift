@@ -233,9 +233,9 @@ class MinConflicts {
         }
             
         } else {
-            nextMoveInfo = (otherBestMovesAvalible[currentSelectedColumn].1,otherBestMovesAvalible[currentSelectedColumn].2)
-            bestMoves = otherBestMovesAvalible[currentSelectedColumn].0
-            conflictStore = otherBestMovesAvalible[currentSelectedColumn].3
+            nextMoveInfo = (otherBestMovesAvalible[currentSelectedColumn]!.1,otherBestMovesAvalible[currentSelectedColumn]!.2)
+            bestMoves = otherBestMovesAvalible[currentSelectedColumn]!.0
+            conflictStore = otherBestMovesAvalible[currentSelectedColumn]!.3
         }
         
         //Breaks ties randomly from the best options
