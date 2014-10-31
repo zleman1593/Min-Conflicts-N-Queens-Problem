@@ -108,7 +108,7 @@ var testAlgoADD: Int = 0
             //Check if current assignment is solution
             if self.isSolution() {
                 self.stepsUsed = index
-println("Added: \(self.testAlgoADD) Used: \(self.testAlgo)")
+//println("Added: \(self.testAlgoADD) Used: \(self.testAlgo)")
                 return true
             }
                         
@@ -331,7 +331,7 @@ self.testAlgo++
         possibleConflicts = findConflictsForQueen(currentSelectedColumn, atRow: self.columns[currentSelectedColumn])
         conflictsFromRowBeforeMove = possibleConflicts.count
         
-        //Adds array holding conflict information for potential moves
+        //Adds array holding conflict information for current position
         conflictStore.append(possibleConflicts)
         
         //Keeps the number of conflicts updated after a move is made
