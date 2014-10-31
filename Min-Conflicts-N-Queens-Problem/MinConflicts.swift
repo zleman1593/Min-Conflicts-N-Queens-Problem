@@ -282,7 +282,7 @@ var testAlgoADD: Int = 0
             }
             
             /* If the row being looked at does not have the queen from the current column,
-            * update the best move if the move would nextMoveInfo in fewer conflicts
+            * update the best move if the move in nextMoveInfo would result in fewer conflicts
             */
             if minConflictsForBestMoves > conflictCounter {
                 minConflictsForBestMoves = conflictCounter
@@ -293,7 +293,7 @@ var testAlgoADD: Int = 0
                 
                 //if pick first better is enabled, and this conflict count is better than that of current queen position
                 if pickFirstBetter! && allConflicts[currentSelectedColumn]?.count > conflictCounter {
-                    return (minConflictsForBestMoves, conflictsFromRowBeforeMove)
+                    return (minConflictsForBestMoves, allConflicts[currentSelectedColumn]!.count)
                 }
             }
             else if minConflictsForBestMoves == conflictCounter {
