@@ -396,18 +396,21 @@ class ViewController: UIViewController, BoardDelegate {
             averageTimePreprocess += timeIntervalPreprocess
             averageSteps += Double(solver.stepsUsed)
         }
-        averageTotalTime = (averageTime + averageTimePreprocess) / Double(trials)
         
         //Calculate & print average time
-        averageTime  /= successRate
-        averageSteps /= successRate
-        averageTimePreprocess /= successRate
+        averageTime  /= Double(trials)
+        averageTimePreprocess /= Double(trials)
+        averageTotalTime = averageTime + averageTimePreprocess
+
+        averageSteps /= Double(trials)
+        successRate  /= Double(trials)
         println()
+
         println("Average Solve Time Per Run : \(averageTime)")
         println("Average Preprocessing Time Per Run: \(averageTimePreprocess)")
         println("Average Total Time Per Run: \(averageTotalTime)")
         println("Average Steps Per Run: \(averageSteps)")
-        println("Success Rate: \( (Double(successRate)/Double(trials)) )")
+        println("Success Rate: \(successRate)")
     }
 }
 
