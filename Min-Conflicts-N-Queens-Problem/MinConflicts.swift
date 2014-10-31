@@ -217,7 +217,7 @@ println("Added: \(self.testAlgoADD) Used: \(self.testAlgo)")
         var bestMoves : [Int] = []
         var nextMoveInfo: (minConflictsForBestMoves: Int, conflictsFromRowBeforeMove: Int)!
         
-        if  true {
+        if  true { // otherBestMovesAvalible[currentSelectedColumn] == nil
         
         /*nextMoveInfo contains:
         * minConflictsForBestMoves: Number of conflicts that will be generated due to move to new row position
@@ -395,7 +395,7 @@ self.testAlgo++
             for columnB in 0..<allConflicts[column]!.count {
                 allConflicts[columnB]?.removeObject(column)
                 columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
-                 otherBestMovesAvalible.removeValueForKey(column)
+                 otherBestMovesAvalible.removeValueForKey(columnB)
             }
         }
         
