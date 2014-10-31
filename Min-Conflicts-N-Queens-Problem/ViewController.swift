@@ -276,11 +276,11 @@ class ViewController: UIViewController, BoardDelegate {
             
             self.runTestForTwoBasicAlgorithms(100, queens: 50, steps: 5000)
             
-            self.runTestForTwoBasicAlgorithms(50, queens: 100, steps: 5000)
- 
-            self.runTestForTwoBasicAlgorithms(10, queens: 250, steps: 5000)
+            self.runTestForTwoBasicAlgorithms(100, queens: 100, steps: 5000)
             
-            self.runTestForTwoBasicAlgorithms(10, queens: 500, steps: 5000)
+            self.runTestForTwoBasicAlgorithms(100, queens: 250, steps: 5000)
+            
+            self.runTestForTwoBasicAlgorithms(30, queens: 500, steps: 5000)
             
             self.runTestForTwoBasicAlgorithms(10, queens: 1000, steps: 5000)
             
@@ -292,11 +292,11 @@ class ViewController: UIViewController, BoardDelegate {
             
             self.runThreeTestOnBestAlgorithm(100, queens: 50, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(50, queens: 100, steps: 5000)
+            self.runThreeTestOnBestAlgorithm(100, queens: 100, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 5000)
+            self.runThreeTestOnBestAlgorithm(100, queens: 250, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 5000)
+            self.runThreeTestOnBestAlgorithm(30, queens: 500, steps: 5000)
             
             self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 5000)
             
