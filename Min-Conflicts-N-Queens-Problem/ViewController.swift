@@ -345,11 +345,6 @@ class ViewController: UIViewController, BoardDelegate {
         println("Random Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
         
-        /*   println()
-        println("Greedy Algorithm")
-        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-        */
-        
     }
     
     func runThreeTestOnBestAlgorithm(trials : Int, queens : Int, steps : Int) {
