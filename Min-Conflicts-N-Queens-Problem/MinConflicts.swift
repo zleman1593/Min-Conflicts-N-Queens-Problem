@@ -108,6 +108,7 @@ var testAlgoADD: Int = 0
             if self.isSolution() {
                 self.stepsUsed += index
                 //println("Added: \(self.testAlgoADD) Used: \(self.testAlgo)")
+             //   println(self.allConflicts.description)
                 return true
             }
                         

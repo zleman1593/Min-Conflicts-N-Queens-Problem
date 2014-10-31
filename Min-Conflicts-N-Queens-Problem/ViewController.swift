@@ -277,7 +277,7 @@ class ViewController: UIViewController, BoardDelegate {
 //            self.runTestForThreeBasicAlgorithms(10, queens: 50, steps: 5000)
 //            
 
-            self.runTestForThreeBasicAlgorithms(10, queens: 500, steps: 5000)
+            self.runTestForThreeBasicAlgorithms(10000, queens: 12, steps: 500)
 //            self.runTestForThreeBasicAlgorithms(10, queens: 100, steps: 5000)
 
             
@@ -302,7 +302,7 @@ class ViewController: UIViewController, BoardDelegate {
 //            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 500)
 //            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 5000)
+//            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 5000)
 //            self.runThreeTestOnBestAlgorithm(10, queens: 100, steps: 5000)
             
 //            self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 500)
@@ -337,14 +337,13 @@ class ViewController: UIViewController, BoardDelegate {
     
     
     func runTestForThreeBasicAlgorithms(trials : Int, queens : Int, steps : Int) {
-      self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
         println()
         println("Begin Testing: \(trials) trials, \(queens) queens, \(steps) steps")
         //Different Algorithms, all else default
         println()
         println("Vanilla Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-        
+     
         println()
         println("Random Algorithm")
        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
@@ -352,7 +351,7 @@ class ViewController: UIViewController, BoardDelegate {
         println()
         println("Greedy Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-        
+
        
     }
     
