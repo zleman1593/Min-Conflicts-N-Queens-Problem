@@ -1,0 +1,20 @@
+
+To use:
+
+1. Follow UI Instructions.
+
+2. Make sure to Run the Simulator as the front most app to prevent Mac AppNap from making the simulator slow down.
+
+3. To see averages you can use the test mode button. Test can be customized in the viewController.swift file
+    a. See runAllTestsWithNQueens function
+    b.  The following two lines run the three initial algorithms and the three modifications to vanilla respectively.
+        1. Arguments: (Trials, Queens, Max Steps):
+            self.runTestForThreeBasicAlgorithms(10, queens: 10, steps: 500)
+            self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 500)
+        2. As many of these lines with any combination of parameters can be written in the runAllTestsWithNQueens function.
+
+
+Notes:
+Boards above 250 are not shown as individual spots are too small to see individual queens
+
+MinConflicts code is located in the MinConflicts.swift file

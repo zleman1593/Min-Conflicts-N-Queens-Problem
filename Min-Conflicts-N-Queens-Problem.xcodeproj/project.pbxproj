@@ -17,6 +17,7 @@
 		A26B5C7719EF1E7D00B0A19B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A26B5C7519EF1E7D00B0A19B /* LaunchScreen.xib */; };
 		A26B5C8319EF1E7D00B0A19B /* Min_Conflicts_N_Queens_ProblemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B5C8219EF1E7D00B0A19B /* Min_Conflicts_N_Queens_ProblemTests.swift */; };
 		A26B5C8D19EF1FC400B0A19B /* MinConflicts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B5C8C19EF1FC300B0A19B /* MinConflicts.swift */; };
+		A2736A021A03B4CC00410150 /* README in Resources */ = {isa = PBXBuildFile; fileRef = A2736A011A03B4CC00410150 /* README */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		A26B5C8119EF1E7D00B0A19B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A26B5C8219EF1E7D00B0A19B /* Min_Conflicts_N_Queens_ProblemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Min_Conflicts_N_Queens_ProblemTests.swift; sourceTree = "<group>"; };
 		A26B5C8C19EF1FC300B0A19B /* MinConflicts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinConflicts.swift; sourceTree = "<group>"; };
+		A2736A011A03B4CC00410150 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				A26B5C6C19EF1E7D00B0A19B /* AppDelegate.swift */,
 				A26B5C6E19EF1E7D00B0A19B /* ViewController.swift */,
 				A26B5C8C19EF1FC300B0A19B /* MinConflicts.swift */,
+				A2736A011A03B4CC00410150 /* README */,
 				45FEBB9419F45E120025895F /* Algorithm.swift */,
 				457DE01C19F017440030F9F6 /* Board.swift */,
 				A2643BE919F2A2DB00E0CF33 /* Min-Conflicts-N-Queens-Problem-Bridging-Header.h */,
@@ -206,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2736A021A03B4CC00410150 /* README in Resources */,
 				A26B5C7219EF1E7D00B0A19B /* Main.storyboard in Resources */,
 				A26B5C7719EF1E7D00B0A19B /* LaunchScreen.xib in Resources */,
 				A26B5C7419EF1E7D00B0A19B /* Images.xcassets in Resources */,

@@ -6,19 +6,16 @@
 //  Copyright (c) 2014 Zackery leman. All rights reserved.
 //
 
-//TODO: Implement last part off assignment (#3). Ruben: we have to make it evaluate its current position and then go through the rows and discover the first best.
-//it doesn't currently work because we are not currently looking at the current move immediately
 
-//TODO: Make the VanillaChooseFirstBest actual run the correct algorithm
-
-//TODO: Understand why we have to recalcukate conflicts inseta dof using what is stored in allConflicts. Does this indicate there is soemhting wrong with allConflicts?
-
+//TODO: Understand why we have to recalculate conflicts inseta dof using what is stored in allConflicts. Does this indicate there is soemhting wrong with allConflicts?
+//TODO: Should we have output indicate that there was a Hang and reset when output for trial is finished?
 
 import Foundation
 
 class MinConflicts {
-    var testAlgo: Int = 0
+var testAlgo: Int = 0
 var testAlgoADD: Int = 0
+    var otherBestMovesAvalible = [Int : ([Int], Int, Int, [Int : [Int]])]()
     /* Parameters */
     //number of queens on board
     var n : Int? = nil
@@ -50,7 +47,7 @@ var testAlgoADD: Int = 0
     var allConflicts = [Int : NSMutableArray]()
     //Tracks all the columns that still have conflicts, but shouldn't be looked at as there are no moves left for that column currently
     var columnsWithConflictsButNoBetterMovesAvalible = [Int : Int]()
-    var otherBestMovesAvalible = [Int : ([Int], Int, Int, [Int : [Int]])]()
+
     
     
     //sets queens on board to start
@@ -99,6 +96,7 @@ var testAlgoADD: Int = 0
         //Count initial number of conflicts
         self.conflicts = initialConflictCounter()
         
+        
         if debug {
             println("Current Random Assignment " + columns.description)
             println("Current Conflicts " + self.conflicts.description)
@@ -108,8 +106,8 @@ var testAlgoADD: Int = 0
         for index in 1...self.maxSteps!/self.maxRuns! {
             //Check if current assignment is solution
             if self.isSolution() {
-                self.stepsUsed = index
-//println("Added: \(self.testAlgoADD) Used: \(self.testAlgo)")
+                self.stepsUsed += index
+                //println("Added: \(self.testAlgoADD) Used: \(self.testAlgo)")
                 return true
             }
                         
@@ -122,21 +120,13 @@ var testAlgoADD: Int = 0
                 self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
                 
             case Algorithm.VanillaRestart:
-                //Picks a column with conflicts at random
-                let column = findColumnWithConflicts()
-                
-                //Set queen in the random column to row that minimizes conflicts
-                self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
+                self.algorithm = Algorithm.Vanilla
+                self.stepsUsed = -1
                 
             case Algorithm.VanillaChooseFirstBest:
-                //Picks a column with conflicts at random
-                let column = findColumnWithConflicts()
-                
-                //Set queen in the random column to row that minimizes conflicts
-                self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
-                
-                
-                
+                self.algorithm = Algorithm.Vanilla
+                 self.stepsUsed = -1
+
             case Algorithm.Random:
                 //Picks a column with conflicts at random
                 let column = findColumnWithConflicts()

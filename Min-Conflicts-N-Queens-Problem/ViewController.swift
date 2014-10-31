@@ -341,7 +341,6 @@ class ViewController: UIViewController, BoardDelegate {
         println()
         println("Begin Testing: \(trials) trials, \(queens) queens, \(steps) steps")
         //Different Algorithms, all else default
-       
         println()
         println("Vanilla Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
@@ -351,7 +350,7 @@ class ViewController: UIViewController, BoardDelegate {
        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
 
         println()
-        println("Greedy Algorithm") //is taking an eternity right now :(
+        println("Greedy Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
         
        
@@ -373,7 +372,7 @@ class ViewController: UIViewController, BoardDelegate {
         
         //Pick First Better Move, all else default
         println()
-        println("Pick First Better Move") //still not working
+        println("Pick First Better Move")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: true)
     }
     
