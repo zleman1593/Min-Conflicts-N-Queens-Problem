@@ -41,6 +41,7 @@ class Board : UIView {
                     self.colorPickerWithContext(context)
                     if queen == "Q" {
                         CGContextFillRect(context, rectangle)
+                        queen = "👑"
                         queen.drawInRect(rectangle, withAttributes: [NSFontAttributeName:textFont])
                     }
                 }

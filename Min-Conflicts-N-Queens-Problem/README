@@ -18,3 +18,5 @@ Notes:
 Boards above 250 are not shown as individual spots are too small to see individual queens
 
 MinConflicts code is located in the MinConflicts.swift file
+
+Feel free to move queens aroudn on the board before solving. Just click or touch.
