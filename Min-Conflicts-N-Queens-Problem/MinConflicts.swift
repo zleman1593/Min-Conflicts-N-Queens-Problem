@@ -9,11 +9,6 @@
 //TODO: Implement last part off assignment (#3). Ruben: we have to make it evaluate its current position and then go through the rows and discover the first best.
 //it doesn't currently work because we are not currently looking at the current move immediately
 
-/*TODO: For reported stats. Check Sample output and identify errors and things we need to change for output
-*inf + inf = a small float value?
-*number of steps is Nan?
-*/
-
 //TODO: Make the VanillaChooseFirstBest actual run the correct algorithm
 
 
