@@ -270,49 +270,43 @@ class ViewController: UIViewController, BoardDelegate {
         //run tests in new thread
         dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
             //Three main Algorithms
-           self.runTestForTwoBasicAlgorithms(10, queens: 10, steps: 500)
+           self.runTestForTwoBasicAlgorithms(10000, queens: 10, steps: 5000)
   
             
-           self.runTestForTwoBasicAlgorithms(10, queens: 50, steps: 500)
+           self.runTestForTwoBasicAlgorithms(100, queens: 50, steps: 5000)
 
 
 
-            self.runTestForTwoBasicAlgorithms(10, queens: 100, steps: 500)
+            self.runTestForTwoBasicAlgorithms(50, queens: 100, steps: 5000)
 
 
             
-            self.runTestForTwoBasicAlgorithms(10, queens: 250, steps: 500)
+   
             self.runTestForTwoBasicAlgorithms(10, queens: 250, steps: 5000)
             
-            self.runTestForTwoBasicAlgorithms(10, queens: 500, steps: 500)
             self.runTestForTwoBasicAlgorithms(10, queens: 500, steps: 5000)
             
-            self.runTestForTwoBasicAlgorithms(10, queens: 1000, steps: 500)
             self.runTestForTwoBasicAlgorithms(10, queens: 1000, steps: 5000)
             
             
-      /*      self.runTestForTwoBasicAlgorithms(10, queens: 500, steps: 10000)
-            
-            self.runTestForTwoBasicAlgorithms(10, queens: 1000, steps: 10000)
-            */
             
             //Modifications of Vanilla
-            self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 500)
+   
             self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 5000)
 
-            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 500)
+
             self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 100, steps: 5000)
+
             self.runThreeTestOnBestAlgorithm(10, queens: 100, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 500)
+
             self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 500)
+
             self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 5000)
             
-            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 500)
+
             self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 5000)
 
             
@@ -320,15 +314,15 @@ class ViewController: UIViewController, BoardDelegate {
             //Runs greedy last because it takes a while
             println()
             println("Greedy Algorithm")
-            self.testMinConflicts(10, n: 10, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 500, randomness: 0.2, pickFirstBetter: false)
+            self.testMinConflicts(10, n: 10, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
             
-            self.testMinConflicts(10, n: 20, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 500, randomness: 0.2, pickFirstBetter: false)
+            self.testMinConflicts(10, n: 20, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
             
-             self.testMinConflicts(10, n: 50, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 500, randomness: 0.2, pickFirstBetter: false)
-            self.testMinConflicts(10, n: 100, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 500, randomness: 0.2, pickFirstBetter: false)
-            self.testMinConflicts(10, n: 200, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 500, randomness: 0.2, pickFirstBetter: false)
-            self.testMinConflicts(10, n: 250, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 500, randomness: 0.2, pickFirstBetter: false)
-             self.testMinConflicts(10, n: 500, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 500, randomness: 0.2, pickFirstBetter: false)
+             self.testMinConflicts(10, n: 50, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
+            self.testMinConflicts(10, n: 100, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
+            self.testMinConflicts(10, n: 200, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
+            self.testMinConflicts(10, n: 250, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
+             self.testMinConflicts(10, n: 500, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
             
 
             
