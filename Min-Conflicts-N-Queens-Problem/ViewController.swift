@@ -103,7 +103,7 @@ class ViewController: UIViewController, BoardDelegate {
             var runs = UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default) { (action) -> Void in
                 var field = runsPrompt.textFields!.first as UITextField
                 
-           
+                
                 self.randomness = Double((field.text as NSString).doubleValue)
             }
             runsPrompt.addAction(runs)
@@ -115,10 +115,10 @@ class ViewController: UIViewController, BoardDelegate {
         self.solver.populateBoardOfSize(n, optimally: optimally)
         
         //Update Board with starting size
-           if   self.solver.columns.count <= 250 {
-        self.board.setBoardSize(n)
-     
-        self.board.setNeedsDisplay()
+        if   self.solver.columns.count <= 250 {
+            self.board.setBoardSize(n)
+            
+            self.board.setNeedsDisplay()
         }
         
         //Creates a tap location detector
@@ -158,11 +158,11 @@ class ViewController: UIViewController, BoardDelegate {
                 pickFirstBetter = true
             }
             self.solver.prepareForRunWith(self.selectedAlgorithm(), maxRuns: self.maxRuns, maxSteps: self.maxSteps.text.toInt()!, randomness: 0.2, pickFirstBetter: pickFirstBetter)
-              let start = NSDate() //Start Time
+            let start = NSDate() //Start Time
             if self.solver.run() {
                 let end = NSDate()   //End Time
                 let timeInterval: Double = end.timeIntervalSinceDate(start)
-
+                
                 println("Solved!")
                 println("Final Solution: \(self.solver.columns.description)")
                 println("Found at Step \(self.solver.stepsUsed)")
@@ -172,8 +172,8 @@ class ViewController: UIViewController, BoardDelegate {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.resetSolveButton()
                     //Shows final board positions
-                if  self.solver.columns.count <= 250 {
-                    self.board.setNeedsDisplay()
+                    if  self.solver.columns.count <= 250 {
+                        self.board.setNeedsDisplay()
                     }
                     alert.title = "Solved!"
                     alert.message = "A solution was found at Step \(self.solver.stepsUsed) using \(timeInterval)  seconds! Would you like to play again?"
@@ -185,9 +185,9 @@ class ViewController: UIViewController, BoardDelegate {
                 //in main thread, update view
                 dispatch_async(dispatch_get_main_queue()) {
                     self.resetSolveButton()
-                     if  self.solver.columns.count <= 250 {
-                    //Shows final board positions
-                    self.board.setNeedsDisplay()
+                    if  self.solver.columns.count <= 250 {
+                        //Shows final board positions
+                        self.board.setNeedsDisplay()
                     }
                     
                     alert.title = "Unsolved"
@@ -269,19 +269,15 @@ class ViewController: UIViewController, BoardDelegate {
         self.presentViewController(beginPrompt, animated: true, completion: nil)
         //run tests in new thread
         dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
+            
             //Three main Algorithms
-           self.runTestForTwoBasicAlgorithms(10000, queens: 10, steps: 5000)
-  
+            //Runs more trials when there are fewer queens
+            self.runTestForTwoBasicAlgorithms(10000, queens: 10, steps: 5000)
             
-           self.runTestForTwoBasicAlgorithms(100, queens: 50, steps: 5000)
-
-
-
+            self.runTestForTwoBasicAlgorithms(100, queens: 50, steps: 5000)
+            
             self.runTestForTwoBasicAlgorithms(50, queens: 100, steps: 5000)
-
-
-            
-   
+ 
             self.runTestForTwoBasicAlgorithms(10, queens: 250, steps: 5000)
             
             self.runTestForTwoBasicAlgorithms(10, queens: 500, steps: 5000)
@@ -291,40 +287,34 @@ class ViewController: UIViewController, BoardDelegate {
             
             
             //Modifications of Vanilla
-   
+            //Runs more trials when there are fewer queens
             self.runThreeTestOnBestAlgorithm(10000, queens: 10, steps: 5000)
-
-
+            
             self.runThreeTestOnBestAlgorithm(100, queens: 50, steps: 5000)
             
-
             self.runThreeTestOnBestAlgorithm(50, queens: 100, steps: 5000)
             
-
             self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 5000)
             
-
             self.runThreeTestOnBestAlgorithm(10, queens: 500, steps: 5000)
             
-
             self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 5000)
-
+            
             
             
             //Runs greedy last because it takes a while
             println()
             println("Greedy Algorithm")
             self.testMinConflicts(10, n: 10, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
-            
             self.testMinConflicts(10, n: 20, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
-            
-             self.testMinConflicts(10, n: 50, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
+            self.testMinConflicts(10, n: 50, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
             self.testMinConflicts(10, n: 100, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
             self.testMinConflicts(10, n: 200, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
             self.testMinConflicts(10, n: 250, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
-             self.testMinConflicts(10, n: 500, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
+            self.testMinConflicts(10, n: 500, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
             
-
+            
+            
             
             println("End All Testing")
             
@@ -350,16 +340,16 @@ class ViewController: UIViewController, BoardDelegate {
         println()
         println("Vanilla Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-     
+        
         println()
         println("Random Algorithm")
-       self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-
-     /*   println()
+        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Random, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+        
+        /*   println()
         println("Greedy Algorithm")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
-*/
-       
+        */
+        
     }
     
     func runThreeTestOnBestAlgorithm(trials : Int, queens : Int, steps : Int) {
@@ -417,11 +407,11 @@ class ViewController: UIViewController, BoardDelegate {
         averageTime  /= Double(trials)
         averageTimePreprocess /= Double(trials)
         averageTotalTime = averageTime + averageTimePreprocess
-
+        
         averageSteps /= Double(trials)
         successRate  /= Double(trials)
         println()
-
+        
         println("Average Solve Time Per Run : \(averageTime)")
         println("Average Preprocessing Time Per Run: \(averageTimePreprocess)")
         println("Average Total Time Per Run: \(averageTotalTime)")
