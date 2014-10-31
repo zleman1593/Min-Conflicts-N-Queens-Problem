@@ -233,7 +233,7 @@ var testAlgoADD: Int = 0
         }
             
         } else {
-self.testAlgo++
+            self.testAlgo++
             nextMoveInfo = (otherBestMovesAvalible[currentSelectedColumn]!.1,otherBestMovesAvalible[currentSelectedColumn]!.2)
             bestMoves = otherBestMovesAvalible[currentSelectedColumn]!.0
             conflictStore = otherBestMovesAvalible[currentSelectedColumn]!.3
@@ -291,8 +291,8 @@ self.testAlgo++
                 //Resets Array
                 conflictStore = [row: possibleConflicts]
                 
-                //early return for #3 will go here
-                if pickFirstBetter! {
+                //if pick first better is enabled, and this conflict count is better than that of current queen position
+                if pickFirstBetter! && allConflicts[currentSelectedColumn]?.count > conflictCounter {
                     return (minConflictsForBestMoves, conflictsFromRowBeforeMove)
                 }
             }
@@ -390,7 +390,7 @@ self.testAlgo++
             for columnB in 0..<allConflicts[column]!.count {
                 allConflicts[columnB]?.removeObject(column)
                 columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
-                 otherBestMovesAvalible.removeValueForKey(columnB)
+                otherBestMovesAvalible.removeValueForKey(columnB)
             }
         }
         
