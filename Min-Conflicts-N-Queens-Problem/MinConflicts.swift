@@ -11,6 +11,7 @@
 
 //TODO: Make the VanillaChooseFirstBest actual run the correct algorithm
 
+//TODO: Understand why we have to recalcukate conflicts inseta dof using what is stored in allConflicts. Does this indicate there is soemhting wrong with allConflicts?
 
 
 import Foundation
@@ -270,6 +271,12 @@ var testAlgoADD: Int = 0
         // keeps track of the minimum number of conflicts for the best new moves so far
         var minConflictsForBestMoves = Int.max
         
+        //Used For pickBestFirst
+        var  current : [Int] = []
+        if (self.pickFirstBetter != nil) {
+        current = findConflictsForQueen(currentSelectedColumn, atRow: self.columns[currentSelectedColumn])
+        }
+        
         //Loop through all the columns for each row choice and get conflicts
         for row in 0..<n! {
             let possibleConflicts = findConflictsForQueen(currentSelectedColumn, atRow: row)
@@ -279,6 +286,10 @@ var testAlgoADD: Int = 0
             * set conflictsFromRowBeforeMove to the number of conflicts this queen is currently involved in*/
             if row == self.columns[currentSelectedColumn] {
                 conflictsFromRowBeforeMove = conflictCounter
+              /*  let conflictsFromRowBeforeMove2 = allConflicts[currentSelectedColumn]!.count
+                println(conflictsFromRowBeforeMove)
+                println(conflictsFromRowBeforeMove2)
+                println()*/
             }
             
             /* If the row being looked at does not have the queen from the current column,
@@ -292,8 +303,12 @@ var testAlgoADD: Int = 0
                 conflictStore = [row: possibleConflicts]
                 
                 //if pick first better is enabled, and this conflict count is better than that of current queen position
-                if pickFirstBetter! && allConflicts[currentSelectedColumn]?.count > conflictCounter {
-                    return (minConflictsForBestMoves, allConflicts[currentSelectedColumn]!.count)
+                
+                if pickFirstBetter! && current.count > conflictCounter {//allConflicts[currentSelectedColumn]?.count > conflictCounter {
+                    //println("\(allConflicts[currentSelectedColumn]!.count)")
+                    //println(" current: \(current.count)")
+                    // println()
+                    return (minConflictsForBestMoves, current.count )//allConflicts[currentSelectedColumn]!.count)
                 }
             }
             else if minConflictsForBestMoves == conflictCounter {
