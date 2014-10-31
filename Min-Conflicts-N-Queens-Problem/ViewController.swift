@@ -292,13 +292,13 @@ class ViewController: UIViewController, BoardDelegate {
             
             //Modifications of Vanilla
    
-            self.runThreeTestOnBestAlgorithm(10, queens: 10, steps: 5000)
+            self.runThreeTestOnBestAlgorithm(10000, queens: 10, steps: 5000)
 
 
-            self.runThreeTestOnBestAlgorithm(10, queens: 50, steps: 5000)
+            self.runThreeTestOnBestAlgorithm(100, queens: 50, steps: 5000)
             
 
-            self.runThreeTestOnBestAlgorithm(10, queens: 100, steps: 5000)
+            self.runThreeTestOnBestAlgorithm(50, queens: 100, steps: 5000)
             
 
             self.runThreeTestOnBestAlgorithm(10, queens: 250, steps: 5000)
