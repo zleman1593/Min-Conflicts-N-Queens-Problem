@@ -58,7 +58,10 @@ var testAlgoADD: Int = 0
             if optimally {
                 let move = findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false).bestRow
                 columns[index] = move
+<<<<<<< HEAD
                 
+=======
+>>>>>>> FETCH_HEAD
                 columnsWithConflictsButNoBetterMovesAvalible.removeAll(keepCapacity: false)
                 allConflicts.removeAll(keepCapacity: false)
             }
