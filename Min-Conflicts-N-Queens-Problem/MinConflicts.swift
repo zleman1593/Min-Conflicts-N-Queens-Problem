@@ -55,13 +55,11 @@ var testAlgoADD: Int = 0
             let row = Int.random(n)
             columns.append(row)
             
+            //find optimal position for queen at this column
             if optimally {
                 let move = findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false).bestRow
                 columns[index] = move
-<<<<<<< HEAD
-                
-=======
->>>>>>> FETCH_HEAD
+                //resets conflict counters before starting
                 columnsWithConflictsButNoBetterMovesAvalible.removeAll(keepCapacity: false)
                 allConflicts.removeAll(keepCapacity: false)
             }
@@ -71,6 +69,7 @@ var testAlgoADD: Int = 0
         }
     }
     
+    //resets all algorithm data structures
     func resetBoard() {
         columns = []
         conflicts = 0
