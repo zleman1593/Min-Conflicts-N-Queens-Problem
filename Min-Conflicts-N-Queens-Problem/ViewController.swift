@@ -270,6 +270,22 @@ class ViewController: UIViewController, BoardDelegate {
         //run tests in new thread
         dispatch_async(dispatch_queue_create("Solving Queue", nil)) {
             
+            
+        /*
+            //Modifications of Vanilla
+            //Runs more trials when there are fewer queens
+            self.runThreeTestOnBestAlgorithm(10000, queens: 10, steps: 5000)
+            
+            self.runThreeTestOnBestAlgorithm(100, queens: 50, steps: 5000)
+            
+            self.runThreeTestOnBestAlgorithm(100, queens: 100, steps: 5000)
+            
+            self.runThreeTestOnBestAlgorithm(100, queens: 250, steps: 5000)
+            
+            self.runThreeTestOnBestAlgorithm(30, queens: 500, steps: 5000)*/
+            
+            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 5000)
+            /*
             //Three main Algorithms
             //Runs more trials when there are fewer queens
             self.runTestForTwoBasicAlgorithms(10000, queens: 10, steps: 5000)
@@ -283,25 +299,9 @@ class ViewController: UIViewController, BoardDelegate {
             self.runTestForTwoBasicAlgorithms(30, queens: 500, steps: 5000)
             
             self.runTestForTwoBasicAlgorithms(10, queens: 1000, steps: 5000)
-            
-            
-            
-            //Modifications of Vanilla
-            //Runs more trials when there are fewer queens
-            self.runThreeTestOnBestAlgorithm(10000, queens: 10, steps: 5000)
-            
-            self.runThreeTestOnBestAlgorithm(100, queens: 50, steps: 5000)
-            
-            self.runThreeTestOnBestAlgorithm(100, queens: 100, steps: 5000)
-            
-            self.runThreeTestOnBestAlgorithm(100, queens: 250, steps: 5000)
-            
-            self.runThreeTestOnBestAlgorithm(30, queens: 500, steps: 5000)
-            
-            self.runThreeTestOnBestAlgorithm(10, queens: 1000, steps: 5000)
-            
-            
-            
+            */
+
+          /*
             //Runs greedy last because it takes a while
             println()
             println("Greedy Algorithm")
@@ -313,7 +313,7 @@ class ViewController: UIViewController, BoardDelegate {
             self.testMinConflicts(10, n: 250, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
             self.testMinConflicts(10, n: 500, optimally: false, algorithm: Algorithm.Greedy,    maxRuns: 1, maxSteps: 5000, randomness: 0.2, pickFirstBetter: false)
             
-            
+            */
             
             
             println("End All Testing")
@@ -350,21 +350,23 @@ class ViewController: UIViewController, BoardDelegate {
     func runThreeTestOnBestAlgorithm(trials : Int, queens : Int, steps : Int) {
         println()
         println("Begin Testing Modifications for Vanilla: \(trials) trials, \(queens) queens, \(steps) steps")
-        
+     /*
         //Optimal Placement, all else default
         println()
         println("Optimal Placement")
         self.testMinConflicts(trials, n: queens, optimally: true, algorithm: Algorithm.Vanilla, maxRuns: 1, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
+        */
+  
+        //Pick First Better Move, all else default
+        println()
+        println("Pick First Better Move")
+        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: true)
         
         //Increased Runs, all else default
         println()
         println("5 Runs")
         self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: false)
         
-        //Pick First Better Move, all else default
-        println()
-        println("Pick First Better Move")
-        self.testMinConflicts(trials, n: queens, optimally: false, algorithm: Algorithm.Vanilla, maxRuns: 5, maxSteps: steps, randomness: 0.2, pickFirstBetter: true)
     }
     
     func testMinConflicts(trials : Int, n : Int, optimally : Bool, algorithm : Algorithm, maxRuns : Int, maxSteps : Int, randomness : Float, pickFirstBetter : Bool) {

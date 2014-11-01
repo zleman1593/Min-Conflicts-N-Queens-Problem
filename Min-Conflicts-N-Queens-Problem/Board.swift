@@ -82,8 +82,8 @@ class Board : UIView {
                     if CGRectContainsPoint(rectangle,tapPoint) {
                         NSLog("Point(%f, %f) is contained in rectangle %d,%d ", tapPoint.x, tapPoint.y,x,y)
                         done = true
-                      self.delegate!.updateColumn(i,row: j-1)
-                        println("i: \(i)  j: \(j-1)")
+                      self.delegate!.updateColumn(i,row: j )
+                        println("i: \(i)  j: \(j )")
                         break
                     }
                 }
