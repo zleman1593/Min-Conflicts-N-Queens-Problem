@@ -6,10 +6,6 @@
 //  Copyright (c) 2014 Zackery leman. All rights reserved.
 //
 
-
-//TODO: Understand why we have to recalculate conflicts inseta dof using what is stored in allConflicts. Does this indicate there is soemhting wrong with allConflicts?
-//TODO: Should we have output indicate that there was a Hang and reset when output for trial is finished?
-
 import Foundation
 
 class MinConflicts {
@@ -31,7 +27,7 @@ var testAlgoADD: Int = 0
     var maxSteps : Int? = nil
     //Are we populating the board optimally?
     var optimally : Bool? = nil
-    //Print Messages to Console
+    //Print Debug Messages to Console
     var debug = false
     
     /* Runtime Info */
@@ -48,8 +44,6 @@ var testAlgoADD: Int = 0
     //Tracks all the columns that still have conflicts, but shouldn't be looked at as there are no moves left for that column currently
     var columnsWithConflictsButNoBetterMovesAvalible = [Int : Int]()
 
-    
-    
     //sets queens on board to start
     //Input: n, the number of queens on the board; optimally, whether or not to place queens "optimally"
     func populateBoardOfSize(n : Int, optimally: Bool) {
@@ -60,11 +54,13 @@ var testAlgoADD: Int = 0
         for index in 0..<n {
             let row = Int.random(n)
             columns.append(row)
-           
             
             if optimally {
                 let move = findLeastConflictedMoveForQueen(index, updateRunnningConflicts: false).bestRow
                 columns[index] = move
+                
+                columnsWithConflictsButNoBetterMovesAvalible.removeAll(keepCapacity: false)
+                allConflicts.removeAll(keepCapacity: false)
             }
         }
         if debug {
@@ -96,7 +92,6 @@ var testAlgoADD: Int = 0
         //Count initial number of conflicts
         self.conflicts = initialConflictCounter()
         
-        
         if debug {
             println("Current Random Assignment " + columns.description)
             println("Current Conflicts " + self.conflicts.description)
@@ -107,8 +102,6 @@ var testAlgoADD: Int = 0
             //Check if current assignment is solution
             if self.isSolution() {
                 self.stepsUsed += index
-                //println("Added: \(self.testAlgoADD) Used: \(self.testAlgo)")
-             //   println(self.allConflicts.description)
                 return true
             }
                         
@@ -167,6 +160,7 @@ var testAlgoADD: Int = 0
                 //set queen  to row that minimizes conflicts
                 self.columns[queenToChoose.selectedQueen] = queenToChoose.row
                 
+                //add conflicts of new move to number of current conflicts
                 self.conflicts = self.conflicts + bestConflicts
                 
                 //Removes all old conflicts involving the old position
@@ -204,15 +198,13 @@ var testAlgoADD: Int = 0
         var bestMoves : [Int] = []
         var nextMoveInfo: (minConflictsForBestMoves: Int, conflictsFromRowBeforeMove: Int)!
         
-        if  true { // otherBestMovesAvalible[currentSelectedColumn] == nil
-        
         /*nextMoveInfo contains:
         * minConflictsForBestMoves: Number of conflicts that will be generated due to move to new row position
         * conflictsFromRowBeforeMove: Current conflicts due to current row position
         * bestMoves: Array of equivalently best moves
         * conflictStore: Stores the conflicts for each of the best possible moves
         */
-         nextMoveInfo = bestMovesForQueen(&conflictStore, bestMoves: &bestMoves, currentSelectedColumn: currentSelectedColumn)
+        nextMoveInfo = bestMovesForQueen(&conflictStore, bestMoves: &bestMoves, currentSelectedColumn: currentSelectedColumn)
         
         if self.algorithm != Algorithm.Greedy && bestMoves.count == 1 {
             //Indicates column cannot be updated until a conflict with it changes
@@ -220,15 +212,8 @@ var testAlgoADD: Int = 0
         }
 
         if  bestMoves.count > 1 {
-                self.testAlgoADD++
+            self.testAlgoADD++
             otherBestMovesAvalible.updateValue((bestMoves,nextMoveInfo.minConflictsForBestMoves, nextMoveInfo.conflictsFromRowBeforeMove,conflictStore), forKey: currentSelectedColumn)
-        }
-            
-        } else {
-            self.testAlgo++
-            nextMoveInfo = (otherBestMovesAvalible[currentSelectedColumn]!.1,otherBestMovesAvalible[currentSelectedColumn]!.2)
-            bestMoves = otherBestMovesAvalible[currentSelectedColumn]!.0
-            conflictStore = otherBestMovesAvalible[currentSelectedColumn]!.3
         }
         
         //Breaks ties randomly from the best options
@@ -277,10 +262,6 @@ var testAlgoADD: Int = 0
             * set conflictsFromRowBeforeMove to the number of conflicts this queen is currently involved in*/
             if row == self.columns[currentSelectedColumn] {
                 conflictsFromRowBeforeMove = conflictCounter
-              /*  let conflictsFromRowBeforeMove2 = allConflicts[currentSelectedColumn]!.count
-                println(conflictsFromRowBeforeMove)
-                println(conflictsFromRowBeforeMove2)
-                println()*/
             }
             
             /* If the row being looked at does not have the queen from the current column,
@@ -294,12 +275,8 @@ var testAlgoADD: Int = 0
                 conflictStore = [row: possibleConflicts]
                 
                 //if pick first better is enabled, and this conflict count is better than that of current queen position
-                
-                if pickFirstBetter! && current.count > conflictCounter {//allConflicts[currentSelectedColumn]?.count > conflictCounter {
-                    //println("\(allConflicts[currentSelectedColumn]!.count)")
-                    //println(" current: \(current.count)")
-                    // println()
-                    return (minConflictsForBestMoves, current.count )//allConflicts[currentSelectedColumn]!.count)
+                if pickFirstBetter! && current.count > conflictCounter {
+                    return (minConflictsForBestMoves, current.count )
                 }
             }
             else if minConflictsForBestMoves == conflictCounter {
@@ -348,7 +325,6 @@ var testAlgoADD: Int = 0
         
         //Adds all the new conflicts if there are any
         addConflictFromNewMove(conflictStore[0], mainColumn: currentSelectedColumn)
-        
         
         //Returns new row for queen to occupy
         return nextRow
@@ -415,10 +391,11 @@ var testAlgoADD: Int = 0
     func addConflictsBetweenTwoColumns(columnA : Int, columnB : Int) {
         //Frees up the column to be looked at in the future
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnA)
-         otherBestMovesAvalible.removeValueForKey(columnA)
+        otherBestMovesAvalible.removeValueForKey(columnA)
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
-         otherBestMovesAvalible.removeValueForKey(columnB)
+        otherBestMovesAvalible.removeValueForKey(columnB)
         
+        //initialize with conflict or add conflict
         if allConflicts[columnA]? != nil {
             allConflicts[columnA]!.addObject(columnB)
         } else {
@@ -450,7 +427,6 @@ var testAlgoADD: Int = 0
             } while columnsWithConflictsButNoBetterMovesAvalible[column!] != nil
         } else {
             //We're at a local max, return nil to restart
-            println("HANG")
             self.resetBoard()
             self.initialConflictCounter()
             return findColumnWithConflicts()
