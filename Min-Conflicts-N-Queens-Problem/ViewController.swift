@@ -75,7 +75,7 @@ class ViewController: UIViewController, BoardDelegate {
     
     @IBAction func algoNeedsPrompt(sender: UISegmentedControl) {
         //Ask user for the number of Runs
-        if self.algorithmSelector.selectedSegmentIndex ==  3{
+        if self.algorithmSelector.selectedSegmentIndex ==  3 {
             var runsPrompt = UIAlertController(title: "Runs", message: "Specify the number of runs you would like.", preferredStyle: UIAlertControllerStyle.Alert)
             
             runsPrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
@@ -91,7 +91,7 @@ class ViewController: UIViewController, BoardDelegate {
             runsPrompt.addAction(runs)
             self.presentViewController(runsPrompt, animated: true, completion: nil)
             
-        } else if self.algorithmSelector.selectedSegmentIndex ==  1{
+        } else if self.algorithmSelector.selectedSegmentIndex ==  1 {
             var runsPrompt = UIAlertController(title: "Randomness", message: "Specify the randomness you would like.", preferredStyle: UIAlertControllerStyle.Alert)
             
             runsPrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
