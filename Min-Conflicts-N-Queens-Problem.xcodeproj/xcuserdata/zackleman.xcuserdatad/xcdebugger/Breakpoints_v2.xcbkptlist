@@ -455,8 +455,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "405"
             endingLineNumber = "405"
-            landmarkName = "MinConflicts"
-            landmarkType = "3">
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -471,8 +471,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "405"
             endingLineNumber = "405"
-            landmarkName = "MinConflicts"
-            landmarkType = "3">
+            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -961,8 +961,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "431"
             endingLineNumber = "431"
-            landmarkName = "MinConflicts"
-            landmarkType = "3">
+            landmarkName = "findColumnWithConflicts()"
+            landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1035,8 +1035,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "433"
             endingLineNumber = "433"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"

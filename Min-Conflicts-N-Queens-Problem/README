@@ -1,9 +1,31 @@
 
 To use:
 
-1. Follow UI Instructions.
+Make sure to have the newest Xcode 6 Installed. This will run in an iOS simulator. It works for the iPad or iPhone. When the simulator is running
+you may want to scale down the window to see the full screen.
 
-2. Make sure to Run the Simulator as the front most app to prevent Mac AppNap from making the simulator slow down.
+1. Follow UI Instructions in App.
+
+2. Mostly Relevant for prolonged testing (Make sure to Run the Simulator as the front most app to prevent Mac AppNap from making the simulator slow down).
+
+Notes:
+Boards above 250 are not shown because individual spots are too small to see individual queens
+
+MinConflicts code is located in the MinConflicts.swift file
+Line 89 is where the algorithms start. All algorithms share code to avoid copy and paste coding.
+Optimal initial placement: Lines 56-62
+See cases starting at Line 106 for all other algorithms.
+
+PickBestFirst variant is implemented by adding a few lines to the bestMovesForQueen method that are switched on by a boolean variable.
+
+
+Feel free to move queens around on the board before solving. Just click or touch.
+
+
+
+--------------------------------
+
+No longer Relevant: (UI Element to access this has been removed.)
 
 3. To see averages you can use the test mode button. Test can be customized in the viewController.swift file
     a. See runAllTestsWithNQueens function
@@ -14,9 +36,3 @@ To use:
         2. As many of these lines with any combination of parameters can be written in the runAllTestsWithNQueens function.
 
 
-Notes:
-Boards above 250 are not shown as individual spots are too small to see individual queens
-
-MinConflicts code is located in the MinConflicts.swift file
-
-Feel free to move queens aroudn on the board before solving. Just click or touch.
