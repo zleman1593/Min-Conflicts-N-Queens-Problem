@@ -357,6 +357,7 @@ class MinConflicts {
         self.columns[column] = row
     }
     
+    /*Removes the old conflicts that a specific column was involved in before its row update */
     func removeOldConflicts(column : Int) {
         //Frees up the column to be looked at in the future
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(column)
@@ -414,13 +415,13 @@ class MinConflicts {
         columnsWithConflicts.sort { $0 < $1 }
         columnsWithConflictsButNoBetterMovesAvalibleArray.sort { $0 < $1 }
 
-        //if there exist columns with conflicts with better moves...
+        //if there exist columns with conflicts with better moves avalible...
         if columnsWithConflicts != columnsWithConflictsButNoBetterMovesAvalibleArray {
             do { //While you have not selected a column that will result in a row change
                 column = columnsWithConflicts[Int.random(columnsWithConflicts.count)]
             } while columnsWithConflictsButNoBetterMovesAvalible[column!] != nil
         } else {
-            //We're at a local max, return nil to restart
+            //We're at a local max with no way easy way out, return nil to restart
             self.resetBoard()
             self.initialConflictCounter()
             return findColumnWithConflicts()
