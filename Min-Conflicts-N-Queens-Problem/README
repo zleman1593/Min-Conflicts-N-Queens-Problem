@@ -14,9 +14,10 @@ Boards above 250 are not shown because individual spots are too small to see ind
 MinConflicts code is located in the MinConflicts.swift file
 Line 89 is where the algorithms start. All algorithms share code to avoid copy and paste coding.
 Optimal initial placement: Lines 56-62
+PickBestFirst variant is implemented by adding a few lines to the bestMovesForQueen method that are switched on by a boolean variable, "pickFirstBetter".
 See cases starting at Line 106 for all other algorithms.
 
-PickBestFirst variant is implemented by adding a few lines to the bestMovesForQueen method that are switched on by a boolean variable.
+
 
 
 Feel free to move queens around on the board before solving. Just click or touch.
