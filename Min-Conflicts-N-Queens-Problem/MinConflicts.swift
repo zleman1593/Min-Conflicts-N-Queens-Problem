@@ -112,10 +112,14 @@ class MinConflicts {
                 self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
                 
             case Algorithm.VanillaRestart:
+                //Switches to vanilla once the  boolean variables to implement this variant has been set.
+                //Removes one step which was just used to switch algorithm.
                 self.algorithm = Algorithm.Vanilla
                 self.stepsUsed = -1
                 
             case Algorithm.VanillaChooseFirstBest:
+                //Switches to vanilla once the  boolean variables to implement this variant has been set.
+                //Removes one step which was just used to switch algorithm.
                 self.algorithm = Algorithm.Vanilla
                  self.stepsUsed = -1
 
@@ -128,7 +132,7 @@ class MinConflicts {
                     //set queen in the random column to row that minimizes conflicts
                     self.columns[column] = self.findLeastConflictedMoveForQueen(column, updateRunnningConflicts: true).bestRow
                 } else {
-                    //set queen in the random column to row that minimizes conflicts
+                    //set queen in the random column to a random row 
                     self.columns[column] = self.randomPlacement(column)
                 }
                 
