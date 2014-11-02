@@ -455,8 +455,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "413"
             endingLineNumber = "413"
-            landmarkName = "addConflictFromNewMove(_:mainColumn:)"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -471,8 +471,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "413"
             endingLineNumber = "413"
-            landmarkName = "addConflictFromNewMove(_:mainColumn:)"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -503,8 +503,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
             endingLineNumber = "82"
-            landmarkName = "resetBoard()"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -595,8 +595,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "198"
             endingLineNumber = "198"
-            landmarkName = "MinConflicts"
-            landmarkType = "3">
+            landmarkName = "findLeastConflictedMoveForQueen(_:updateRunnningConflicts:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -763,7 +763,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "337"
             endingLineNumber = "337"
-            landmarkName = "randomPlacement(_:)"
+            landmarkName = "isSolution()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -809,8 +809,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "361"
             endingLineNumber = "361"
-            landmarkName = "isSolution()"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -825,7 +825,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "425"
             endingLineNumber = "425"
-            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
+            landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -885,7 +885,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "426"
             endingLineNumber = "426"
-            landmarkName = "addConflictsBetweenTwoColumns(_:columnB:)"
+            landmarkName = "findColumnWithConflicts()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -945,7 +945,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "307"
             endingLineNumber = "307"
-            landmarkName = "bestMovesForQueen(_:bestMoves:currentSelectedColumn:)"
+            landmarkName = "randomPlacement(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -961,8 +961,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "439"
             endingLineNumber = "439"
-            landmarkName = "findColumnWithConflicts()"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1035,7 +1035,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "441"
             endingLineNumber = "441"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1109,7 +1109,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "445"
             endingLineNumber = "445"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1183,7 +1183,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "444"
             endingLineNumber = "444"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
             <Locations>
                <Location
@@ -1273,7 +1273,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
-            landmarkName = "resetBoard()"
+            landmarkName = "prepareForRunWith(_:maxRuns:maxSteps:randomness:pickFirstBetter:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1577,8 +1577,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
-            landmarkName = "populateBoardOfSize(_:optimally:)"
-            landmarkType = "5">
+            landmarkName = "MinConflicts"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1641,8 +1641,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "260"
             endingLineNumber = "260"
-            landmarkName = "MinConflicts"
-            landmarkType = "3">
+            landmarkName = "bestMovesForQueen(_:bestMoves:currentSelectedColumn:)"
+            landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1686,9 +1686,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "460"
-            endingLineNumber = "460"
-            landmarkName = "findColumnWithConflicts()"
-            landmarkType = "5">
+            endingLineNumber = "460">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2484,9 +2482,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "467"
-            endingLineNumber = "467"
-            landmarkName = "findConflictsForQueen(_:atRow:)"
-            landmarkType = "5">
+            endingLineNumber = "467">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2573,7 +2569,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "456"
             endingLineNumber = "456"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2589,7 +2585,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "451"
             endingLineNumber = "451"
-            landmarkName = "findColumnWithConflicts()"
+            landmarkName = "findConflictsForQueen(_:atRow:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

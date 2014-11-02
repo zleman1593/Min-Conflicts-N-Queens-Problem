@@ -9,9 +9,6 @@
 import Foundation
 
 class MinConflicts {
-var testAlgo: Int = 0
-var testAlgoADD: Int = 0
-    var otherBestMovesAvalible = [Int : ([Int], Int, Int, [Int : [Int]])]()
     /* Parameters */
     //number of queens on board
     var n : Int? = nil
@@ -75,7 +72,6 @@ var testAlgoADD: Int = 0
         conflicts = 0
         allConflicts.removeAll(keepCapacity: false)
         columnsWithConflictsButNoBetterMovesAvalible.removeAll(keepCapacity: false)
-        otherBestMovesAvalible.removeAll(keepCapacity: false)
         populateBoardOfSize(n!, optimally: optimally!)
     }
     
@@ -213,10 +209,7 @@ var testAlgoADD: Int = 0
             columnsWithConflictsButNoBetterMovesAvalible.updateValue(currentSelectedColumn, forKey: currentSelectedColumn)
         }
 
-        if  bestMoves.count > 1 {
-            self.testAlgoADD++
-            otherBestMovesAvalible.updateValue((bestMoves,nextMoveInfo.minConflictsForBestMoves, nextMoveInfo.conflictsFromRowBeforeMove,conflictStore), forKey: currentSelectedColumn)
-        }
+    
         
         //Breaks ties randomly from the best options
         let moveToMake = bestMoves[Int.random(bestMoves.count)]
@@ -367,14 +360,13 @@ var testAlgoADD: Int = 0
     func removeOldConflicts(column : Int) {
         //Frees up the column to be looked at in the future
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(column)
-         otherBestMovesAvalible.removeValueForKey(column)
         
         //Run through all the conflicts and go to those columns and remove this column from these other columns
         if allConflicts[column]? != nil {
             for columnB in 0..<allConflicts[column]!.count {
                 allConflicts[columnB]?.removeObject(column)
                 columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
-                otherBestMovesAvalible.removeValueForKey(columnB)
+
             }
         }
         
@@ -393,9 +385,9 @@ var testAlgoADD: Int = 0
     func addConflictsBetweenTwoColumns(columnA : Int, columnB : Int) {
         //Frees up the column to be looked at in the future
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnA)
-        otherBestMovesAvalible.removeValueForKey(columnA)
+
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
-        otherBestMovesAvalible.removeValueForKey(columnB)
+
         
         //initialize with conflict or add conflict
         if allConflicts[columnA]? != nil {
