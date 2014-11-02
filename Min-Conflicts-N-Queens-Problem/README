@@ -1,5 +1,6 @@
 
 To use:
+Open the .xcodeproj file
 
 Make sure to have the newest Xcode 6 Installed. This will run in an iOS simulator. It works for the iPad or iPhone. When the simulator is running
 you may want to scale down the window to see the full screen. Click the run button in Xcode (Play symbol) to start the App.
