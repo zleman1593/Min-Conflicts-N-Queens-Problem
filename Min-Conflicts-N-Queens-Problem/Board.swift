@@ -82,7 +82,7 @@ class Board : UIView {
                     if CGRectContainsPoint(rectangle,tapPoint) {
                         NSLog("Point(%f, %f) is contained in rectangle %d,%d ", tapPoint.x, tapPoint.y,x,y)
                         done = true
-                      self.delegate!.updateColumn(i,row: j )
+                      self.delegate!.updateQueen(i,row: j )
                         println("i: \(i)  j: \(j )")
                         break
                     }
@@ -103,5 +103,5 @@ class Board : UIView {
 
 protocol BoardDelegate {
     func getContentAtRow(row : Int, col : Int) -> String
-    func updateColumn(column : Int, row : Int )
+    func updateQueen(column : Int, row : Int )
 }

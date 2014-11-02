@@ -239,8 +239,8 @@ class ViewController: UIViewController, BoardDelegate {
     }
     
     /*Allows user to indicate where initial queens should be placed*/
-    func updateColumn(column : Int, row : Int ){
-        self.solver.updateColumn(column,row: row)
+    func updateQueen(column : Int, row : Int ){
+        self.solver.moveQueen(column, toPosition: row)
         self.board.setNeedsDisplay()
     }
     
