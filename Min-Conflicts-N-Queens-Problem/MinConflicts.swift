@@ -159,8 +159,6 @@ class MinConflicts {
             }
         }
         
-        println("\(self.allConflicts)")
-        
         self.runsUsed++ //increment runs
         //check if we should run again
         if self.runsUsed < self.maxRuns! {
