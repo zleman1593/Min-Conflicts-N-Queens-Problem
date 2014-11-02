@@ -32,6 +32,8 @@ class MinConflicts {
     var runsUsed = 0
     //Number of steps actually used to find solution
     var stepsUsed : Int   = 0
+    //Number of current conflicts
+    var conflicts : Int   = 0
     //Array of columns, where an element holds the row the queen in that column occupies
     var columns   : [Int] = []
     //Stores all conflicts in board
@@ -67,6 +69,7 @@ class MinConflicts {
     //resets all algorithm data structures
     func resetBoard() {
         columns = []
+        conflicts = 0
         allConflicts.removeAll(keepCapacity: false)
         columnsWithConflictsButNoBetterMovesAvalible.removeAll(keepCapacity: false)
         populateBoardOfSize(n!, optimally: optimally!)
@@ -85,10 +88,11 @@ class MinConflicts {
     //Output: true if solution found within maxSteps, else false
     func run() -> Bool {
         //Count initial number of conflicts
-        self.findInitialConflicts()
+        self.conflicts = initialConflictCounter()
         
         if debug {
             println("Current Random Assignment " + columns.description)
+            println("Current Conflicts " + self.conflicts.description)
         }
         
         //On Each step
@@ -113,7 +117,7 @@ class MinConflicts {
                 
             case Algorithm.VanillaChooseFirstBest:
                 self.algorithm = Algorithm.Vanilla
-                self.stepsUsed = -1
+                 self.stepsUsed = -1
 
             case Algorithm.Random:
                 //Picks a column with conflicts at random
@@ -153,6 +157,9 @@ class MinConflicts {
                 
                 //set queen  to row that minimizes conflicts
                 self.columns[queenToChoose.selectedQueen] = queenToChoose.row
+                
+                //add conflicts of new move to number of current conflicts
+                self.conflicts = self.conflicts + bestConflicts
                 
                 //Removes all old conflicts involving the old position
                 removeOldConflicts(queenToChoose.selectedQueen)
@@ -209,6 +216,9 @@ class MinConflicts {
         
         //If the new position is different from current position update conflict information
         if updateRunnningConflicts && moveToMake != self.columns[currentSelectedColumn] {
+            //Keeps the number of conflicts updated after a move is made
+            self.conflicts += (nextMoveInfo.minConflictsForBestMoves - nextMoveInfo.conflictsFromRowBeforeMove)
+            
             //Removes all old conflicts involving the old position
             removeOldConflicts(currentSelectedColumn)
             
@@ -234,8 +244,8 @@ class MinConflicts {
         
         //Used For pickBestFirst
         var  current : [Int] = []
-        if self.pickFirstBetter != nil {
-            current = findConflictsForQueen(currentSelectedColumn, atRow: self.columns[currentSelectedColumn])
+        if (self.pickFirstBetter != nil) {
+        current = findConflictsForQueen(currentSelectedColumn, atRow: self.columns[currentSelectedColumn])
         }
         
         //Loop through all the columns for each row choice and get conflicts
@@ -302,6 +312,9 @@ class MinConflicts {
         //Adds array holding conflict information for current position
         conflictStore.append(possibleConflicts)
         
+        //Keeps the number of conflicts updated after a move is made
+        
+        self.conflicts = self.conflicts + (nextMoveConflicts - conflictsFromRowBeforeMove)
         //Removes all old conflicts involving the old position
         removeOldConflicts(currentSelectedColumn)
         
@@ -315,23 +328,28 @@ class MinConflicts {
     //Are we at a solution?
     //Output: true if no more conflicts, else false
     func isSolution() -> Bool {
-        return self.allConflicts.count == 0
+        return self.conflicts == 0
     }
     
     /* Counts the number of conflicts created from the initial random assignment
     * so that the number of conflicts can quickly updated during runtime
     * Output: num conflicts in current board
     */
-    func findInitialConflicts() {
+    func initialConflictCounter() -> Int {
+        var totalConflicts = 0
+        
         for index in 0..<self.columns.count {
             for nextIndex in index+1..<self.columns.count {
                 if  self.columns[nextIndex] == self.columns[index] || //looks across row
                     self.columns[nextIndex] == self.columns[index] + (nextIndex-index) || //looks up diagonal
                     self.columns[nextIndex] == self.columns[index] - (nextIndex-index) {  //looks down diagonal
+                        totalConflicts++
                         addConflictsBetweenTwoColumns(index, columnB: nextIndex)
                 }
             }
         }
+        
+        return totalConflicts
     }
     
     /*So user can select where queens should start*/
@@ -349,6 +367,7 @@ class MinConflicts {
             for columnB in 0..<allConflicts[column]!.count {
                 allConflicts[columnB]?.removeObject(column)
                 columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
+
             }
         }
         
@@ -370,14 +389,15 @@ class MinConflicts {
 
         columnsWithConflictsButNoBetterMovesAvalible.removeValueForKey(columnB)
 
+        
         //initialize with conflict or add conflict
-        if allConflicts[columnA]? != nil && !allConflicts[columnA]!.containsObject(columnB) {
+        if allConflicts[columnA]? != nil {
             allConflicts[columnA]!.addObject(columnB)
         } else {
             allConflicts[columnA] = NSMutableArray(array: [columnB])
         }
         
-        if allConflicts[columnB]? != nil && !allConflicts[columnB]!.containsObject(columnA) {
+        if allConflicts[columnB]? != nil {
             allConflicts[columnB]!.addObject(columnA)
         } else {
             allConflicts[columnB] = NSMutableArray(array: [columnA])
@@ -403,8 +423,8 @@ class MinConflicts {
         } else {
             //We're at a local max with no way easy way out, return nil to restart
             self.resetBoard()
-            self.findInitialConflicts()
-            return self.findColumnWithConflicts()
+            self.initialConflictCounter()
+            return findColumnWithConflicts()
         }
         
         return column!
